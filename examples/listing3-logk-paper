@@ -1,0 +1,28 @@
+TITLE Multiphase equilibrium calculation.
+KNOBS
+        convergence_tolerance 1e-15
+        iterations 10000
+SOLUTION 2  Seawater
+        units   ppm
+        pH      8.22
+        pe      8.451
+        density 1.023
+        temp    25.0
+        Ca              412.3
+        Mg              1291.8
+        Na              10768.0
+        K               399.1
+        Si              4.28
+        Cl              19353.0
+        Alkalinity      141.682 as HCO3
+        S(6)            2712.0
+EQUILIBRIUM_PHASES
+        Calcite         0.0 1.0
+        Dolomite        0.0 5.0
+        Quartz          0.0 10.0
+GAS_PHASE
+        -fixed_volume
+        -volume         1.0
+        CO2(g)          0.99
+        H2O(g)          0.01
+END
