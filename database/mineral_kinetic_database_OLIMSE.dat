@@ -1,0 +1,1143 @@
+	# SHELL Geochemical kinetic database based on OLI version 9.1.5
+
+	# Author: Niko Kampman (niko.kampman@shell.com)
+	# Generated on: 21-Aug-2017
+    # Last updated on: 18-Sep-2020
+	
+	# The database includes kinetic reactions for a wide range of minerals, intended for use with the SHELL Geochemical database based on OLI version 9.1.5
+	# The database format has been adpated from the compilation of 15mar/cla by BRGM (French geological survey)  
+	# Data source references can be found at the end of this file  
+	
+	Albite-low
+	# original compilation from 15mar/cla
+	# kinetic data extracted from 06hel/tis 93bur/nag 97ale/med 94hel 84cho/wol 85cho/wol 95kna/cop
+	# surface area data extracted from 15mar/cla
+	# warning dissolution only
+	# Confidence level: 5
+	-start
+	1 SRmin = SR("Albite-low")
+	10 moles = 0
+	20 If (m <= 0) or (SRmin > 1) Then GoTo 130
+	30 S = 0.08 # average BET; suggested value in m2/g
+	40 Mm = 262.2 # molar mass in g/mol
+	########## start dissolution bloc ##########
+	50 knu = 5.13E-20 * exp((-57000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	60 k1 = 0.0000000000852 * exp((-58400 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.335)
+	70 k2 = 0.000000000135 * exp((-55500 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.317) 
+	80 k = knu + k1 + k2
+	90 theta = 1 # default value
+	100 eta = 1 # default value
+	# theta = 0.48 and eta = 100 at pH 8.8 & 80°C (extracted from 93bur/nag)
+	# theta = 0.18 and eta = 5 at pH 9.2 & 150°C (extracted from 06hel/tis)
+	# theta = 0.76 and eta = 90 at pH 8.8 & 300°C & 88 bars (extracted from 97ale/med)
+	# 110 rate = S * m * Mm * k * ((1 - SRmin ^ theta) ^ eta)
+	110 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin ) # by default
+	120 moles = rate * Time
+	########## end dissolution bloc ##########
+	130 Save moles
+	-end
+
+	Anhydrite
+	# kinetic data extracted from 14Dec/Oel
+	# warning dissolution only
+	# Confidence level: 5
+	-start
+	1 SRmin = SR("Anhydrite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 120
+	30 S = 1 # default value in m2/g
+	40 Mm = 136.14 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 120
+	########## start dissolution bloc ##########
+	60 knu = 2.44E-03 * exp((-52000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	70 k = knu 
+	80 rate = S * m * Mm * ((m/m0)^(2/3)) * k * ((1 - SRmin))
+	90 moles = rate * Time
+	100 REM Do not dissolve more than what is available
+	110 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	120 Save moles
+	-end
+	
+	Annite
+	# kinetic data extracted from 19Zha/Hu
+	# surface area data extracted from 15mar/cla
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Annite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 1.7 # average BET; suggested value in m2/g
+	40 Mm = 512.88 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 10^-11.63 * exp((-49000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	70 k1 = 10^-8.97 * exp((-49000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.67)
+	80 k2 = 10^-7.04 * exp((-49000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ -0.79)
+	90 k = knu + k1 + k2
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * ((1 - SRmin))
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+	
+	Anorthite
+	# kinetic data extracted from 04pal/kha
+	# surface area data estimated from albite in 15mar/cla
+	# warning dissolution only
+	# Confidence level: 5
+	-start
+	1 SRmin = SR("Anorthite")
+	10 moles = 0
+	20 If (m <= 0) or (SRmin > 1) Then GoTo 100
+	30 S = 0.08 # average BET; suggested value in m2/g
+	40 Mm = 277.41 # molar mass in g/mol
+	########## start dissolution bloc ##########
+	50 knu = 10^-9.12 * exp((-17800 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	60 k1 = 10^-3.5 * exp((-16600 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 1.4111)
+	70 k = knu + k1 
+	80 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin ) # by default
+	90 moles = rate * Time
+	########## end dissolution bloc ##########
+	100 Save moles
+	-end
+
+	Barite
+	# kinetic data extracted from 04pal/kha 16zhe/did 
+	# surface area data extracted from 16zhe/did 
+	# warning precipiation rate is low compared to other data
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Barite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 240
+	25 If (SRmin = 1) Then GoTo 240
+	30 S = 0.006 # average BET from 16zhe/did ; suggested value in m2/g
+	40 Mm = 183.68	# molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 130
+	########## start dissolution bloc ##########
+	70 k1 = 2.75E-08 * exp((-25000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.03) * (10 ^ (0.6 * MU^0.5))
+	80 k = k1 
+	90 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - (SRmin ^ 0.2)) 
+	100 moles = rate * Time
+	110 IF (moles > M) THEN moles = M
+	120 GoTo 240
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	130 If (m <= 1e-5) then GoTo 170
+	140 knu = 2.18E-09 * exp((-22000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (10 ^ (0.6 * MU^0.5))
+	150 kpre = (-1) * knu
+	160 rate = S * m * Mm * kpre * (SRmin - 1) 
+	170 GoTo 190
+	#start nucleation
+	180 rate = -1e-12
+	190 moles = rate * Time
+	200 REM Do not precipitate more than the elements in solution
+	210 maxMol = TOT("Ba")
+	220 IF (maxMol > TOT("S(6)")) THEN maxMol = TOT("S(6)")
+	230 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	240 Save moles
+	-end
+	
+	Biotite
+	# kinetic data extracted from 04pal/kha
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Biotite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 1 # default value
+	40 Mm = 511.88 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 2.30E-12 * exp((-49000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	70 k1 = 1.10E-09 * exp((-49000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.67)
+	80 k2 = 9.10E-08 * exp((-49000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.79)
+	90 k = knu + k1 + k2
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+
+	Brucite
+	# kinetic data extracted from 04pal/kha
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Brucite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 1 # default value
+	40 Mm = 58.32 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 10^-8.24 * exp((-59000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	70 k1 = 10^-4.73 * exp((-42000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.5)
+	90 k = knu + k1
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+		
+	Calcite
+	# original compilation from 15mar/cla
+	# kinetic data extracted from 04pal/kha 07lio/par 98zha/gra 85ins/blo 95shi/bra 92rom/gro 98zah/daw 98leb/sua
+	# surface area data extracted from 15mar/cla
+	# Confidence level: 5
+	-start
+	10 moles = 0 											# zero moles
+	20 SRmin = SR("Calcite") 								# Mineral saturation ratio
+	30 If (SRmin <= 1) and (m = 0) Then GoTo 390
+	40 If (SRmin = 1) Then GoTo 390
+	50 S = 0.7 												# average BET; suggested value in m2/g
+	60 Mm = 100.087 										# molar mass in g/mol
+	70 Mv = 3.693E-05 										# molar volume in m3/mol
+	80 If (SRmin > 1) Then GoTo 160
+	########## start dissolution bloc ##########
+	# kinetic data extracted from 04pal/kha
+	90 knu = 1.6E-6 * exp((-24000 / 8.314) * ((1 / TK) - (1 / 298.15)))		
+	100 k1 = 5E-1 * exp((-14000 / 8.314) * ((1 / TK) - (1 / 298.15))) * ACT("H3O+")
+	110 rate = (knu + k1) * S * m * Mm * ((m/m0)^(2/3)) * (1 - SRmin)
+	120 moles = rate * Time 
+	130 REM Do not dissolve more than what is available
+	140 IF (moles > M) THEN moles = M
+	150 GoTo 390
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	160 surf_energy = 0.034 								# interfacial energy in J m-2
+	170 molvol = 6.13E-29 									# molecular volume in m3
+	180	u = ( 16 * 3.14159 * surf_energy^3 * molvol ^ 2 ) / ( 3 * (1.38E-23 * TK)^3 ) 
+	190 J0 = 1E20  											# nucleation rate in nuclei m-2 sec-1  
+	200 SRcrit = exp( sqrt( u / LOG( J0 ) ) ) 				# critical saturation threshold
+	210 IF ( SRmin < SRcrit ) Then GoTo 290 
+	220 nuclie = J0 * exp( -u / LOG(SRmin)^2 ) * Time 		# nucleation rate in nuclie sec-1
+	230 IF ( nuclie < 1 ) THEN GoTo 290 
+	240 nj = ( 2 * u ) / ( LOG(SRmin)^3 ) 					# number of growth units in critical nuclie radius
+	250 vol = nj * molvol 									# critical nuclie volume
+	260 moles_nuc = ( -nuclie * vol ) / Mv 					# moles of nuclie formed
+	280 GoTo 300
+	290 moles_nuc = 0
+	# kinetic data extracted from 07lio/par 98zha/gra 85ins/blo 95shi/bra 92rom/gro 98zah/daw 98leb/sua
+	300 IF ( m = 0 ) THEN GoTo 350
+	310 knu = 1.8E-7 * exp((-66000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	320 k1 = 1.9E-3 * exp((-67000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("HCO3-") ^ 1.63)
+	330 kpre = (knu + k1) 
+	340 moles_growth = -1 * S * m * Mm * kpre * (( ( SRmin^0.5 ) - 1 )^1.12) * Time  
+	350 moles = moles_nuc + moles_growth 
+	########## Do not precipitate more than the elements in solution ########## 
+	360 maxMol = MOL("Ca+2")
+	370 IF (maxMol > MOL("HCO3-")) THEN maxMol = MOL("HCO3-")
+	380 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	390 Save moles
+	-end
+	
+	Celestite
+	# kinetic data extracted from 04pal/kha
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Celestite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 240
+	25 If (SRmin = 1) Then GoTo 240
+	30 S = 11.8 # average BET; suggested value in m2/g
+	40 Mm = 183.68	# molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 130
+	########## start dissolution bloc ##########
+	60 knu = 2.2E-08 * exp((-34000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 1.4E-06 * exp((-33000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.1)
+	80 k = knu + k1 + k2
+	90 rate = S * m * Mm * k * ((1 - SRmin ^ 0.06) ^ 1.68)
+	100 moles = rate * Time
+	110 IF (moles > M) THEN moles = M
+	120 GoTo 240
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	130 If (m <= 1e-5) then GoTo 170
+	140 knu = 5.1E-08 * exp((-34000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	150 kpre = (-1) * knu
+	160 rate = S * m * Mm * kpre * (ABS((SRmin ^ 0.5) - 1) ^ 2.0)
+	170 GoTo 190
+	#start nucleation
+	180 rate = -1e-12
+	190 moles = rate * Time
+	200 REM Do not precipitate more than the elements in solution
+	210 maxMol = TOT("Sr")
+	220 IF (maxMol > TOT("S(6)")) THEN maxMol = TOT("S(6)")
+	230 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	240 Save moles
+	-end
+
+	Chlorite
+	# original compilation from 15mar/cla
+	# kinetic data extracted from 09gol/ben
+	# surface area data extracted from (03bra/bos)
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Chlorite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 0.0027 # 0.2% BET (03bra/bos); suggested value in m2/g
+	40 Mm = 713.5 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250 
+	########## start dissolution bloc ##########
+	60 knu = 6.4E-17 * exp((-16000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 8.2E-09 * exp((-17000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.28)
+	80 k2 = 6.9E-09 * exp((-16000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.34)
+	90 k = knu + k1 + k2
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+
+	Dawsonite
+	# kinetic data extracted from 14Dec/Oel
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Dawsonite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 1 # default value in m2/g
+	40 Mm = 144.0 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250 
+	########## start dissolution bloc ##########
+	60 knu = 4.20E-09 * exp((-49400 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 2.70E-02 * exp((-63800 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.941)
+	90 k = knu + k1
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+
+	Dolomite #ordered 
+	# kinetic data extracted from 04pal/kha
+	# surface area data extracted from 15mar/cla
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Dolomite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 0.09 # BET value
+	40 Mm = 184.4 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 0.000000002512 * exp((-95300 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 0.0001738 * exp((-56700 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.5)
+	80 k2 = 0.000004266 * exp((-45700 / 8.314) * ((1 / TK) - (1 / 298.15))) * (PR_P("CO2(g)") ^ 0.5)
+	90 k = knu + k1 + k2
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+	
+	Dolomite-dis 
+	# kinetic data extracted from 04pal/kha
+	# surface area data extracted from 15mar/cla
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Dolomite-dis")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 0.09 # BET value
+	40 Mm = 184.4 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 0.0000000295 * exp((-52200 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 0.000646 * exp((-36100 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.5)
+	80 k2 = 0.00000776 * exp((-34800 / 8.314) * ((1 / TK) - (1 / 298.15))) * (PR_P("CO2(g)") ^ 0.5)
+	90 k = knu + k1 + k2
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+	
+	Gibbsite
+	# kinetic data extracted from 04pal/kha
+	# precipitation kinetic data extracted from 92nag/las 93nag/las 08ben/pal
+	# surface area data extracted from 15mar/cla
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Gibbsite")						# mineral saturation ratio
+	10 moles = 0									# initial moles of mineral
+	20 If (m = 0) and (SRmin <= 1) Then GoTo 360	# if neither dissolution nor precipitation possible then end
+	30 If (SRmin = 1) Then GoTo 360					# if system in equilibrium then end
+	40 S = 1	 									# default value in m2/g
+	50 Mm = 78.00									# molar mass in g/mol
+	60 Mv = 31.956E-06								# molar volume in m3/mol
+	70 If (SRmin > 1) Then GoTo 160					# if supersaturated go to precipitation
+	########## start dissolution bloc ##########
+	80 knu = 3.16E-12 * exp((-61200 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	90 k1 = 2.24E-08 * exp((-47500 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.992)
+	100 k2 = 3.1E-06 * exp((-48000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 1.0)
+	110 k = knu + k1 + k2
+	120 rate = S * m * Mm * k * ((1 - SRmin ^ 1.0) ^ 1.0)
+	130 moles = rate * Time
+	#### Do not dissolve more than there is solid present ####
+	140 IF (moles > M) THEN moles = M
+	150 GoTo 360
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	160 surf_energy = 0.22 									# interfacial energy in J m-2
+	170 molvol = 5.3E-29									# molecular volume in m3
+	180 u = ( 16 * 3.14159 * surf_energy^3 * molvol ^ 2 ) / ( 3 * (1.38E-23 * TK)^3 ) 	# (after Fritz et al 2009) 
+	190 J0 = 1E20  											# nucleation rate in nuclei m-2 sec-1 (after Fritz et al 2009) 
+	200 SRcrit = exp( sqrt( u / LOG( J0 ) ) ) 				# critical saturation threshold
+	210 IF ( SRmin < SRcrit ) Then GoTo 280 				# if saturation index below threshold no nucleation occurs
+	220 nuclie = J0 * exp( -u / LOG(SRmin)^2 ) * time		# --- nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
+	230 IF ( nuclie < 1 ) THEN GoTo 280 					# condition that rate needs to be bigger than 1 nucl per sec (Arbitrary)
+	240 nj = ( 2 * u ) / (LOG(SRmin)^3) 					# number of growth units in critical nuclie radius
+	250 vol = nj * molvol 									# critical nuclie volume
+	260 moles_nuc = ( -rate_nuc * vol ) / Mv 	# moles of nuclie formed
+	270 GoTo 290
+	280 moles_nuc = 0
+	#### kinetic data for growth ####
+	290 IF ( m = 0 ) THEN GoTo 330
+	300 knu = 3.6E-6 * (ACT("OH-") ^ 1)
+	310 kpre = (-1) * knu
+	320 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 1.0) - 1) ^ 1.0) * Time
+	330 moles = moles_nuc + moles_growth 
+	#### Do not precipitate more than the elements in solution ####
+	340 maxMol = TOT("Al")
+	350 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	360 Save moles
+	-end	
+
+	Glauconite
+	# kinetic data extracted from 04pal/kha
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Glauconite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 1 # default value in m2/g
+	40 Mm = 514.43 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 7.94E-10 * exp((-85000 / 8.314) * ((1 / TK) - (1 / 298.15)))   
+	70 k1 = 1.58E-05 * exp((-85000 / 8.314) * ((1 / TK) - (1 / 298.15)))  * (ACT("H3O+") ^ 0.7)
+	80 k = knu + k1
+	90 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	100 moles = rate * Time
+	110 REM Do not dissolve more than what is available
+	120 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+	
+	Goethite
+	# kinetic data extracted from 04pal/kha 04pou/kro
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Goethite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 1 # Default value
+	40 Mm = 88.85 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 1.148E-08 * exp((-86500 / 8.314) * ((1 / TK) - (1 / 298.15)))    
+	70 k1 = 1.22E-9 * exp((-40000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("HS-") ^ 0.5)
+	80 k = knu + k1 
+	90 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	100 moles = rate * Time
+	110 REM Do not dissolve more than what is available
+	120 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+
+	Gypsum
+	# kinetic data extracted from 04pal/kha
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Gypsum")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 1 # default value in m2/g
+	40 Mm = 136.14 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250 
+	########## start dissolution bloc ##########
+	60 knu = 10^-2.79
+	90 k = knu 
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+	
+	Halite
+	# kinetic data extracted from 04pal/kha
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Halite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 1 # default value in m2/g
+	40 Mm = 58.44 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250 
+	########## start dissolution bloc ##########
+	60 knu = 10^-0.21 * exp((-74000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	90 k = knu 
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+	
+	Hematite
+	# kinetic data extracted from 04pal/kha 04pou/kro
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Hematite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = PARM(1) # Default value
+	40 Mm = 159.7 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 2.51E-15 * exp((-66200 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 0.000000000407 * exp((-66200 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 1.0)
+	80 k2 = 3.50E-9 * exp((-40000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("HS-") ^ 0.5)
+	90 k = knu + k1 + k2
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+		
+	Illite(IMt2)
+	# dissolution kinetic data extracted from 06has/vil 03tou/nea 03koh/duf 05koh/bos
+	# precipitation kinetic data extracted from Kaolinite precipitation rate: 08yan/ste 93nag/las 97dev/sch
+	# surface area data extracted from 15mar/cla
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Illite(IMt2)")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 410		# mineral saturation ratio	
+	25 If (SRmin = 1) Then GoTo 400						# if system in equilibrium then end
+	30 S = 30 											# ESA (06has/vil 03tou/nea); suggested value in m2/g 	
+	40 Mm = 401.836										# molar mass in g/mol
+	50 Mv = 141.34E-06									# molar volume in m3/mol
+	60 If (SRmin > 1) Then GoTo 150
+	########## start dissolution bloc ##########
+	70 knu = 1.78E-14 * exp((-34600 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	80 k1 = 0.00000000000901 * exp((-37800 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.523)
+	90 k2 = 0.00000000000269 * exp((-49900 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.378)
+	100 k = knu + k1 + k2
+	110 rate = S * m * Mm * k * ((1 - SRmin ^ 0.06) ^ 1.68)
+	120 moles = rate * Time
+	#### Do not dissolve more than there is solid present ####
+	130 IF (moles > M) THEN moles = M
+	140 GoTo 410
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	150 surf_energy = 0.1 								# interfacial energy for lateral surface in J m-2 (from kaolinite after Fritz et al 2009; lateral s chosen to be 2 times basal)
+	160 sheet_thick = 10e-10							# thickness of one mineral layer in m (Warr and Nieto 1998)
+	170 molvol = 2.347E-28								# molecular volume in m3 (calculated from molar volume)
+	180	u = ( 2 * sqrt(3) * sheet_thick * surf_energy^2 * molvol ) / ( (1.38E-23 * TK)^2 ) # (after Fritz et al 2009)
+	190 J0 = 1E20  										# nucleation rate in nuclei m-2 sec-1 (after Fritz et al 2009) 
+	200 SRcrit = exp( u / LOG( J0 ) ) 					# critical saturation threshold
+	210 IF ( SRmin < SRcrit ) Then GoTo 280 			# if saturation index below threshold no nucleation occurs
+	220 nuclie = J0 * exp( -u / LOG(SRmin) ) * Time  	# nucleation rate in nuclie sec-1 multiplied by time to give nuclie per timestep
+	230 IF ( nuclie < 1 ) THEN GoTo 280 				# condition that rate needs to be bigger than 1 nucl per time step (Arbitrary)
+	240 nj = u / (LOG(SRmin)^2) 						# number of growth units in critical nucleus
+	250	vol = nj * molvol 								# critical nuclie volume
+	260	moles_nuc = ( -nuclie * vol ) / Mv 				# moles of nuclie formed
+	270 GoTo 290
+	280 moles_nuc = 0
+	#### kinetic data for growth ####
+	290 IF ( m = 0 ) THEN GoTo 330
+	300 knu = 0.000000000000215 * exp((-66400 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	310 kpre = (-1) * knu
+	320 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 0.06) - 1) ^ 1.68) * Time
+	330 moles = moles_nuc + moles_growth
+	#### Do not precipitate more than the elements in solution ####
+	340 maxMol = TOT("Al")/2.04
+	350 IF (maxMol > TOT("Si")/3.387) THEN maxMol = TOT("Si")/3.387
+	360 IF (maxMol > TOT("Mg")/0.241) THEN maxMol = TOT("Mg")/0.241
+	370 IF (maxMol > TOT("Fe")/0.376) THEN maxMol = TOT("Fe")/0.376
+	380 IF (maxMol > TOT("K")/0.762) THEN maxMol = TOT("K")/0.762
+	390 IF (maxMol > TOT("Na")/0.044) THEN maxMol = TOT("Na")/0.044
+	400 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	410 Save moles
+	-end
+	
+	Kaolinite
+	# kinetic data extracted from 06has/vil 03tou/nea 03koh/duf 05koh/bos
+	# kinetic data extracted from Kaolinite precipitation rate: 08yan/ste 93nag/las 97dev/sch
+	# surface area data extracted from 15mar/cla
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Kaolinite")						# mineral saturation ratio
+	10 moles = 0									# initial moles of mineral
+	20 If (m = 0) and (SRmin <= 1) Then GoTo 390	# if neither dissolution nor precipitation possible then end
+	30 If (SRmin = 1) Then GoTo 390					# if system in equilibrium then end
+	40 S = 11.8 									# average BET; suggested value in m2/g
+	50 Mm = 258.16									# molar mass in g/mol
+	60 Mv = 9.876E-05								# molar volume in m3/mol
+	70 If (SRmin > 1) Then GoTo 160					# if supersaturated go to precipitation
+	########## start dissolution bloc ##########
+	80 knu = 1.1E-14 * exp((-38000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	90 k1 = 7.5E-12 * exp((-43000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.51)
+	100 k2 = 2.5E-11 * exp((-46000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.58)
+	110 k = knu + k1 + k2
+	120 rate = S * m * Mm * k * ((1 - SRmin))
+	130 moles = rate * Time
+	#### Do not dissolve more than there is solid present ####
+	140 IF (moles > M) THEN moles = M
+	150 GoTo 390
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	160 surf_energy = 0.1 																	# interfacial energy for lateral surface in J m-2 (after Fritz et al 2009; lateral s chosen to be 2 times basal))
+	170 sheet_thick = 7e-10																	# thickness of one mineral layer in m
+	180 molvol = 1.64E-28																	# molecular volume in m3
+	190 u = ( 2 * sqrt(3) * sheet_thick * surf_energy^2 * molvol ) / ( (1.38E-23 * TK)^2 ) 	# (after Fritz et al 2009) 
+	200 J0 = 1E20  																			# nucleation rate in nuclei m-2 sec-1 (after Fritz et al 2009) 
+	210 SRcrit = exp( u / LOG( J0 ) ) 														# critical saturation threshold
+	220 IF ( SRmin < SRcrit ) Then GoTo 290 												# if saturation index below threshold no nucleation occurs
+	230 nuclie = J0 * exp( -u / LOG(SRmin) ) * Time											# nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
+	240 IF ( nuclie < 1 ) THEN GoTo 290 													# condition that rate needs to be bigger than 1 nucl per sec (Arbitrary)
+	250 nj = u / (LOG(SRmin)^2) 															# number of growth units in critical nuclie radius
+	260 vol = nj * molvol 																	# critical nuclie volume
+	270 moles_nuc = ( -nuclie * vol ) / Mv 													# moles of nuclie formed
+	280 GoTo 300
+	290 moles_nuc = 0
+	#### kinetic data for growth ####
+	300 IF ( m = 0 ) THEN GoTo 350
+	310 knu = 5.5E-13 * exp((-66000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	320 kpre = (-1) * knu
+	330 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 0.06) - 1) ^ 1.68) * Time
+	350 moles = moles_nuc + moles_growth
+	#### Do not precipitate more than the elements in solution ####
+	360 maxMol = TOT("Al")/2
+	370 IF (maxMol > TOT("Si")/2) THEN maxMol = TOT("Si")/2
+	380 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	390 Save moles
+	-end
+
+	K-feldspar
+	# kinetic data extracted from 04pal/kha
+	# surface area data extracted from 15mar/cla
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("K-feldspar")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 0.08 # suggested value in m2/g
+	40 Mm = 278.33 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 10^-12.41 * exp((-38000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 10^-10.06 * exp((-51700 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.5)
+	80 k2 = 10^-21.2 * exp((-94100 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ -0.823)
+	90 k = knu + k1 + k2
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+	
+	Microcline
+	# kinetic data extracted from 04pal/kha
+	# surface area data extracted from 15mar/cla
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Microcline")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 0.08 # suggested value in m2/g
+	40 Mm = 278.33 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 10^-12.41 * exp((-38000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 10^-10.06 * exp((-51700 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.5)
+	80 k2 = 10^-21.2 * exp((-94100 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ -0.823)
+	90 k = knu + k1 + k2
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+
+	Mackinawite
+	# kinetic data extracted from 79pan/mor 14wan/zha
+	# Confidence level: 3
+	-start
+	1 SRmin = SR("Mackinawite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 270
+	30 S = 1 # Default value in m2/g
+	40 Mm = 85.42	# molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 140
+	########## start dissolution bloc ##########
+	60 knu = 3.17E-07 * exp((-28470 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 3.00E-05 * exp((-30140 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H+"))
+	80 k = knu + k1 	
+	90 rate = S * m * Mm * k * ((1 - SRmin ^ 0.06) ^ 1.68)
+	100 moles = rate * Time
+	120 IF (moles > M) THEN moles = M
+	130 GoTo 270
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	140 If (m <= 1e-5) then GoTo 210
+	150 knu = (7.0*ACT("Fe(2)")*ACT("H2S")) + (12.5*ACT("Fe(2)")*(ACT("HS-")^2)*(ACT("HS-")^2))
+	160 kpre = (-1) * knu
+	170 IF(TC<= 40) THEN Eq2 = 2.0	# saturation state dependence
+	180 IF(TC> 40)  THEN Eq2 = 1.0	# saturation state dependence
+	190 rate = S * m * Mm * kpre * (ABS((SRmin ^ 0.5) - 1) ^ Eq2)
+	200 GoTo 220
+	#start nucleation
+	210 rate = -1e-10
+	220 moles = rate * Time
+	230 REM Do not precipitate more than the elements in solution
+	240 maxMol = TOT("Fe(2)")
+	250 IF (maxMol > TOT("S(-2)")) THEN maxMol = TOT("S(-2)")
+	260 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	270 Save moles
+	-end
+
+	Magnetite
+	# kinetic data extracted from 04pal/kha 04pou/kro
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Magnetite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 1 # Default value in m2/g
+	40 Mm = 55.845 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 10^-10.78 * exp((-18600 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 10^-8.59 * exp((-18600 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.279)
+	80 k2 = 5.56E-9  * exp((-40000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("HS-") ^ 0.5)
+	90 k = knu + k1 + k2
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+
+	Muscovite
+	# kinetic data extracted from 17Lam/Smi 
+	# surface area data from 17Lam/Smi 
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Muscovite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 2.36 # BET suggested value in m2/g 
+	40 Mm = 398.71 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 9E-6 * exp(-45000 / ( 8.314 * TK ))
+	70 k1 = 3E-3 * exp(-44000 / ( 8.314 * TK )) * (ACT("H3O+") ^ 0.8)
+	80 k2 = 5E-1 * exp(-61000 / ( 8.314 * TK )) * (ACT("OH-") ^ 0.6)
+	90 k = knu + k1 + k2
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+
+	Phlogopite
+	# kinetic data extracted from 19Zha/Hu
+	# surface area data extracted from 15mar/cla
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Phlogopite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 1.7 # average BET; suggested value in m2/g
+	40 Mm = 419.25 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 10^-12.4 * exp((-29000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	90 k = knu 
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * ((1 - SRmin))
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+
+	Siderite
+	# kinetic data extracted from 09gol/ben	92gre/tom
+	# surface area data extracted from 15mar/cla
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Siderite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 240
+	25 If (SRmin = 1) Then GoTo 240				
+	30 S = 0.13 # average BET; suggested value in m2/g
+	40 Mm = 115.86	# molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 130
+	########## start dissolution bloc ##########
+	60 knu = 2.1E-09 * exp((-56000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 5.9E-06 * exp((-56000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.60)
+	80 k = knu + k1 + k2
+	90 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin)
+	100 moles = rate * Time
+	110 IF (moles > M) THEN moles = M
+	120 GoTo 240
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	130 If (m <= 1e-5) then GoTo 170
+	140 knu = 1.6E-11 * exp((-108000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	150 kpre = (-1) * knu
+	160 rate = S * m * Mm * kpre * (SRmin  - 1)
+	170 GoTo 190
+	#start nucleation
+	180 rate = -1e-12
+	190 moles = rate * Time
+	200 REM Do not precipitate more than the elements in solution
+	210 maxMol = TOT("Fe(2)")
+	220 IF (maxMol > TOT("C(4)")) THEN maxMol = TOT("C(4)")
+	230 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	240 Save moles
+	-end
+		
+	Smectite(MX80)
+	# kinetic data extracted from 06has/vil 03tou/nea 05yok/kur 01hue/cab 04nak/sak 98bau/ber 00cam/gan 96zys/sch 06gol/bau 05met/amr 05amr/gan 00bos/cha 08roz/hue 09roz/hue
+	# kinetic data extracted from Kaolinite precipitation rate: 08yan/ste 93nag/las 97dev/sch
+	# surface area data extracted from 06has/vil 03tou/nea 05yok/kur
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Smectite(MX80)")
+	10 mole = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 400
+	25 If (SRmin = 1) Then GoTo 400						# if system in equilibrium then end
+	30 S = 8.5 											# ESA (06has/vil 03tou/nea 05yok/kur); suggested value in m2/g
+	40 Mm = 376.697 									# e.g. molar mass of Smectite_MX80 in g/mol
+	50 Mv = 134.19E-06									# molar volume in m3/mol
+	60 If (SRmin > 1) Then GoTo 130
+	########## start dissolution bloc ##########
+	70 knu = 9.3E-15 * exp((-63000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	80 k1 = 5.3E-11 * exp((-54000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.69)
+	90 k2 = 2.9E-12 * exp((-61000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.34)
+	100 k = knu + k1 + k2
+	# warning: kinetic constants normalised with ESA!
+	# theta = 0.17 and eta = 10.34 at 80°C and pH 8.8 (extracted from 00cam/gan)
+	110 rate = S * m * Mm * k * ((1 - SRmin ^ 0.17) ^ 10.34)
+	120 GoTo 400
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	130 surf_energy = 0.05 								# interfacial energy for lateral surface in J m-2 (after Fritz et al 2009; lateral s chosen to be 2 times basal))
+	140 sheet_thick = 15e-10							# thickness of one mineral layer in m
+	150 molvol = 2.228E-28								# molecular volume in m3
+	160	u = ( 2 * sqrt(3) * sheet_thick * surf_energy^2 * molvol ) / ( (1.38E-23 * TK)^2 ) # (?????????????)
+	170 J0 = 1E20  										# nucleation rate in nuclei m-2 sec-1 (Based on Fritz et al 2009) 
+	180 SRcrit = exp( u / LOG( J0 ) ) 					# critical saturation threshold
+	190 IF ( SRmin < SRcrit ) Then GoTo 260 			# if saturation index below threshold no nucleation occurs
+	200 nuclie = J0 * exp( -u / LOG(SRmin) ) * Time		# nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
+	210 IF ( nuclie < 1 ) THEN GoTo 260 				# condition that rate needs to be bigger than 1 nucl per sec (Arbitrary)
+	220 nj = u / (LOG(SRmin)^2) 						# number of growth units in critical nuclie radius
+	230	vol = nj * molvol 								# critical nuclie volume
+	240	moles_nuc = ( -nuclie * vol ) / Mv 	# moles of nuclie formed
+	250 GoTo 270
+	260 moles_nuc = 0
+	#### kinetic data for growth #### 
+	270 IF ( m = 0 ) THEN GoTo 310
+	280 knu = 2.2E-13 * exp((-66000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	290 kpre = (-1) * knu
+	300 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 0.06) - 1) ^ 1.68) * Time
+	310 moles = moles_nuc + moles_growth 
+	#### Do not precipitate more than the elements in solution ####
+	320 maxMol = TOT("Al")/1.86
+	330 IF (maxMol > TOT("Si")/3.738) THEN maxMol = TOT("Si")/3.738
+	340 IF (maxMol > TOT("Mg")/0.214) THEN maxMol = TOT("Mg")/0.214
+	350 IF (maxMol > TOT("Fe")/0.208) THEN maxMol = TOT("Fe")/0.208
+	360 IF (maxMol > TOT("K")/0.024) THEN maxMol = TOT("K")/0.024
+	370 IF (maxMol > TOT("Ca")/0.009) THEN maxMol = TOT("Ca")/0.009
+	380 IF (maxMol > TOT("Na")/0.409) THEN maxMol = TOT("Na")/0.409
+	390 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	400 Save mole
+	-end
+	
+	Pyrite
+	# original compilation from 15mar/cla
+	# warning dissolution only
+	-start
+	10 mole = 0
+	20 If (m <= 0) and (SR("Pyrite") < 1) Then GoTo 110
+	30 S = 0.05 # average BET ; suggested value in m2/g
+	40 Mm = 119.9790 # molar mass in g/mol
+	50 If (SR("Pyrite") > 1) Then GoTo 110
+	########## start dissolution bloc ##########
+	60 k1 = 7.7E-7 * exp((-62000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (TOT("Fe(3)") ^ 0.50) * (MOL("H+") ^ -0.25)
+	70 k2 = 3.7E-9 * exp((-57000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (MOL("H+") ^ -0.18) * (MOL("O2") ^ 0.50) 
+	80 k = k1 + k2
+	# kinetic data extracted from 00hol/cru 86mcm/bar 94wil/rim
+	90 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SR("Pyrite"))
+	########## end dissolution bloc ##########
+	100 mole = rate * Time
+	110 Save mole
+	-end
+
+	Pyrrhotite
+	# kinetic data extracted from 04pal/kha
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Pyrrhotite")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 1 # default value in m2/g
+	40 Mm = 85.12 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250 
+	########## start dissolution bloc ##########
+	70 k1 = 10^-8.04 * exp((-50800 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ -0.597) * (ACT("Fe+3") ^ 0.355)
+	90 k = knu 
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+	
+	Quartz
+	# original compilation from 15mar/cla
+	# kinetic data extracted from 95kna/cop 88kna/wol 06bic/nag 91ben 88ben/mel 90cas/las 87sch/wal 90bra/wal 00ice/dov 90dov/cre 99dov 94dov 92hou/orr 90blu/yun
+	# precipitation kinetic data extracted from 05gan/hus
+	# surface area data extracted from 15mar/cla
+	# Confidence level: 3
+	-start
+	1 SRmin = SR("Quartz")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 0.03 # average BET; suggested value in m2/g
+	40 Mm = 60.1 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 130
+	########## start dissolution bloc ##########
+	60 knu = 6.42E-14 * exp((-76700 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 0.000000000192 * exp((-80000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.339)
+	80 k = knu + k1
+	90 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	100 moles = rate * Time
+	110 REM Do not dissolve more than what is available
+	120 IF (moles > M) THEN moles = M
+	125 GoTo 250
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	130 If (m <= 1e-5) then GoTo 180
+	140 knu = 3.24e-12 
+	150 kpre = (-1) * knu
+	160 rate = S * m * Mm * kpre * (ABS((SRmin ^ 4.58) - 1) ^ 0.54)
+	170 GoTo 190
+	#start nucleation
+	180 rate = -1e-10
+	190 moles = rate * Time
+	200 REM Do not precipitate more than the elements in solution
+	210 maxMol = TOT("Si")
+	220 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	250 Save moles
+	-end
+
+	
+# Additional References
+# 63wyc               Wyckoff, R.W.G., 1963, Crystal Structures, Second edition, tome 4, Interscience Publishers, New York, p. 320-322.
+# 78rob/hem           Robie R.A., Hemingway B.S., and Fisher J.R., 1978. Thermodynamic properties of minerals and related substances at 298.15K and 1 bar 105 Pascals pressure and at higher temperatures. US Geol. Survey Bull., 1452, 456 pp.
+# 78hel/del           Helgeson, H.C., Delany, J.M, Nesbitt, H.W., and Bird, D.K., 1978. Summary and Critique of the Thermodynamic Properties of Rock Forming Minerals: Amer. J. Sci., 278A, 229 pp.
+# 79pan/mor			  Pankow, J.F. and Morgan, J.J., 1979. Dissolution of tetragonal ferrous sulfide (mackinawite) in anoxic aqueous systems. 1. Dissolution rate as a function of pH, temperature, and ionic strength. Environmental Science & Technology 13(10), 1248-1255.
+# 85hel               Helgeson, H.C., 1985, Errata II. Thermodynamics of minerals, reactions, and aqueous solutions at high pressures and temperatures: Amer. Jour. Sci., v. 285, pp. 845-855.
+# 90hem               Hemingway B. S. (1990) Thermodynamic properties for bunsenite, NiO, magnetite, Fe3O4, and hematite, Fe2O3, with comments on selected oxygen buffer reactions. American Mineralogist 75(7-8), 781-790.
+# 92ajoh              Ref. 1+19 in slop98.dat: GEOPIG., 1998. Slop98.dat, http://geopig.asu.edu/supcrt_data.html, Washington University.
+# 92cir/nav           Circone S. and Navrotsky A., 1992. Substitution of (6,4)Al in phlogopite : high pressure solution calorimetry , heat capacities and thermodynamic properties of the phlogopite -eastonite join. American Mineralogist, 77, p. 1191-1205.
+# 92gre/tom		   	  Greenberg, J. and Tomson, M., 1992. Precipitation and dissolution kinetics and equilibria of aqueous ferrous carbonate vs temperature. Applied Geochemistry 7(2), 185-190.
+# 93chr/put			  Christy & Putnis, 1993. The kinetics of barite dissolution and precipitation in water and sodium chloride brines at 44–85°C
+# 95dac/ben           Dachs, E. and Benisek, A., 1995. The stability of annite+quartz: reversed experimental data for the reaction 2 annite+3 quartz=2 sanidine+3 fayalite+2 H2O. Contributions to Mineralogy and Petrology, 121, p. 380-387.
+# 95dai/pos           Dai, Y., and Post, J. E,. 1995, Crystal structure of hillebrandite: a natural analogue of calcium silicate hydrate (CSH) phases in Portland cement: American Mineralogist, v. 80, p. 841-844.
+# 95has/cyg           Haselton H.T., Cygan G.L. and Jenkins D.M., 1995. Experimental study of muscovite stability in pure H 2 O and 1 molal KCl-HCl solutions. Geochimica et Cosmochimica Acta, 59, p. 429-442
+# 95pok/hel           Pokrovskii, V.A., and Helgeson, H.C., 1995, Thermodynamic properties of aqueous species and the solubilities of minerals at high pressures and temperatures: The system Al2O3-H2O-NaCl:  Amer. J. Sci., 295, 1255-1342.
+# 00bru/dur           Bruno J. and Duro L. (2000) Reply to W. Hummel's comment on and correction to On the influence of carbonate in mineral dissolution: 1. The thermodynamics and kinetics of hematite dissolution in bicarbonate solutions at T = 25 C by J. Bruno, W. Stumm, P. Wersin, and F. Brandberg. Geochimica et Cosmochimica Acta 64(12), 2173-2176.
+# 00gun/arn           Gunnarson I., and Arnorsson S., 2000. Amorphous silica solubility and the thermodynamic properties of H4SiO4 in the range of 0  to 350 C at Psat. Geochimica et Cosmochimica Acta, 64, p. 2295-2307.
+# 03bra/bos			  Felix Brandt, Dirk Bosbach, Evelyn Krawczyk-Bärsch, Thuro Arnold, Gert Bernhard (2003). Chlorite dissolution in the acid ph-range: a combined microscopic and macroscopic approach. Geochimica et Cosmochimica Acta, Volume 67, Issue 8, 15 April 2003, Pages 1451-1461
+# 03gus/pui			  Åsa B. Gustafsson and Ignasi Puigdomenech (2003). The effect of pH on chlorite dissolution rates at 25°C. Materials Reasearch Society Symposium, 2003, Number 757, pp. 649-655
+# 03maj/gre           Majzlan., J., Grevel, K.-D., Navrotsky, A., (2003) Thermodynamics of iron oxides. H. Enthalpies of formation and relative stability of goethite (a-FeOOH), lepidocrocite (y-FeOOH), and maghemite (y-Fe2O3). American Mineralogist 88, 855-859.
+# 04pou/kro			  Poulton, S.W., Krom, M.D. and Raiswell, R., 2004. A revised scheme for the reactivity of iron (oxyhydr) oxide minerals towards dissolved sulfide. Geochimica et Cosmochimica Acta 68(18), 3703-3715.
+# 04chi               Chivot J., 2004. Thermodynamique des produits de corrosion. Fonctions thermodynamiques de solubilite, diagrammes E-pH des systemes Fe-H2O, Fe-CO2-H2O, Fe-S-H2O, Cr-H2O et Ni-H2O en fonction de la temperature. Document ANDRA, Collection Sciences et Techniques.
+# 05low/com			  Richard T. Lowson, M.-C. Josick Comarmond, Geetha Rajaratnam, Paul L. Brown (2005).The kinetics of the dissolution of chlorite as a function of pH and at 25°C. Geochimica et Cosmochimica Acta, Volume 69, Issue 7, 1 April 2005, Pages 1687-1699
+# 05wal/pel           Waldner, P., Pelton, A.D. (2005) Thermodynamic modeling of the Fe-S system. Journal of Phase Equilibria and Diffusion 26, 23-38.
+# 07low/bro		      Richard T. Lowson, Paul L. Brown, M.-C. Josick Comarmond, Geetha Rajaratnam (2007). The kinetics of chlorite dissolution. Geochimica et Cosmochimica Acta, Volume 71, Issue 6, 15 March 2007, Pages 1431-1447
+# 09bla               Blanc P. (2009) - Thermochimie - Selection de constantes thermodynamiques pour les zeolites : version 2. Rapport final. Rapport BRGM/RP-57796-FR. 55 p.
+# 09gai/rog           Gailhanou, H., Rogez, J., van Miltenburg, J.C., van Genderen, A.C.G., Greneche, J.M., Gilles, C., Jalabert, D., Michau, N., Gaucher, E.C., Blanc, P., 2009. Thermodynamic properties of chlorite CCa-2. Heat capacities, heat contents and entropies. Geochimica et Cosmochimica Acta 73, 4738-4749.
+# 09gol/ben			  Golubev, S., Bénézeth, P., et al, 2009. Siderite dissolution kinetics in acidic aqueous solutions from 25 to 100 C and 0 to 50 atm pCO2. Chemical Geology 265(1-2), 13-19.
+# 09tru/gui 		  Truche, D., Guillaume, L., (2009). Kinetics of pyrite to pyrrhotite reduction by hydrogen in calcite buffered solutions between 90 and 180 °C: Implications for nuclear waste disposal.
+# 12gai/bla           Gailhanou, H., Blanc, P., Rogez, J., Mikaelian, G., Kawaji, H., Olives, J., Amouric, M., Denoyel, R., S., B., Montouillout, V., Vieillard, P., Fialips, C. I., Giffaut, E., Michau, N., and Gaucher, E. C., 2012, Thermodynamic properties of illite IMt-2, smectite MX-80 and beidellite SBld-1 by calorimetric methods: Enthalpies of formation, heat capacities , entropies and Gibbs free energies of formation. : Geochimica Cosmochimica Acta, v. 89, p. 279-301.
+# 14bla/gai           Blanc, P., Gailhanou, H., Rogez, J., Mikaelian, G., Kawaji, H., Warmont, F., Grangeon, S., Greneche, J.M., Fialips, C.I., Giffaut, E., Gaucher, E.C., Claret, F., 2014, Thermodynamic properties of a chlorite and a berthierine by calorimetric methods: Physics and Chemistry of Minerals (accdepted)
+# 14dec/oel			  Declercq & Oelkers, 2014. CarbFix Report: PHREEQC mineral dissolution kinetics database
+# 14wan/zha			  Wang, Q.L., Zhang, Z., Kan, A. and Tomson, M., 2014. Kinetics and Inhibition of Ferrous Sulfide Nucleation and Precipitation. SPE International Oilfield Scale Conference and Exhibition, Society of Petroleum Engineers.
+# 15bla/vie           Blanc, P., Vieillard, P., Gailhanou, H., Gaboreau, S., Gaucher, E.C., Fialips, C.I., Made, B., Giffaut, E., 2015. A generalized model for predicting the thermodynamic properties of clay minerals. American Journal of Science 315, 734-780.
+# 15mar/cla			  Marty, N.C., Claret, F., et al., 2015. A database of dissolution and precipitation rates for clay-rocks minerals. Applied Geochemistry 55: 108-118.
+# 16zhe/did 		  B.Y. Zhen-Wu. Dideriksen. Olsson.J. Raahauge.L.S. Stipp.H. Oelkers Experimental determination of barite dissolutionand precipitation rates as a function of temperature andaqueous fluid composition
+# 17gai/vie           Gailhanou, H., Vieillard, P., Blanc, P., Lassin, A., Denoyel, R., Bloch, E., De Weireld, G., Claret, F., Fialips, C.I., Made, B., Giffaut, E., 2017. Methodology for determining the thermodynamic properties of hydration of Na-smectite considering the energetic contribution of capillary water. Applied Geochemistry.
+# 17car/meg			  Carroll, S., Smith, M. M., & Lammers, K. (2017). Chlorite, Biotite, Illite, Muscovite and Feldspar Dissolution Kinetics at Variable pH and Temperatures up to 280 deg C (No. 910). DOE Geothermal Data Repository; Lawrence Livermore National Lab.(LLNL), Livermore, CA (United States).
+# 17Lam/Smi 		  K Lammers, K., Smith, M., Carroll, S., Muscovite dissolution kinetics as a function of pH at elevated temperature
+
+# References from Marty et al 2015. A database of dissolution and precipitation rates for clay-rocks minerals
+# 00cam/gan: Jordi Cama, Jiwchar Ganor, Carles Ayora, C. Antonio Lasaga (2000). Smectite dissolution kinetics at 80°C and pH 8.8. Geochimica et Cosmochimica Acta, Volume 64, Issue 15, August 2000, Pages 2701-2717
+# 00hol/cru: Holmes, P.R., Crundwell, F.K., (2000). The kinetics of the oxidation of pyrite by ferric ions and dissolved oxygen: an electrochemical study. Geochimica et Cosmochimica Acta 64, 263-274.
+# 00ice/dov: Jonathan P. Icenhower, Patricia M. Dove (2000). The dissolution kinetics of amorphous silica into sodium chloride solutions: effects of temperature and ionic strength. Geochimica et Cosmochimica Acta, Volume 64, Issue 24, 15 December 2000, Pages 4193-4203
+# 00tay/blu: Aaron S. Taylor, Joel D. Blum, Antonio C. Lasaga, Ian N. MacInnis (2000). Kinetics of dissolution and Sr release during biotite and phlogopite weathering. Geochimica et Cosmochimica Acta, Volume 64, Issue 7, April 2000, Pages 1191-1208
+# 01gal/ayo: S. Galí, C. Ayora, P. Alfonso, E. Tauler, M. Labrador (2001). Kinetics of dolomite–portlandite reaction: Application to portland cement concrete. Cement and Concrete Research, Volume 31, Issue 6, May 2001, Pages 933-939
+# 01hue/cab: F. J. Huertas, E. Caballero, C. Jiménez de Cisneros, F. Huertas, J. Linares (2001). Kinetics of montmorillonite dissolution in granitic solutions. Applied Geochemistry, Volume 16, Issue 4, March 2001, Pages 397-407
+# 01met/gan: Volker Metz and Jiwchar Ganor (2001). Stirring effect on kaolinite dissolution rate. Geochimica et Cosmochimica Acta, Vol. 65, No. 20, pp. 3475–3490, 2001
+# 02cam/gan: J. Cama, V. Metz, J. Ganor (2002). The effect of pH and temperature on kaolinite dissolution rate under acidic conditions. Geochimica et Cosmochimica Acta, Vol. 66, No. 22, pp. 3913–3926, 2002
+# 02hee/lun: P. A. W. van Hees, U. S. Lundström, C. -M. Mörth (2002). Dissolution of microcline and labradorite in a forest O horizon extract: the effect of naturally occurring organic acids. Chemical Geology, Volume 189, Issues 3-4, 30 September 2002, Pages 199-211
+# 02pok/sch: Pokrovsky O.S., Schott J., (2002). Surface Chemistry and Dissolution Kinetics of Divalent Metal Carbonates. Environ. Sci. Technol., 36, 426-432.
+# 03bra/bos: Felix Brandt, Dirk Bosbach, Evelyn Krawczyk-Bärsch, Thuro Arnold, Gert Bernhard (2003). Chlorite dissolution in the acid ph-range: a combined microscopic and macroscopic approach. Geochimica et Cosmochimica Acta, Volume 67, Issue 8, 15 April 2003, Pages 1451-1461
+# 03gus/pui: Åsa B. Gustafsson and Ignasi Puigdomenech (2003). The effect of pH on chlorite dissolution rates at 25°C. Materials Reasearch Society Symposium, 2003, Number 757, pp. 649-655
+# 03koh/duf: Stephan J. Köhler, Fabien Dufaud, Eric H. Oelkers (2003). An experimental study of illite dissolution kinetics as a function of ph from 1.4 to 12.4 and temperature from 5 to 50°C. Geochimica et Cosmochimica Acta, Volume 67, Issue 19, 1 October 2003, Pages 3583-3594
+# 03kop/hum: Kopp, R.E., Humayun, M., (2003). Kinetic model of carbonate dissolution in Martian meteorite ALH84001. Geochimica et Cosmochimica Acta, Vol. 67, No. 17, 3247–3256.
+# 03tou/nea: Tournassat, C., Neaman, A., Villiéras, F., Bosbach, D., and Charlet, L. (2003). Nanomorphology of montmorillonite particles: Estimation of the clay edge sorption site density by low-pressure gas adsorption and AFM observations. American Mineralogist; November-December 2003; v. 88; no. 11-12; p. 1989-1995
+# 04bau/kel: Isabel Baur, Peter Keller, Denis Mavrocordatos, Bernhard Wehrli, C. Annette Johnson (2004). Dissolution-precipitation behaviour of ettringite, monosulfate, and calcium silicate hydrate. Cement and Concrete Research, Volume 34, Issue 2, February 2004, Pages 341-348
+# 04duc/mar: Owen W Duckworth, Scot T Martin (2004). Role of molecular oxygen in the dissolution of siderite and rhodochrosite. Geochimica et Cosmochimica Acta, Volume 68, Issue 3, 1 February 2004, Pages 607-621
+# 04jim/rom: Concepción Jimenez-Lopez, Christopher S. Romanek (2004). Precipitation kinetics and carbon isotope partitioning of inorganic siderite at 25°C and 1 atm. Geochimica et Cosmochimica Acta, Volume 68, Issue 3, 1 February 2004, Pages 557-571
+# 04nak/sak: S. Nakayama, Y. Sakamoto, T. Yamaguchi, M. Akai, T. Tanaka, T. Sato, Y. Iida (2004).Dissolution of montmorillonite in compacted bentonite by highly alkaline aqueous solutions and diffusivity of hydroxide ions. Applied Clay Science, Volume 27, Issues 1-2, October 2004, Pages 53-65
+# 04pal/kha: Palandri, J.L., Kharaka, Y.K., (2004). A compilation of rate parameters of water-mineral interaction kinetics for application to geochemical modeling. U.S. Dept. of the Interior, U.S. Geological Survey, Menlo Park, Calif.
+# 05amr/gan: Keren Amram, Jiwchar Ganor (2005). The combined effect of pH and temperature on smectite dissolution rate under acidic conditions. Geochimica et Cosmochimica Acta, Volume 69, Issue 10, 15 May 2005, Pages 2535-2546
+# 05gan/hus: Jiwchar Ganor, Ted J. Huston, Lynn M. Walter (2005). Quartz precipitation kinetics at 180°C in NaCl solutions-Implications for the usability of the principle of detailed balancing. Geochimica et Cosmochimica Acta, Volume 69, Issue 8, 15 April 2005, Pages 2043-2056
+# 05hal/sho: Cheryl E. Halim, Stephen A. Short, Jason A. Scott, Rose Amal, Gary Low (2005). Modelling the leaching of Pb, Cd, As, and Cr from cementitious waste using PHREEQC. Journal of Hazardous Materials, Volume 125, Issues 1-3, 17 October 2005, Pages 45-61
+# 05koh/bos: Stephan J. Köhler, Dirk Bosbach, Eric H. Oelkers (2005). Do clay mineral dissolution rates reach steady state? Geochimica et Cosmochimica Acta, Volume 69, Issue 8, 15 April 2005, Pages 1997-2006
+# 05liu/yu: Shengwei Liu, Jiaguo Yu, Bei Cheng, Li Zhao, Qingjie Zhang (2005). Facile fabrication of monodispersed mesoporous celestine particles with peanut-shaped morphology. Journal of Crystal Growth, Volume 279, Issues 3-4, 1 June 2005, Pages 461-465
+# 05low/com: Richard T. Lowson, M.-C. Josick Comarmond, Geetha Rajaratnam, Paul L. Brown (2005).The kinetics of the dissolution of chlorite as a function of pH and at 25°C. Geochimica et Cosmochimica Acta, Volume 69, Issue 7, 1 April 2005, Pages 1687-1699
+# 05met/amr: Volker Metz, Keren Amram, Jiwchar Ganor (2005). Stoichiometry of smectite dissolution reaction. Geochimica et Cosmochimica Acta, Volume 69, Issue 7, 1 April 2005, Pages 1755-1772
+# 05pok/gol: Oleg S. Pokrovsky, Sergey V. Golubev, Jacques Schott (2005). Dissolution kinetics of calcite, dolomite and magnesite at 25 °C and 0 to 50 atm pCO2. Chemical Geology, Volume 217, Issues 3-4, 25 April 2005, Pages 239-255
+# 05yok/kur: Yokoyama, S., Kuroda, M., Sato, T. (2005). Atomic Force Microscopy study of montmorillonite dissolution under highly alkaline conditions. Clays and Clay Minerals; April 2005; v. 53; no. 2; p. 147-154
+# 06bic/nag: Barry R. Bickmore, Kathryn L. Nagy, Amy K. Gray, A. Riley Brinkerhoff (2006). The effect of Al(OH)4- on the dissolution rate of quartz. Geochimica et Cosmochimica Acta, Volume 70, Issue 2, 15 January 2006, Pages 290-305
+# 06gol/bau: Sergey V. Golubev, Andreas Bauer, Oleg S. Pokrovsky (2006). Effect of pH and organic ligands on the kinetics of smectite dissolution at 25 °C. Geochimica et Cosmochimica Acta, Volume 70, Issue 17, 1 September 2006, Pages 4436-4451
+# 06has/vil: Malak Sayed Hassan, Frédéric Villieras, Fabien Gaboriaud, Angelina Razafitianamaharavo (2006). AFM and low-pressure argon adsorption analysis of geometrical properties of phyllosilicates. Journal of Colloid and Interface Science, Volume 296, Issue 2, 15 April 2006, Pages 614-623
+# 06hel/tis: Roland Hellmann, Delphine Tisserand (2006). Dissolution kinetics as a function of the Gibbs free energy of reaction: An experimental study based on albite feldspar. Geochimica et Cosmochimica Acta, Volume 70, Issue 2, 15 January 2006, Pages 364-383
+# 06hod: Mark E. Hodson (2006). Does reactive surface area depend on grain size? Results from pH 3, 25 °C far-from-equilibrium flow-through dissolution experiments on anorthite and biotite. Geochimica et Cosmochimica Acta, Volume 70, Issue 7, 1 April 2006, Pages 1655-1667
+# 07gau/sch: Maud Gautelier, Jacques Schott, Eric H. Oelkers (2007). An experimental study of dolomite dissolution rates at 80 °C as a function of chemical affinity and solution composition. Chemical Geology, Volume 242, Issues 3-4, 15 August 2007, Pages 509-517
+# 07lio/par: Maria G. Lioliou, Christakis A. Paraskeva, Petros G. Koutsoukos, Alkiviades C. Payatakes (2007). Heterogeneous nucleation and growth of calcium carbonate on calcite and quartz. Journal of Colloid and Interface Science, Volume 308, Issue 2, 15 April 2007, Pages 421-428
+# 07low/bro: Richard T. Lowson, Paul L. Brown, M.-C. Josick Comarmond, Geetha Rajaratnam (2007). The kinetics of chlorite dissolution. Geochimica et Cosmochimica Acta, Volume 71, Issue 6, 15 March 2007, Pages 1431-1447
+# 08ben/pal: Pascale Bénézeth, Donald A. Palmer, David J. Wesolowski (2008). Dissolution/precipitation kinetics of boehmite and gibbsite: Application of a pH-relaxation technique to study near-equilibrium rates. Geochimica et Cosmochimica Acta, Volume 72, Issue 10, 15 May 2008, Pages 2429-2453.
+# 08bos/hu: Sweta Bose, Xiaoming Hu, Steven R. Higgins (2008). Dissolution kinetics and topographic relaxation on celestite (0 0 1) surfaces: The effect of solution saturation state studied using Atomic Force Microscopy. Geochimica et Cosmochimica Acta, Volume 72, Issue 3, 1 February 2008, Pages 759-770
+# 08mcm/smi: T. J. McMaster, M. M. Smits, S. J. Haward, J. R. Leake, S. Banwart, K. V. Ragnarsdottir (2008). High-resolution imaging of biotite dissolution and measurement of activation energy. Mineralogical Magazine; February 2008; v. 72; no. 1; p. 115-120; DOI: 10.1180/minmag.2008.072.1.115
+# 08roz/hue: M. Luisa Rozalén, F. Javier Huertas, Patrick V. Brady, Jordi Cama, Susana García-Palma, José Linares (2008). Experimental study of the effect of pH on the kinetics of montmorillonite dissolution at 25 °C. Geochimica et Cosmochimica Acta, Volume 72, Issue 17, 1 September 2008, Pages 4224-4253
+# 08yan/ste: Li Yang, Carl I. Steefel (2008). Kaolinite dissolution and precipitation kinetics at 22 °C and pH 4. Geochimica et Cosmochimica Acta, Volume 72, Issue 1, 1 January 2008, Pages 99-116
+# 09gol/ben: S.V. Golubev, P. Bénézeth , J. Schott, J.L. Dandurand, A. Castillo. (2009). Siderite dissolution kinetics in acidic aqueous solutions from 25 to 100 °C and 0 to 50 atm pCO2.Chemical Geology 265 (2009) 13–19
+# 09pok/gol: Oleg S. Pokrovsky, Sergey V. Golubev, Jacques Schott, Alain Castillo (2009). Calcite, dolomite and magnesite dissolution kinetics in aqueous solutions at acid to circumneutral pH, 25 to 150°C and 1 to 55 atm pCO2: New constraints on CO2 sequestration in sedimentary basins. Chemical Geology,Volume 265, Issues 1-2, 15 July 2009, Pages 20-32
+# 09reg/lag: Olivier Regnault, Vincent Lagneau, Hélène Schneider (2009). Experimental measurement of portlandite carbonation kinetics with supercritical CO2. Chemical Geology, Volume 265, Issues 1-2, 15 July 2009, Pages 113-121
+# 09roz/hue: Marisa Rozalen, F. Javier Huertas, Patrick V. Brady (2009). Experimental study of the effect of pH and temperature on the kinetics of montmorillonite dissolution. Geochimica et Cosmochimica Acta, Volume 73, Issue 13, 1 July 2009, Pages 3752-3766
+# 09tef/duf: Testemale D., Dufaud F., Martinez I., Bénézeth P., Hazemann J.-L., Schott J., Guyot F., (2009). An X-ray absorption study of the dissolution of siderite at 300 bar between 50 °C and 100 °C. Chemical Geology 259, 8–16
+# 10Ham/Ham: Hamdona S.K.,  Hamza S.M., Mangood A.H. (2010). Influence of polyphosphonates on the precipitation of strontium sulfate (Celestite) from aqueous solutions. Desalination and water treatment 2010, vol. 24, no1-3, pp. 55-60 
+# 10nta/kou: E. Ntafalias and P. G. Koutsoukos (2010). Spontaneous precipitation of calcium silicate hydrate in aqueous solutions. Cryst. Res. Technol. 45, No. 1, 39-47
+# 11tan/mar: Yuanzhi Tang, Scot T. Martin (2011). Siderite dissolution in the presence of chromate. Geochimica et Cosmochimica Acta 75 (2011) 4951–4962
+# 80rim/bar: J.D. Rimstidt, H.L. Barnes (1980). The kinetics of silica-water reactions. Geochimica et Cosmochimica Acta, Volume 44, Issue 11, November 1980, Pages 1683-1699
+# 82bus/plu: Eurybiades Busenberg, and L. Niel Plummer (1982). The kinetics of dissolution of dolomite in CO2 -H2O systems at 1.5 to 65 degrees C and O to 1 atm PCO2. American Journal of Science, Vol. 282, January 1982, P.45-78 
+# 84cho/wol: Lei Chou, Roland Wollast (1984). Study of the weathering of albite at room temperature and pressure with a fluidized bed reactor. Geochimica et Cosmochimica Acta, Volume 48, Issue 11, November 1984, Pages 2205-2217
+# 85cho/wol: Lei Chou, and Roland Wollast (1985). Steady-state kinetics and dissolution mechanisms of albite. American Journal of Science, Volume 285, December 1985, Pages 963-993
+# 85ins/blo: William P. Inskeep, Paul R. Bloom. (1985). An evaluation of rate equations for calcite precipitation kinetics at pCO2 less than 0.01 atm and pH greater than 8. Geochimica et Cosmochimica Acta, Volume 49, Issue 10, October 1985, Pages 2165-2180
+# 86bie/hou: Biegler, C., Houchin M.R., (1986). Siderite (FeCO,): Its Dissolution and Interaction with Stannic Oxide in Aqueous Suspensions. Colloids and Surfaces, 21, 267-278.
+# 86mcm/bar: McKibben, M.A., Barnes, H.L., (1986). Oxidation of pyrite in low temperature acidic solutions: Rate laws and surface textures. Geochimica et Cosmochimica Acta 50, 1509-1520. 
+# 87sch/wal: Jacques Schwartzentruber, Walter Fürst, H. Renon (1987). Dissolution of quartz into dilute alkaline solutions at 90°C: A kinetic study. Geochimica et Cosmochimica Acta, Volume 51, Issue 7, July 1987, Pages 1867-1874
+# 88ben/mel: P.C. Bennett, M.E. Melcer, D.I. Siegel, J.P. Hassett (1988). The dissolution of quartz in dilute aqueous solutions of organic acids at 25°C. Geochimica et Cosmochimica Acta, Volume 52, Issue 6, June 1988, Pages 1521-1530
+# 88kna/wol: Kevin G. Knauss, Thomas J. Wolery (1988). The dissolution kinetics of quartz as a function of pH and time at 70°C. Geochimica et Cosmochimica Acta, Volume 52, Issue 1, January 1988, Pages 43-53
+# 90blu/yun: Alex E Blum, Richard A Yund, Antonio C Lasaga (1990). The effect of dislocation density on the dissolution rate of quartz. Geochimica et Cosmochimica Acta, Volume 54, Issue 2, February 1990, Pages 283-297
+# 90bra/wal: Patrick V. Brady, John V. Walther (1990). Kinetics of quartz dissolution at low temperatures. Chemical Geology, Volume 82, 1990, Pages 253-264
+# 90car/wal: S.A. Carroll, J.V. Walther (1990). Kaolinite  dissolution at 25°C, 60°C, and 80°C. American Journal of Sciences, 290, september 1990, 797-810
+# 90cas/las: Wlliam H Casey, Antonio C Lasaga, G.V Gibbs (1990). Mechanisms of silica dissolution as inferred from the kinetic isotope effect. Geochimica et Cosmochimica Acta, Volume 54, Issue 12, December 1990, Pages 3369-3378
+# 90chi/mil: Pao-Kuo F. Chin and Gary L. Mills (1990). Kinetics and mechanisms of kaolinite dissolution: effects of organic ligands. Chemical Geology, 90 (1991) 307-317
+# 90dov/cre: Patricia M. Dove, David A. Crerar (1990). Kinetics of quartz dissolution in electrolyte solutions using a hydrothermal mixed flow reactor. Geochimica et Cosmochimica Acta, Volume 54, Issue 4, April 1990, Pages 955-969
+# 91ben: Philip C. Bennett (1991). Quartz dissolution in organic-rich aqueous systems. Geochimica et Cosmochimica Acta, Volume 55, Issue 7, July 1991, Pages 1781-1797
+# 92ack/bri: James G Acker, Owen P Bricker (92). The influence of pH on biotite dissolution and alteration kinetics at low temperature. Geochimica et Cosmochimica Acta, Volume 56, Issue 8, August 1992, Pages 3073-3092
+# 92gre/tom: Janet Greenberg, Mason Tomson (1992). Precipitation and dissolution kinetics and equilibria of aqueous ferrous carbonate vs temperature. Applied Geochemistry, Volume 7, Issue 2, March 1992, Pages 185-190
+# 92hou/orr: William A. House, Douglas R. Orr (1992). Investigation of the pH dependence of the kinetics of quartz dissolution at 25 °C. Journal of the Chemical Society, Faraday Transactions, Volume 88, Pages 233-241 in Patricia M. Dove (1994). The dissoution kinetics of quartz in sodium chloride solutions at 25°C to 300°C. American Journal of Science, volume 294, June 1994, Pages 665-712
+# 92nag/las: K.L Nagy, A.C Lasaga (1992). Dissolution and precipitation kinetics of gibbsite at 80°C and pH 3: The dependence on solution saturation state. Geochimica et Cosmochimica Acta, Volume 56, Issue 8, August 1992, Pages 3093-3111
+# 92rom/gro: Christopher S Romanek, Ethan L Grossman, John W Morse (1992). Carbon isotopic fractionation in synthetic aragonite and calcite: Effects of temperature and precipitation rate. Geochimica et Cosmochimica Acta, Volume 56, Issue 1, January 1992, Pages 419-430
+# 93bur/nag: T.E. Burch, K.L. Nagy, A.C. Lasaga (1993). Free energy dependence of albite dissolution kinetics at 80°C and pH 8.8. Chemical Geology, Volume 105, Issues 1-3, 15 March 1993, Pages 137-162
+# 93nag/las: Kathryn L Nagy, Antonio C Lasaga (1993). Simultaneous precipitation kinetics of kaolinite and gibbsite at 80°C and pH 3. Geochimica et Cosmochimica Acta, Volume 57, Issue 17, September 1993, Pages 4329-4335
+# 93swo/dre: Norbert G. Swoboda-Colberg, James I. Drever (1993). Mineral dissolution rates in plot-scale field and laboratory experiments. Chemical Geology, Volume 105, Issues 1-3, 15 March 1993, Pages 51-69
+# 94dov: Patricia M. Dove (1994). The dissoution kinetics of quartz in sodium chloride solutions at 25°C to 300°C. American Journal of Science, volume 294, June 1994, Pages 665-712
+# 94gau/oel: Jean-Marie Gautier, Eric H Oelkers, Jacques Schott (1994). Experimental study of K-feldspar dissolution rates as a function of chemical affinity at 150°C and pH 9. Geochimica et Cosmochimica Acta, Volume 58, Issue 21, November 1994, Pages 4549-4560
+# 94hel: Roland Hellmann (1994). The albite-water system: Part I. The kinetics of dissolution as a function of pH at 100, 200 and 300°C. Geochimica et Cosmochimica Acta, Volume 58, Issue 2, January 1994, Pages 595-611
+# 94wil/rim: Williamson, M.A., Rimstidt, J.D., (1994). The kinetics and electrochemical rate-determining step of aqueous pyrite oxidation. Geochimica et Cosmochimica Acta 58, 5443-5454.
+# 95car/wal: Susan A. Carroll-Webb and John V. Walther (1995). A surface complex reaction model for the pH-dependence of corundum and kaolinite dissolution rates. Geochimica et Cosmochimica Acta Vol. 52. 1995 pp. 2609-2623
+# 95dov/cza: Patricia M. Dove, Carol A. Czank (1995). Crystal chemical controls on the dissolution kinetics of the isostructural sulfates: Celestite, anglesite, and barite. Geochimica et Cosmochimica Acta, Volume 59, Issue 10, May 1995, Pages 1907-1915
+# 95gan/lui: Ganor Jiwchar, Mogollon Jose Luis, Lasaga Antonio C. (1995). The effect of pH on kaolinite dissolution rates and on activation energy. Geochimica et Cosmochimica Acta Vol. 59, Issue 6, Pages 1037-1052
+# 95kna/cop: Kevin G. Knauss, Sally A. Copenhaver (1995). The effect of malonate on the dissolution kinetics of albite, quartz, and microcline as a function of pH at 70°C. Applied Geochemistry, Volume 10, Issue 1, January 1995, Pages 17-33
+# 95ren/gam: Renders, P.J.N., Gammons, C.H., and Barnes H.L., (1995). Precipitation and dissolution rate constants for cristobalite from 150 to 300°C. Geochim. Cosmochim. Acta 59, 77-85.
+# 95shi/bra: Ryoji Shiraki, Susan L. Brantley (1995). Kinetics of near-equilibrium calcite precipitation at 100°C: An evaluation of elementary reaction-based and affinity-based rate laws. Geochimica et Cosmochimica Acta, Volume 59, Issue 8, April 1995, Pages 1457-1471
+# 95sti/bran: Lisa L. Stillings, Susan L. Brantley (1995). Feldspar dissolution at 25°C and pH 3: Reaction stoichiometry and the effect of cations. Geochimica et Cosmochimica Acta, Volume 59, Issue 8, April 1995, Pages 1483-1496
+# 96clo/dre: D.W. Clow, J.I. Drever (1996). Weathering rates as a function of flow through an alpine soil. Chemical Geology, Volume 132, Issues 1-4, 30 October 1996, Pages 131-141
+# 96kal/sch: Birgitta E. Kalinowski, Peter Schweda (1996). Kinetics of muscovite, phlogopite, and biotite dissolution and alteration at pH 1–4, room temperature. Geochimica et Cosmochimica Acta, Volume 60, Issue 3, February 1996, Pages 367-385
+# 96mal/ban: Maria Malmström, Steven Banwart, Jeanette Lewenhagen, Lara Duro, Jordi Bruno (96).The dissolution of biotite and chlorite at 25°C in the near-neutral pH region. Journal of Contaminant Hydrology, Volume 21, Issues 1-4, February 1996, Pages 201-213
+# 96zys/sch: Martin Zysset, Paul W. Schindler (1996). The proton promoted dissolution kinetics of K-montmorillonite. Geochimica et Cosmochimica Acta, Volume 60, Issue 6, March 1996, Pages 921-931
+# 97ale/med: Victor A. Alekseyev, Ludmila S. Medvedeva, Nina I. Prisyagina, Sergey S. Meshalkin, Aleksey I. Balabin (1997). Change in the dissolution rates of alkali feldspars as a result of secondary mineral precipitation and approach to equilibrium. Geochimica et Cosmochimica Acta, Volume 61, Issue 6, March 1997, Pages 1125-1142
+# 97arv/mac: Arvidson, Rolf S., Mackenzie, Fred T. (1997). Tentative kinetic model for dolomite precipitation rate and its application to dolomite distribution. Aquatic Geochemistry, Vol. 2, 1997, pages 273-298
+# 97dev/sch: Jean-Luc Devidal, Jacques Schott, Jean-Louis Dandurand (1997). An experimental study of kaolinite dissolution and precipitation kinetics as a function of chemical affinity and solution composition at 150°C, 40 bars, and pH 2, 6.8, and 7.8. Geochimica et Cosmochimica Acta, Volume 61, Issue 24, December 1997, Pages 5165-5186
+# 97mal/ban: Maria Malmström, Steven Banwart (1997). Biotite dissolution at 25°C: The pH dependence of dissolution rate and stoichiometry. Geochimica et Cosmochimica Acta, Volume 61, Issue 14, July 1997, Pages 2779-2799
+# 98bau/ber: Andreas Bauer, Gilles Berger (1998). Kaolinite and smectite dissolution rate in high molar KOH solutions at 35° and 80°C.Applied Geochemistry, Volume 13, Issue 7, September 1998, Pages 905-916
+# 98leb/sua: I. Lebron, D. L. Suárez (1998). Kinetics and mechanisms of precipitation of calcite as affected by PCO2 and organic ligands at 25°C. Geochimica et Cosmochimica Acta, Volume 62, Issue 3, February 1998, Pages 405-416
+# 98zha/daw: Yuping Zhang, Richard Dawe (1998). The kinetics of calcite precipitation from a high salinity water. Applied Geochemistry, Volume 13, Issue 2, March 1998, Pages 177-184
+# 98zha/gra: Yuping Zhang, Carlos A. Grattoni (1998). Comment on “Precipitation kinetics of calcite in the system CaCO3-H2O-CO2: the conversion to CO2 by the slow process H+ + HCO3- ? CO2 + H2O as a rate limiting step” by W. Dreybrodt, L. Eisenlohr, B. Madry, and S. Ringer. Geochimica et Cosmochimica Acta, Volume 62, Issues 23-24, December 1998, Pages 3789-3790
+# 99arv/mac: Arvidson, Rolf S., Mackenzie, Fred T. (1999). The dolomite problem; control of precipitation kinetics by temperature and saturation state. American Journal of Science, Vol. 299, April, 1999, pages 257-288
+# 99dov: Patricia M. Dove (1999). The dissolution kinetics of quartz in aqueous mixed cation solutions. Geochimica et Cosmochimica Acta, Volume 63, Issue 22, November 1999, Pages 3715-3727
+# 99gau/oel: Maud Gautelier, Eric H. Oelkers, Jacques Schott (1999). An experimental study of dolomite dissolution rates as a function of pH from -0.5 to 5 and temperature from 25 to 80°C. Chemical Geology, Volume 157, Issues 1-2, 3 May 1999, Pages 13-26
+# 99hue/cho: F. Javier Huertas, Lei Chou and Roland Wollast (1999). Mechanism of kaolinite dissolution at room temperature and pressure Part II: Kinetic study. Geochimica et Cosmochimica Acta, Vol. 63, No. 19/20, pp. 3261–3275, 1999
+# 99sch: Christa R. Schweizer (1999). Calciumsilikathydrat-Mineralien. Lösungskinetik und ihr Einfluss auf das Auswaschverhalten von Substanzen aus einer Ablagerung mit Rückständen aus Müllverbrennungsanlagen. PhD thesis,  dipl. Chem. Universität Basel, Zürich und Dübendorf 1999
