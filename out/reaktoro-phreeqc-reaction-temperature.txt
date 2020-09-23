@@ -1,0 +1,2 @@
+         sim	       state	        soln	      dist_x	        time	        step	          pH	          pe	        temp	       m_Na+	       m_Cl-	   si_Halite	
+           3	       react	           1	         -99	           0	           1	     6.64918	    -1.04523	      50.000	  1.0000e+00	  1.0000e+00	     -1.9585	

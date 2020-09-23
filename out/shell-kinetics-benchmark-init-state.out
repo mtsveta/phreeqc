@@ -1,0 +1,270 @@
+   Input file: ../examples/shell-kinetics-benchmark-init-state
+  Output file: ../examples/shell-kinetics-benchmark-init-state.out
+Database file: ../database/DatabaseLLNLbased.dat
+
+------------------
+Reading data base.
+------------------
+
+	LLNL_AQUEOUS_MODEL_PARAMETERS
+	SOLUTION_MASTER_SPECIES
+	SOLUTION_SPECIES
+	PHASES
+	RATES
+------------------------------------
+Reading input data for simulation 1.
+------------------------------------
+
+	DATABASE ../database/DatabaseLLNLbased.dat
+	SOLUTION 1
+	        temp  61
+	        pressure 1
+	        pH    7.0
+	        units mol/kgw
+	        Na	  6.27
+	        Cl	  6.27 charge
+	        Mg 0.0001
+	        Ca 0.0001
+	        C  0.0001
+	        Si 0.0001
+	        Al 0.0001
+	        K  0.000000001
+	EQUILIBRIUM_PHASES 1
+	        Halite         0 0
+	        Calcite        0 0
+	        Dolomite-dis   0 0
+	        K-Feldspar     0 0
+	        Quartz         0 0
+	        Kaolinite      0 0
+	END
+-------------------------------------------
+Beginning of initial solution calculations.
+-------------------------------------------
+
+Initial solution 1.	
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Al                1.000e-04   1.000e-04
+	C                 1.000e-04   1.000e-04
+	Ca                1.000e-04   1.000e-04
+	Cl                6.270e+00   6.270e+00  Charge balance
+	K                 1.000e-09   1.000e-09
+	Mg                1.000e-04   1.000e-04
+	Na                6.270e+00   6.270e+00
+	Si                1.000e-04   1.000e-04
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.000    
+                                       pe  =   4.000    
+      Specific Conductance (µS/cm,  61°C)  = 453540
+                          Density (g/cm³)  =   1.14414
+                               Volume (L)  =   1.19432
+                        Activity of water  =   0.787
+                 Ionic strength (mol/kgw)  =   6.270e+00
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   4.949e-04
+                       Total CO2 (mol/kg)  =   1.000e-04
+                         Temperature (°C)  =  61.00
+                  Electrical balance (eq)  =   1.676e-13
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =   0.00
+                               Iterations  =  11
+                                  Total H  = 1.110507e+02
+                                  Total O  = 5.552602e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma   cm³/mol
+
+   OH-             9.213e-07   7.775e-07    -6.036    -6.109    -0.074     (0)  
+   H+              7.683e-08   1.000e-07    -7.114    -7.000     0.114      0.00
+   H2O             5.553e+01   7.868e-01     1.744    -0.104     0.000     18.33
+Al            1.000e-04
+   AlO2-           1.000e-04   9.117e-05    -4.000    -4.040    -0.040     (0)  
+   Al+3            6.716e-12   4.542e-13   -11.173   -12.343    -1.170     (0)  
+C             1.000e-04
+   HCO3-           9.279e-05   8.460e-05    -4.032    -4.073    -0.040     39.05
+   CO2             6.682e-06   2.005e-05    -5.175    -4.698     0.477     (0)  
+   CO3-2           4.704e-07   6.277e-08    -6.328    -7.202    -0.875     43.19
+   MgHCO3+         5.021e-08   4.578e-08    -7.299    -7.339    -0.040     (0)  
+   MgCO3           3.778e-09   3.778e-09    -8.423    -8.423     0.000     (0)  
+   CaCO3           2.765e-09   2.765e-09    -8.558    -8.558     0.000     (0)  
+Ca            1.000e-04
+   CaCl2           4.936e-05   4.936e-05    -4.307    -4.307     0.000     (0)  
+   Ca+2            3.836e-05   8.890e-06    -4.416    -5.051    -0.635     -3.86
+   CaCl+           1.228e-05   1.119e-05    -4.911    -4.951    -0.040     (0)  
+   CaCO3           2.765e-09   2.765e-09    -8.558    -8.558     0.000     (0)  
+   CaOH+           1.803e-10   1.644e-10    -9.744    -9.784    -0.040     (0)  
+Cl            6.270e+00
+   Cl-             6.270e+00   4.808e+00     0.797     0.682    -0.115      9.61
+   CaCl2           4.936e-05   4.936e-05    -4.307    -4.307     0.000     (0)  
+   CaCl+           1.228e-05   1.119e-05    -4.911    -4.951    -0.040     (0)  
+H(0)          2.711e-25
+   H2              1.355e-25   4.066e-25   -24.868   -24.391     0.477     (0)  
+K             1.000e-09
+   K+              1.000e-09   7.669e-10    -9.000    -9.115    -0.115     26.96
+Mg            1.000e-04
+   Mg+2            9.994e-05   3.654e-05    -4.000    -4.437    -0.437    -10.83
+   MgHCO3+         5.021e-08   4.578e-08    -7.299    -7.339    -0.040     (0)  
+   MgOH+           7.084e-09   6.883e-09    -8.150    -8.162    -0.012     (0)  
+   MgCO3           3.778e-09   3.778e-09    -8.423    -8.423     0.000     (0)  
+Na            6.270e+00
+   Na+             6.270e+00   5.717e+00     0.797     0.757    -0.040     18.57
+O(0)          5.309e-34
+   O2              2.654e-34   7.963e-34   -33.576   -33.099     0.477     (0)  
+Si            1.000e-04
+   SiO2            9.970e-05   9.970e-05    -4.001    -4.001     0.000     56.00
+   HSiO3-          2.955e-07   2.694e-07    -6.529    -6.570    -0.040     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(334 K,   1 atm)
+
+  Albite_high       2.19      4.20    2.02  NaAlSi3O8
+  Analcime          2.63      7.09    4.46  Na.96Al.96Si2.04O6:(H2O)2.92
+  Calcite          -3.44     -2.12    1.31  CaCO3
+  CO2(g)           -2.91    -10.97   -8.06  CO2
+  Dolomite-dis     -6.24     -3.63    2.61  CaMg(CO3)2
+  Halite           -0.18      1.44    1.62  NaCl
+  Illite            4.57      6.51    1.94  K0.6Mg0.25Al1.8Al0.5Si3.5O10(OH)2
+  K-Feldspar       -4.60     -5.67   -1.07  KAlSi3O8
+  Kaolinite         6.07      8.79    2.72  Al2Si2O5(OH)4
+  Quartz           -0.66     -4.00   -3.34  SiO2
+  Smectite-Na       5.23    -30.74  -35.97  Na0.29Mg0.26(SiO2)3.97(AlO2)1.77(H2O)0.52H0.96
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+-----------------------------------------
+Beginning of batch-reaction calculations.
+-----------------------------------------
+
+Reaction step 1.
+
+Using solution 1.	
+Using pure phase assemblage 1.	
+
+-------------------------------Phase assemblage--------------------------------
+
+                                                      Moles in assemblage
+Phase               SI  log IAP  log K(T, P)   Initial       Final       Delta
+
+Calcite          -1.80    -0.48      1.31    0.000e+00           0   0.000e+00
+Dolomite-dis     -2.96    -0.35      2.61    0.000e+00           0   0.000e+00
+Halite           -0.18     1.44      1.62    0.000e+00           0   0.000e+00
+K-Feldspar       -7.31    -8.38     -1.07    0.000e+00           0   0.000e+00
+Kaolinite        -0.00     2.72      2.72    0.000e+00   3.835e-05   3.835e-05
+Quartz           -1.36    -4.69     -3.34    0.000e+00           0   0.000e+00
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Al                2.330e-05   2.330e-05
+	C                 1.000e-04   1.000e-04
+	Ca                1.000e-04   1.000e-04
+	Cl                6.270e+00   6.270e+00
+	K                 1.000e-09   1.000e-09
+	Mg                1.000e-04   1.000e-04
+	Na                6.270e+00   6.270e+00
+	Si                2.330e-05   2.330e-05
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   8.711      Charge balance
+                                       pe  =   6.979      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  61°C)  = 453545
+                          Density (g/cm³)  =   1.14414
+                               Volume (L)  =   1.19431
+                        Activity of water  =   0.787
+                 Ionic strength (mol/kgw)  =   6.270e+00
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   2.648e-04
+                       Total CO2 (mol/kg)  =   1.000e-04
+                         Temperature (°C)  =  61.00
+                  Electrical balance (eq)  =   1.522e-13
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =   0.00
+                               Iterations  =  11
+                                  Total H  = 1.110506e+02
+                                  Total O  = 5.552567e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma   cm³/mol
+
+   OH-             4.742e-05   4.001e-05    -4.324    -4.398    -0.074     (0)  
+   H+              1.493e-09   1.943e-09    -8.826    -8.711     0.114      0.00
+   H2O             5.553e+01   7.868e-01     1.744    -0.104     0.000     18.33
+Al            2.330e-05
+   AlO2-           2.330e-05   2.124e-05    -4.633    -4.673    -0.040     (0)  
+   Al+3            2.230e-19   1.509e-20   -18.652   -19.821    -1.170     (0)  
+C             1.000e-04
+   HCO3-           7.896e-05   7.199e-05    -4.103    -4.143    -0.040     39.05
+   CO3-2           2.060e-05   2.749e-06    -4.686    -5.561    -0.875     43.18
+   MgCO3           1.646e-07   1.646e-07    -6.784    -6.784     0.000     (0)  
+   CaCO3           1.209e-07   1.209e-07    -6.918    -6.918     0.000     (0)  
+   CO2             1.105e-07   3.315e-07    -6.957    -6.480     0.477     (0)  
+   MgHCO3+         4.251e-08   3.876e-08    -7.371    -7.412    -0.040     (0)  
+Ca            1.000e-04
+   CaCl2           4.930e-05   4.930e-05    -4.307    -4.307     0.000     (0)  
+   Ca+2            3.831e-05   8.879e-06    -4.417    -5.052    -0.635     -3.86
+   CaCl+           1.226e-05   1.118e-05    -4.912    -4.952    -0.040     (0)  
+   CaCO3           1.209e-07   1.209e-07    -6.918    -6.918     0.000     (0)  
+   CaOH+           9.268e-09   8.450e-09    -8.033    -8.073    -0.040     (0)  
+Cl            6.270e+00
+   Cl-             6.270e+00   4.808e+00     0.797     0.682    -0.115      9.61
+   CaCl2           4.930e-05   4.930e-05    -4.307    -4.307     0.000     (0)  
+   CaCl+           1.226e-05   1.118e-05    -4.912    -4.952    -0.040     (0)  
+H(0)          1.130e-34
+   H2              5.650e-35   1.695e-34   -34.248   -33.771     0.477     (0)  
+K             1.000e-09
+   K+              1.000e-09   7.669e-10    -9.000    -9.115    -0.115     26.96
+Mg            1.000e-04
+   Mg+2            9.943e-05   3.635e-05    -4.002    -4.439    -0.437    -10.83
+   MgOH+           3.627e-07   3.524e-07    -6.440    -6.453    -0.012     (0)  
+   MgCO3           1.646e-07   1.646e-07    -6.784    -6.784     0.000     (0)  
+   MgHCO3+         4.251e-08   3.876e-08    -7.371    -7.412    -0.040     (0)  
+Na            6.270e+00
+   Na+             6.270e+00   5.717e+00     0.797     0.757    -0.040     18.57
+O(0)          3.055e-15
+   O2              1.528e-15   4.583e-15   -14.816   -14.339     0.477     (0)  
+Si            2.330e-05
+   SiO2            2.021e-05   2.021e-05    -4.694    -4.694     0.000     56.00
+   HSiO3-          3.083e-06   2.811e-06    -5.511    -5.551    -0.040     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(334 K,   1 atm)
+
+  Albite_high      -0.53      1.49    2.02  NaAlSi3O8
+  Analcime          0.61      5.07    4.46  Na.96Al.96Si2.04O6:(H2O)2.92
+  Calcite          -1.80     -0.48    1.31  CaCO3
+  CO2(g)           -4.69    -12.75   -8.06  CO2
+  Dolomite-dis     -2.96     -0.35    2.61  CaMg(CO3)2
+  Halite           -0.18      1.44    1.62  NaCl
+  Illite           -1.37      0.57    1.94  K0.6Mg0.25Al1.8Al0.5Si3.5O10(OH)2
+  K-Feldspar       -7.31     -8.38   -1.07  KAlSi3O8
+  Kaolinite        -0.00      2.72    2.72  Al2Si2O5(OH)4
+  Quartz           -1.36     -4.69   -3.34  SiO2
+  Smectite-Na      -0.29    -36.26  -35.97  Na0.29Mg0.26(SiO2)3.97(AlO2)1.77(H2O)0.52H0.96
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+------------------
+End of simulation.
+------------------
+
+------------------------------------
+Reading input data for simulation 2.
+------------------------------------
+
+---------------------------------
+End of Run after 0.46127 Seconds.
+---------------------------------
+
