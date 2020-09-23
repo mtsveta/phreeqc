@@ -1,3 +1,14 @@
+# Created by .ignore support plugin (hsz.mobi)
+build/
 cmake-build-debug/
-
- .idea/
+config/
+doc/
+test/
+Makefile.am
+Makefile.in
+aclocal.m4
+build/
+cmake-build-debug/
+configure
+configure.ac
+src/
