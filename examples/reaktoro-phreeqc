@@ -1,0 +1,92 @@
+TITLE Comparison of PHREEQC and Reaktoro speciation calculations
+SOLUTION 1 T = 30
+        units   mol/kgw
+        pH      7.0
+        temp    30.0
+        pressure 1
+        Na      1.0
+        Cl      1.0
+SELECTED_OUTPUT
+        -file   ../out/reaktoro-phreeqc-temp-variation-halite-1.0-molal.txt
+        -temperature
+        -mol    Na+    Cl-
+        -si     Halite
+
+SOLUTION 2 T = 40
+        units   mol/kgw
+        pH      7.0
+        temp    40.0
+        pressure 1
+        Na      1.0
+        Cl      1.0
+SELECTED_OUTPUT
+        -file   ../out/reaktoro-phreeqc-temp-variation-halite-1.0-molal.txt
+        -temperature
+        -mol    Na+    Cl-
+        -si     Halite
+
+SOLUTION 3 T = 50
+        units   mol/kgw
+        pH      7.0
+        temp    50.0
+        pressure 1
+        Na      1.0
+        Cl      1.0
+SELECTED_OUTPUT
+        -file   ../out/reaktoro-phreeqc-temp-variation-halite-1.0-molal.txt
+        -temperature
+        -mol    Na+    Cl-
+        -si     Halite
+
+
+SOLUTION 4 T = 60
+        units   mol/kgw
+        pH      7.0
+        temp    60.0
+        pressure 1
+        Na      1.0
+        Cl      1.0
+SELECTED_OUTPUT
+        -file   ../out/reaktoro-phreeqc-temp-variation-halite-1.0-molal.txt
+        -temperature
+        -mol    Na+    Cl-
+        -si     Halite
+
+SOLUTION 5 T = 70
+        units   mol/kgw
+        pH      7.0
+        temp    70.0
+        pressure 1
+        Na      1.0
+        Cl      1.0
+SELECTED_OUTPUT
+        -file   ../out/reaktoro-phreeqc-temp-variation-halite-1.0-molal.txt
+        -temperature
+        -mol    Na+    Cl-
+        -si     Halite
+
+SOLUTION 6 T = 80
+        units   mol/kgw
+        pH      7.0
+        temp    80.0
+        pressure 1
+        Na      1.0
+        Cl      1.0
+SELECTED_OUTPUT
+        -file   ../out/reaktoro-phreeqc-temp-variation-halite-1.0-molal.txt
+        -temperature
+        -mol    Na+    Cl-
+        -si     Halite
+
+SOLUTION 7 T = 90
+        units   mol/kgw
+        pH      7.0
+        temp    90.0
+        pressure 1
+        Na      1.0
+        Cl      1.0
+SELECTED_OUTPUT
+        -file   ../out/reaktoro-phreeqc-temp-variation-halite-1.0-molal.txt
+        -temperature
+        -mol    Na+    Cl-
+        -si     Halite

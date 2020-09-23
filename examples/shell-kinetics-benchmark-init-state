@@ -1,0 +1,23 @@
+DATABASE ../database/DatabaseLLNLbased.dat
+
+SOLUTION 1
+        temp  61
+        pressure 1
+        pH    7.0
+        units mol/kgw
+        Na	  6.27
+        Cl	  6.27 charge
+        Mg 0.0001
+        Ca 0.0001
+        C  0.0001
+        Si 0.0001
+        Al 0.0001
+        K  0.000000001
+EQUILIBRIUM_PHASES 1
+        Halite         0 0
+        Calcite        0 0
+        Dolomite-dis   0 0
+        K-Feldspar     0 0
+        Quartz         0 0
+        Kaolinite      0 0
+END

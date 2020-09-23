@@ -1,0 +1,43 @@
+TITLE Comparison of PHREEQC and Reaktoro speciation calculations for different temperatures
+SOLUTION 1
+        units   mol/kgw
+        pH      7.0
+        temp    30.0
+        pressure 1
+        Na      1.0
+        Cl      1.0
+SELECTED_OUTPUT
+        -file   ../out/reaktoro-phreeqc-reaction-temperature.txt
+        -temperature
+        -mol    Na+    Cl-
+        -si     Halite
+
+USE solution 1
+REACTION_TEMPERATURE 2
+ 30
+SELECTED_OUTPUT
+        -file   ../out/reaktoro-phreeqc-reaction-temperature.txt
+        -temperature
+        -mol    Na+    Cl-
+        -si     Halite
+END
+
+USE solution 1
+REACTION_TEMPERATURE 3
+ 40
+SELECTED_OUTPUT
+        -file   ../out/reaktoro-phreeqc-reaction-temperature.txt
+        -temperature
+        -mol    Na+    Cl-
+        -si     Halite
+END
+
+USE solution 1
+REACTION_TEMPERATURE 4
+ 50
+SELECTED_OUTPUT
+        -file   ../out/reaktoro-phreeqc-reaction-temperature.txt
+        -temperature
+        -mol    Na+    Cl-
+        -si     Halite
+END

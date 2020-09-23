@@ -1,0 +1,53 @@
+DATABASE ../database/DatabaseLLNLbased.dat
+title shell-kinetics-benchmark
+
+SOLUTION 1-25
+      temp  61
+      pressure 1
+      pH    7
+      units mol/kgw
+      Na	  6.27
+      Cl	  6.27 charge
+      Mg 0.0001
+      Ca 0.0001
+      C  0.0001
+      Si 0.0001
+      Al 0.0001
+	  K  0.000000001
+END
+
+INCREMENTAL_REACTIONS true
+
+#EQUILIBRIUM_PHASES 1-25
+#Halite         0 10
+#Calcite        0 10
+#Dolomite-dis   0 10
+#K-Feldspar     0 10
+#Quartz         0 10
+#Kaolinite      0 10
+
+KINETICS 1-25
+Halite
+  -m0 10
+  -parms 1.0   0 0 1 1
+Calcite
+  -m0 10
+  -parms 1.0   0 0 1 1
+Dolomite-dis
+  -m0 10
+  -parms 1.0   0 0 1 1
+K-Feldspar
+  -m0 10
+  -parms 1.0   0 0 1 1
+Quartz
+  -m0 10
+  -parms 1.0   0 0 1 1
+Kaolinite
+  -m0 10
+  -parms 1.0   0 0 1 1
+-rk 6
+
+RUN_CELLS
+-cells 1-25
+-start_time 0 sec
+-time_step 0.1 sec
