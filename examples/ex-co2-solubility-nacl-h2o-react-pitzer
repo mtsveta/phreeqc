@@ -1,0 +1,113 @@
+#must use DATABASE pitzer.dat
+TITLE Comparison of PHREEQC and Reaktoro speciation calculations
+KNOBS
+        convergence_tolerance 1e-15
+SOLUTION 1 NaCl = 1.0, P = 1.0
+        units   mol/kgw
+        temp    25.0
+        pressure 1.0
+        Na      1.0
+        Cl      1.0
+EQUILIBRIUM_PHASES
+        CO2(g)  0.0 10.0
+REACTION_TEMPERATURE 1
+        25.0 90.0 in 14 steps
+SELECTED_OUTPUT
+        -file   ../out/phreeqc-pitzer-nacl-1-p-1.txt
+        -temperature
+        -equilibrium_phases CO2(g)
+END
+
+
+KNOBS
+        convergence_tolerance 1e-15
+SOLUTION 2 NaCl = 2.0, P = 1.0
+        units   mol/kgw
+        temp    25.0
+        pressure 1.0
+        Na      2.0
+        Cl      2.0
+EQUILIBRIUM_PHASES
+        CO2(g)  0.0 10.0
+REACTION_TEMPERATURE 1
+        25.0 90.0 in 14 steps
+SELECTED_OUTPUT
+        -file   ../out/phreeqc-pitzer-nacl-2-p-1.txt
+        -temperature
+        -equilibrium_phases CO2(g)
+END
+
+
+KNOBS
+        convergence_tolerance 1e-15
+SOLUTION 3 NaCl = 4.0, P = 1.0
+        units   mol/kgw
+        temp    25.0
+        pressure 1.0
+        Na      4.0
+        Cl      4.0
+EQUILIBRIUM_PHASES
+        CO2(g)  0.0 10.0
+REACTION_TEMPERATURE 1
+        25.0 90.0 in 14 steps
+SELECTED_OUTPUT
+        -file   ../out/phreeqc-pitzer-nacl-4-p-1.txt
+        -temperature
+        -equilibrium_phases CO2(g)
+END
+
+KNOBS
+        convergence_tolerance 1e-15
+SOLUTION 1 NaCl = 1.0, P = 100.0
+        units   mol/kgw
+        temp    25.0
+        pressure 100.0
+        Na      1.0
+        Cl      1.0
+EQUILIBRIUM_PHASES
+        CO2(g)  2.0 10.0
+REACTION_TEMPERATURE 1
+        25.0 90.0 in 14 steps
+SELECTED_OUTPUT
+        -file   ../out/phreeqc-pitzer-nacl-1-p-100.txt
+        -temperature
+        -equilibrium_phases CO2(g)
+END
+
+
+KNOBS
+        convergence_tolerance 1e-15
+SOLUTION 2 NaCl = 2.0, P = 100.0
+        units   mol/kgw
+        temp    25.0
+        pressure 100.0
+        Na      2.0
+        Cl      2.0
+EQUILIBRIUM_PHASES
+        CO2(g)  2.0 10.0
+REACTION_TEMPERATURE 1
+        25.0 90.0 in 14 steps
+SELECTED_OUTPUT
+        -file   ../out/phreeqc-pitzer-nacl-2-p-100.txt
+        -temperature
+        -equilibrium_phases CO2(g)
+END
+
+
+KNOBS
+        convergence_tolerance 1e-15
+SOLUTION 3 NaCl = 4.0, P = 100.0
+        units   mol/kgw
+        temp    25.0
+        pressure 100.0
+        Na      4.0
+        Cl      4.0
+EQUILIBRIUM_PHASES
+        CO2(g)  2.0 10.0
+REACTION_TEMPERATURE 1
+        25.0 90.0 in 14 steps
+SELECTED_OUTPUT
+        -file   ../out/phreeqc-pitzer-nacl-4-p-100.txt
+        -temperature
+        -equilibrium_phases CO2(g)
+END

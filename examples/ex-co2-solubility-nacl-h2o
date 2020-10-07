@@ -1,0 +1,56 @@
+TITLE Comparison of PHREEQC and Reaktoro speciation calculations
+SOLUTION 1 T = 25
+        units   mol/kgw
+        temp    25.0
+        pressure 1.0
+        Na      1.0
+        Cl      1.0
+EQUILIBRIUM_PHASES
+        CO2(g)  0.0 10.0
+SELECTED_OUTPUT
+        -file   ../out/ex-co2-solubility-nacl-1-p-1-T-25.txt
+        -temperature
+        -mol    CO2
+END
+
+SOLUTION 2 T = 30
+        units   mol/kgw
+        temp    30.0
+        pressure 1.0
+        Na      1.0
+        Cl      1.0
+EQUILIBRIUM_PHASES
+        CO2(g)  0.0 10.0
+SELECTED_OUTPUT
+        -file   ../out/ex-co2-solubility-nacl-1-p-1-T-30.txt
+        -temperature
+        -mol    CO2
+END
+
+SOLUTION 3 T = 35
+        units   mol/kgw
+        temp    35.0
+        pressure 1.0
+        Na      1.0
+        Cl      1.0
+EQUILIBRIUM_PHASES
+        CO2(g)  0.0 10.0
+SELECTED_OUTPUT
+        -file   ../out/ex-co2-solubility-nacl-1-p-1-T-35.txt
+        -temperature
+        -mol    CO2
+END
+
+SOLUTION 3 T = 40
+        units   mol/kgw
+        temp    40.0
+        pressure 1.0
+        Na      1.0
+        Cl      1.0
+EQUILIBRIUM_PHASES
+        CO2(g)  0.0 10.0
+SELECTED_OUTPUT
+        -file   ../out/ex-co2-solubility-nacl-1-p-1-T-40.txt
+        -temperature
+        -mol    CO2
+END
