@@ -1,0 +1,33 @@
+#must use DATABASE pitzer.dat
+TITLE Calcite and dolomite equilibrium CO2(g) saturated water.
+SOLUTION 1  Pure water
+        units   mol/kgw
+        temp    25.0
+        pressure 1.0
+EQUILIBRIUM_PHASES
+        CO2(g)  0.0 10.0
+        Calcite 0.0 10.0
+        Dolomite 0.0 10.0
+REACTION_TEMPERATURE 1
+        25.0 90.0 in 14 steps
+SELECTED_OUTPUT
+        -file   ../out/phreeqc-pitzer-calcite-dolomite-dissolution-p-1.txt
+        -temperature
+        -equilibrium_phases CO2(g) Calcite Dolomite
+END
+
+SOLUTION 1  Pure water
+        units   mol/kgw
+        temp    25.0
+        pressure 100.0
+EQUILIBRIUM_PHASES
+        CO2(g)  2.0 10.0
+        Calcite 0.0 10.0
+        Dolomite 0.0 10.0
+REACTION_TEMPERATURE 1
+        25.0 90.0 in 14 steps
+SELECTED_OUTPUT
+        -file   ../out/phreeqc-pitzer-calcite-dolomite-dissolution-p-100.txt
+        -temperature
+        -equilibrium_phases CO2(g) Calcite Dolomite
+END
