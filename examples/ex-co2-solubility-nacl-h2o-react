@@ -15,6 +15,7 @@ REACTION_TEMPERATURE 1
 SELECTED_OUTPUT
         -file   ../out/phreeqc-nacl-1-p-1.txt
         -temperature
+        -totals C
         -equilibrium_phases CO2(g)
 END
 
@@ -32,6 +33,7 @@ REACTION_TEMPERATURE 1
 SELECTED_OUTPUT
         -file   ../out/phreeqc-nacl-2-p-1.txt
         -temperature
+        -totals C
         -equilibrium_phases CO2(g)
 END
 
@@ -49,6 +51,7 @@ REACTION_TEMPERATURE 1
 SELECTED_OUTPUT
         -file   ../out/phreeqc-nacl-4-p-1.txt
         -temperature
+        -totals C
         -equilibrium_phases CO2(g)
 END
 
@@ -65,6 +68,7 @@ REACTION_TEMPERATURE 1
 SELECTED_OUTPUT
         -file   ../out/phreeqc-nacl-1-p-100.txt
         -temperature
+        -totals C
         -equilibrium_phases CO2(g)
 END
 
@@ -82,6 +86,7 @@ REACTION_TEMPERATURE 1
 SELECTED_OUTPUT
         -file   ../out/phreeqc-nacl-2-p-100.txt
         -temperature
+        -totals C
         -equilibrium_phases CO2(g)
 END
 
@@ -98,5 +103,6 @@ REACTION_TEMPERATURE 1
 SELECTED_OUTPUT
         -file   ../out/phreeqc-nacl-4-p-100.txt
         -temperature
+        -totals C
         -equilibrium_phases CO2(g)
 END
