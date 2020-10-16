@@ -20,6 +20,7 @@ REACTION_TEMPERATURE 1
 SELECTED_OUTPUT
         -file   ../out/phreeqc-pitzer-seawater-with-carbonates-p-1.txt
         -temperature
+        -m Ca+2 Mg+2 H+ HCO3-
         -equilibrium_phases Calcite Dolomite
 END
 
@@ -44,5 +45,6 @@ REACTION_TEMPERATURE 1
 SELECTED_OUTPUT
         -file   ../out/phreeqc-pitzer-seawater-with-carbonates-p-100.txt
         -temperature
+        -m Ca+2 Mg+2 H+ HCO3-
         -equilibrium_phases Calcite Dolomite
 END
