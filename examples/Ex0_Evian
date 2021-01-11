@@ -1,0 +1,21 @@
+DATABASE C:\Program Files (x86)\USGS\Phreeqc Interactive 3.5.0-14000\database\phreeqc.dat
+title exemple 1 Evian
+
+SOLUTION 1
+    temp      25
+    pH        7.2
+    pe        4
+    redox     pe
+    units     mg/kgw
+    density   1
+    C(4)      350
+    Ca        80
+    Cl        6.8
+    K         1
+    Mg        26
+    N(5)      3.7
+    Na        6.5
+    S(6)      12.6
+    Si        15
+    -water    1 # kg
+end
