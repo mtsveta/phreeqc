@@ -5,8 +5,10 @@
     # Last updated on: 18-Sep-2020
 	
 	# The database includes kinetic reactions for a wide range of minerals, intended for use with the SHELL Geochemical database based on OLI version 9.1.5
-	# The database format has been adpated from the compilation of 15mar/cla by BRGM (French geological survey)  
-	# Data source references can be found at the end of this file  
+	# The database format has been adpated from the compilation of 15mar/cla by BRGM (French geological survey)
+	# Some kinetic data are dervied from the compilations of 04pal/kha, 14Dec/Oel and 19Zha/Hu 
+	# Others are novel refits to literature data
+	# All data source references can be found at the end of this file  
 	
 	Albite-low
 	# original compilation from 15mar/cla
@@ -17,26 +19,98 @@
 	-start
 	1 SRmin = SR("Albite-low")
 	10 moles = 0
-	20 If (m <= 0) or (SRmin > 1) Then GoTo 130
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
 	30 S = 0.08 # average BET; suggested value in m2/g
 	40 Mm = 262.2 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 130
 	########## start dissolution bloc ##########
-	50 knu = 5.13E-20 * exp((-57000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
-	60 k1 = 0.0000000000852 * exp((-58400 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.335)
-	70 k2 = 0.000000000135 * exp((-55500 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.317) 
-	80 k = knu + k1 + k2
-	90 theta = 1 # default value
-	100 eta = 1 # default value
 	# theta = 0.48 and eta = 100 at pH 8.8 & 80°C (extracted from 93bur/nag)
 	# theta = 0.18 and eta = 5 at pH 9.2 & 150°C (extracted from 06hel/tis)
 	# theta = 0.76 and eta = 90 at pH 8.8 & 300°C & 88 bars (extracted from 97ale/med)
 	# 110 rate = S * m * Mm * k * ((1 - SRmin ^ theta) ^ eta)
-	110 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin ) # by default
-	120 moles = rate * Time
+	60 knu = 5.13E-20 * exp((-57000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	70 k1 = 0.0000000000852 * exp((-58400 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.335)
+	75 k2 = 0.000000000135 * exp((-55500 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.317) 
+	80 k = knu + k1 + k2
+	90 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	100 moles = rate * Time
+	110 REM Do not dissolve more than what is available
+	120 IF (moles > M) THEN moles = M
+	125 GoTo 250
 	########## end dissolution bloc ##########
-	130 Save moles
+	########## start precipitation bloc ##########
+	130 If (m <= 1e-8) then GoTo 180
+	135 knu = 5.13E-20 * exp((-57000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	140 k1 = 0.0000000000852 * exp((-58400 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.335)
+	145 k2 = 0.000000000135 * exp((-55500 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.317) 
+	150 kpre = (-1) * ( knu + k1 + k2 )
+	160 rate = S * m * Mm * kpre * (SRmin - 1) 
+	170 GoTo 190
+	#start nucleation
+	180 rate = -1e-10
+	190 moles = rate * Time
+	200 REM Do not precipitate more than the elements in solution
+	210 maxMol = TOT("Al")
+	220 IF (maxMol > TOT("Si")/3) THEN maxMol = TOT("Si")/3
+	230 IF (maxMol > TOT("Na")) THEN maxMol = TOT("Na")
+	240 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	250 Save moles
 	-end
 
+	Analcime
+	# kinetic data extracted from 00wil/bar 00bar/wil
+	# surface area data extracted from 00wil/bar 
+	# interfacial energy from 93Che/Hu 
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Analcime")						# mineral saturation ratio
+	10 moles = 0									# initial moles of mineral
+	20 If (m = 0) and (SRmin <= 1) Then GoTo 400	# if neither dissolution nor precipitation possible then end
+	30 If (SRmin = 1) Then GoTo 400 				# if system in equilibrium then end
+	40 S = 20.5 									# average BET; suggested value in m2/g
+	50 Mm = 220.15									# molar mass in g/mol
+	60 Mv = 9.692E-05   							# molar volume in m3/mol
+	70 If (SRmin > 1) Then GoTo 160					# if supersaturated go to precipitation
+	########## start dissolution bloc ##########
+	80 knu = 1.05E-11 * exp((-37200 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	110 k = knu 
+	120 rate = S * m * Mm * k * ((1 - SRmin)^2)
+	130 moles = rate * Time
+	#### Do not dissolve more than there is solid present ####
+	140 IF (moles > M) THEN moles = M
+	150 GoTo 400
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	160 surf_energy = 0.042 																# interfacial energy for lateral surface in J m-2 (after Fritz et al 2009; lateral s chosen to be 2 times basal))
+	170 molvol = 1.99e-28																	# molecular volume in m3
+	180 u = ( 16 * 3.14159 * surf_energy^3 * molvol ^ 2 ) / ( 3 * (1.38E-23 * TK)^3 ) 	# (after Fritz et al 2009) 
+	200 J0 = 1E20  																			# nucleation rate in nuclei kg-1 sec-1 (after Fritz et al 2009) 
+	210 SRcrit = exp( u / LOG( J0 ) ) 														# critical saturation threshold
+	220 IF ( SRmin < SRcrit ) Then GoTo 290 												# if saturation index below threshold no nucleation occurs
+	230 nuclie = J0 * exp( -u / LOG(SRmin) ) * Time											# nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
+	240 IF ( nuclie < 1 ) THEN GoTo 290 													# condition that rate needs to be bigger than 1 nucl per sec (Arbitrary)
+	250 nj = u / (LOG(SRmin)^2) 															# number of growth units in critical nuclie radius
+	260 vol = nj * molvol 																	# critical nuclie volume
+	270 moles_nuc = ( -nuclie * vol ) / Mv 													# moles of nuclie formed
+	280 GoTo 300
+	290 moles_nuc = 0
+	#### kinetic data for growth ####
+	300 IF ( m = 0 ) THEN GoTo 350
+	310 knu = 3.91E-12 * exp((-77100 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	320 kpre = (-1) * knu
+	330 moles_growth = S * m * Mm * kpre * (SRmin - 1) * Time
+	340 moles = moles_nuc + moles_growth
+	350 IF ( moles = 0 ) THEN GoTo 400	
+	#### Do not precipitate more than the elements in solution ####
+	360 maxMol = TOT("Al")/0.99
+	370 IF (maxMol > TOT("Si")/2.01) THEN maxMol = TOT("Si")/2.01
+	380 IF (maxMol > TOT("Na")/0.99) THEN maxMol = TOT("Na")/0.99
+	390 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	400 Save moles
+	-end
+	
 	Anhydrite
 	# kinetic data extracted from 14Dec/Oel
 	# warning dissolution only
@@ -116,7 +190,7 @@
 	20 If (m <= 0) and (SRmin < 1) Then GoTo 240
 	25 If (SRmin = 1) Then GoTo 240
 	30 S = 0.006 # average BET from 16zhe/did ; suggested value in m2/g
-	40 Mm = 183.68	# molar mass in g/mol
+	40 Mm = 233.39	# molar mass in g/mol
 	50 If (SRmin > 1) Then GoTo 130
 	########## start dissolution bloc ##########
 	70 k1 = 2.75E-08 * exp((-25000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.03) * (10 ^ (0.6 * MU^0.5))
@@ -215,10 +289,10 @@
 	150 GoTo 390
 	########## end dissolution bloc ##########
 	########## start precipitation bloc ##########
-	160 surf_energy = 0.034 								# interfacial energy in J m-2
+	160 surf_energy = 0.047 								# interfacial energy in J m-2
 	170 molvol = 6.13E-29 									# molecular volume in m3
 	180	u = ( 16 * 3.14159 * surf_energy^3 * molvol ^ 2 ) / ( 3 * (1.38E-23 * TK)^3 ) 
-	190 J0 = 1E20  											# nucleation rate in nuclei m-2 sec-1  
+	190 J0 = 1E20  											# nucleation rate in nuclei kg-1 sec-1  
 	200 SRcrit = exp( sqrt( u / LOG( J0 ) ) ) 				# critical saturation threshold
 	210 IF ( SRmin < SRcrit ) Then GoTo 290 
 	220 nuclie = J0 * exp( -u / LOG(SRmin)^2 ) * Time 		# nucleation rate in nuclie sec-1
@@ -235,6 +309,7 @@
 	330 kpre = (knu + k1) 
 	340 moles_growth = -1 * S * m * Mm * kpre * (( ( SRmin^0.5 ) - 1 )^1.12) * Time  
 	350 moles = moles_nuc + moles_growth 
+	355 IF ( moles = 0 ) THEN GoTo 390
 	########## Do not precipitate more than the elements in solution ########## 
 	360 maxMol = MOL("Ca+2")
 	370 IF (maxMol > MOL("HCO3-")) THEN maxMol = MOL("HCO3-")
@@ -355,30 +430,114 @@
 	250 Save moles
 	-end
 	
-	Dolomite-dis 
+	Dolomite-dis
 	# kinetic data extracted from 04pal/kha
+	# kinetic precipiation data extracted from 97arv/mac 99arv/mac
 	# surface area data extracted from 15mar/cla
-	# warning dissolution only
 	# Confidence level: 4
 	-start
 	1 SRmin = SR("Dolomite-dis")
 	10 moles = 0
-	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
-	30 S = 0.09 # BET value
-	40 Mm = 184.4 # molar mass in g/mol
-	50 If (SRmin > 1) Then GoTo 250
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 360				
+	30 S = 0.13 # dolomite average BET from 15mar/cla; suggested value in m2/g
+	40 Mm = 184.4  	# molar mass in g/mol
+	45 Mv = 6.429E-05 									# molar volume in m3/mol
+	50 If (SRmin > 1) Then GoTo 130
 	########## start dissolution bloc ##########
 	60 knu = 0.0000000295 * exp((-52200 / 8.314) * ((1 / TK) - (1 / 298.15)))
 	70 k1 = 0.000646 * exp((-36100 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.5)
-	80 k2 = 0.00000776 * exp((-34800 / 8.314) * ((1 / TK) - (1 / 298.15))) * (PR_P("CO2(g)") ^ 0.5)
-	90 k = knu + k1 + k2
-	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
-	110 moles = rate * Time
-	120 REM Do not dissolve more than what is available
-	130 IF (moles > M) THEN moles = M
+	75 k2 = 0.00000776 * exp((-34800 / 8.314) * ((1 / TK) - (1 / 298.15))) * (PR_P("CO2(g)") ^ 0.5)
+	80 k = knu + k1 + k2
+	90 rate = S * m * Mm * k * (1 - SRmin)
+	100 moles = rate * Time
+	110 IF (moles > M) THEN moles = M
+	120 GoTo 360
 	########## end dissolution bloc ##########
-	250 Save moles
+	########## start precipitation bloc ##########
+	130 surf_energy = 0.075 									# interfacial energy in J m-2
+	140 molvol = 1.0674e-28									# molecular volume in m3
+	150 u = ( 16 * 3.14159 * surf_energy^3 * molvol ^ 2 ) / ( 3 * (1.38E-23 * TK)^3 ) 	# (after Fritz et al 2009) 
+	160 J0 = 1E20  											# nucleation rate in nuclei kg-1 sec-1 (after Fritz et al 2009) 
+	170 SRcrit = exp( sqrt( u / LOG( J0 ) ) ) 				# critical saturation threshold
+	180 IF ( SRmin < SRcrit ) Then GoTo 250 				# if saturation index below threshold no nucleation occurs
+	190 nuclie = J0 * exp( -u / LOG(SRmin)^2 ) * time		# --- nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
+	200 IF ( nuclie < 1 ) THEN GoTo 250 					# condition that rate needs to be bigger than 1 nucl per sec (Arbitrary)
+	210 nj = ( 2 * u ) / (LOG(SRmin)^3) 					# number of growth units in critical nuclie radius
+	220 vol = nj * molvol 									# critical nuclie volume
+	230 moles_nuc = ( -nuclie * vol ) / Mv 	# moles of nuclie formed
+	240 GoTo 260
+	250 moles_nuc = 0
+	#### kinetic data for growth ####
+	260 IF ( m = 0 ) THEN GoTo 300
+	270 knu = 9.45E-15 * exp((-103100 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	280 kpre = (-1) * knu
+	290 moles_growth = S * m * Mm * kpre * ABS(SRmin - 1) * Time
+	300 moles = moles_nuc + moles_growth 
+	305 IF ( moles = 0 ) THEN GoTo 360
+	########## end precipitation bloc ##########
+	310 maxMol = TOT("Mg")
+	320 IF (maxMol > TOT("Ca")) THEN maxMol = TOT("Ca")
+	340 IF (maxMol > TOT("C")/2) THEN maxMol = TOT("C")/2
+	350 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	360 Save moles
 	-end
+	
+	Ankerite-dis
+	# kinetic dissolution data for dolomite from 04pal/kha
+	# kinetic precipiation data for dolomite from 97arv/mac 99arv/mac
+	# surface area data extracted from 15mar/cla
+	# warning dissolution only
+	# Confidence level: 2
+	-start
+	1 SRmin = SR("Ankerite-dis")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 360				
+	30 S = 0.13 										# dolomite average BET from 15mar/cla; suggested value in m2/g
+	40 Mm = 206.39 										# molar mass in g/mol
+	45 Mv = 6.324E-05 									# molar volume in m3/mol
+	50 If (SRmin > 1) Then GoTo 130
+	########## start dissolution bloc ##########
+	60 knu = 0.0000000295 * exp((-52200 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 0.000646 * exp((-36100 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.5)
+	75 k2 = 0.00000776 * exp((-34800 / 8.314) * ((1 / TK) - (1 / 298.15))) * (PR_P("CO2(g)") ^ 0.5)
+	80 k = knu + k1 + k2
+	90 rate = S * m * Mm * k * (1 - SRmin)
+	100 moles = rate * Time
+	110 IF (moles > M) THEN moles = M
+	120 GoTo 360
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	130 surf_energy = 0.075   								# interfacial energy in J m-2
+	140 molvol = 1.08876e-28								# molecular volume in m3
+	150 u = ( 16 * 3.14159 * surf_energy^3 * molvol ^ 2 ) / ( 3 * (1.38E-23 * TK)^3 ) 	# (after Fritz et al 2009) 
+	160 J0 = 1E20  											# nucleation rate in nuclei kg-1 sec-1 (after Fritz et al 2009) 
+	170 SRcrit = exp( sqrt( u / LOG( J0 ) ) ) 				# critical saturation threshold
+	180 IF ( SRmin < SRcrit ) Then GoTo 250 				# if saturation index below threshold no nucleation occurs
+	190 nuclie = J0 * exp( -u / LOG(SRmin)^2 ) * time		# --- nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
+	200 IF ( nuclie < 1 ) THEN GoTo 250 					# condition that rate needs to be bigger than 1 nucl per sec (Arbitrary)
+	210 nj = ( 2 * u ) / (LOG(SRmin)^3) 					# number of growth units in critical nuclie radius
+	220 vol = nj * molvol 									# critical nuclie volume
+	230 moles_nuc = ( -nuclie * vol ) / Mv 	# moles of nuclie formed
+	240 GoTo 260
+	250 moles_nuc = 0
+	#### kinetic data for growth ####
+	260 IF ( m = 0 ) THEN GoTo 300
+	270 knu = 9.45E-15 * exp((-103100 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	280 kpre = (-1) * knu
+	290 moles_growth = S * m * Mm * kpre * ABS(SRmin - 1) * Time
+	300 moles = moles_nuc + moles_growth 
+	305 IF ( moles = 0 ) THEN GoTo 360
+	########## end precipitation bloc ##########
+	310 maxMol = TOT("Fe(2)")/0.6
+	320 IF (maxMol > TOT("Ca")) THEN maxMol = TOT("Ca")
+	330 IF (maxMol > TOT("Mg")/0.4) THEN maxMol = TOT("Mg")/0.4
+	340 IF (maxMol > TOT("C")/2) THEN maxMol = TOT("C")/2
+	350 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	360 Save moles
+	-end
+	
 	
 	Gibbsite
 	# kinetic data extracted from 04pal/kha
@@ -409,14 +568,14 @@
 	160 surf_energy = 0.22 									# interfacial energy in J m-2
 	170 molvol = 5.3E-29									# molecular volume in m3
 	180 u = ( 16 * 3.14159 * surf_energy^3 * molvol ^ 2 ) / ( 3 * (1.38E-23 * TK)^3 ) 	# (after Fritz et al 2009) 
-	190 J0 = 1E20  											# nucleation rate in nuclei m-2 sec-1 (after Fritz et al 2009) 
+	190 J0 = 1E20  											# nucleation rate in nuclei kg-1 sec-1 (after Fritz et al 2009) 
 	200 SRcrit = exp( sqrt( u / LOG( J0 ) ) ) 				# critical saturation threshold
 	210 IF ( SRmin < SRcrit ) Then GoTo 280 				# if saturation index below threshold no nucleation occurs
 	220 nuclie = J0 * exp( -u / LOG(SRmin)^2 ) * time		# --- nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
 	230 IF ( nuclie < 1 ) THEN GoTo 280 					# condition that rate needs to be bigger than 1 nucl per sec (Arbitrary)
 	240 nj = ( 2 * u ) / (LOG(SRmin)^3) 					# number of growth units in critical nuclie radius
 	250 vol = nj * molvol 									# critical nuclie volume
-	260 moles_nuc = ( -rate_nuc * vol ) / Mv 	# moles of nuclie formed
+	260 moles_nuc = ( -nuclie * vol ) / Mv 	# moles of nuclie formed
 	270 GoTo 290
 	280 moles_nuc = 0
 	#### kinetic data for growth ####
@@ -425,6 +584,7 @@
 	310 kpre = (-1) * knu
 	320 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 1.0) - 1) ^ 1.0) * Time
 	330 moles = moles_nuc + moles_growth 
+	335 IF ( moles = 0 ) THEN GoTo 360
 	#### Do not precipitate more than the elements in solution ####
 	340 maxMol = TOT("Al")
 	350 IF (maxMol < -moles) THEN moles = -maxMol
@@ -530,7 +690,7 @@
 	1 SRmin = SR("Hematite")
 	10 moles = 0
 	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
-	30 S = PARM(1) # Default value
+	30 S = 0.14 # Default value
 	40 Mm = 159.7 # molar mass in g/mol
 	50 If (SRmin > 1) Then GoTo 250
 	########## start dissolution bloc ##########
@@ -546,13 +706,13 @@
 	250 Save moles
 	-end
 		
-	Illite(IMt2)
+	IlliteSmectite
 	# dissolution kinetic data extracted from 06has/vil 03tou/nea 03koh/duf 05koh/bos
 	# precipitation kinetic data extracted from Kaolinite precipitation rate: 08yan/ste 93nag/las 97dev/sch
 	# surface area data extracted from 15mar/cla
 	# Confidence level: 4
 	-start
-	1 SRmin = SR("Illite(IMt2)")
+	1 SRmin = SR("IlliteSmectite")
 	10 moles = 0
 	20 If (m <= 0) and (SRmin < 1) Then GoTo 410		# mineral saturation ratio	
 	25 If (SRmin = 1) Then GoTo 400						# if system in equilibrium then end
@@ -592,13 +752,184 @@
 	310 kpre = (-1) * knu
 	320 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 0.06) - 1) ^ 1.68) * Time
 	330 moles = moles_nuc + moles_growth
+	335 IF ( moles = 0 ) THEN GoTo 410
 	#### Do not precipitate more than the elements in solution ####
-	340 maxMol = TOT("Al")/2.04
-	350 IF (maxMol > TOT("Si")/3.387) THEN maxMol = TOT("Si")/3.387
-	360 IF (maxMol > TOT("Mg")/0.241) THEN maxMol = TOT("Mg")/0.241
-	370 IF (maxMol > TOT("Fe")/0.376) THEN maxMol = TOT("Fe")/0.376
-	380 IF (maxMol > TOT("K")/0.762) THEN maxMol = TOT("K")/0.762
-	390 IF (maxMol > TOT("Na")/0.044) THEN maxMol = TOT("Na")/0.044
+	340 maxMol = TOT("Al")/3.559
+	350 IF (maxMol > TOT("Si")/3.559) THEN maxMol = TOT("Si")/3.559
+	360 IF (maxMol > TOT("Mg")/0.255) THEN maxMol = TOT("Mg")/0.255
+	370 IF (maxMol > TOT("Fe")/2.1680) THEN maxMol = TOT("Fe")/2.180
+	380 IF (maxMol > TOT("K")/0.439) THEN maxMol = TOT("K")/0.439
+	390 IF (maxMol > TOT("Ca")/0.092) THEN maxMol = TOT("Ca")/0.092 
+	400 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	410 Save moles
+	-end
+
+	Illite-Mg
+	# dissolution kinetic data extracted from 06has/vil 03tou/nea 03koh/duf 05koh/bos
+	# precipitation kinetic data extracted from Kaolinite precipitation rate: 08yan/ste 93nag/las 97dev/sch
+	# surface area data extracted from 15mar/cla
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Illite-Mg")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 410		# mineral saturation ratio	
+	25 If (SRmin = 1) Then GoTo 400						# if system in equilibrium then end
+	30 S = 30 											# ESA (06has/vil 03tou/nea); suggested value in m2/g 	
+	40 Mm = 401.836										# molar mass in g/mol
+	50 Mv = 141.34E-06									# molar volume in m3/mol
+	60 If (SRmin > 1) Then GoTo 150
+	########## start dissolution bloc ##########
+	70 knu = 1.78E-14 * exp((-34600 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	80 k1 = 0.00000000000901 * exp((-37800 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.523)
+	90 k2 = 0.00000000000269 * exp((-49900 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.378)
+	100 k = knu + k1 + k2
+	110 rate = S * m * Mm * k * ((1 - SRmin ^ 0.06) ^ 1.68)
+	120 moles = rate * Time
+	#### Do not dissolve more than there is solid present ####
+	130 IF (moles > M) THEN moles = M
+	140 GoTo 410
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	150 surf_energy = 0.1 								# interfacial energy for lateral surface in J m-2 (from kaolinite after Fritz et al 2009; lateral s chosen to be 2 times basal)
+	160 sheet_thick = 10e-10							# thickness of one mineral layer in m (Warr and Nieto 1998)
+	170 molvol = 2.347E-28								# molecular volume in m3 (calculated from molar volume)
+	180	u = ( 2 * sqrt(3) * sheet_thick * surf_energy^2 * molvol ) / ( (1.38E-23 * TK)^2 ) # (after Fritz et al 2009)
+	190 J0 = 1E20  										# nucleation rate in nuclei m-2 sec-1 (after Fritz et al 2009) 
+	200 SRcrit = exp( u / LOG( J0 ) ) 					# critical saturation threshold
+	210 IF ( SRmin < SRcrit ) Then GoTo 280 			# if saturation index below threshold no nucleation occurs
+	220 nuclie = J0 * exp( -u / LOG(SRmin) ) * Time  	# nucleation rate in nuclie sec-1 multiplied by time to give nuclie per timestep
+	230 IF ( nuclie < 1 ) THEN GoTo 280 				# condition that rate needs to be bigger than 1 nucl per time step (Arbitrary)
+	240 nj = u / (LOG(SRmin)^2) 						# number of growth units in critical nucleus
+	250	vol = nj * molvol 								# critical nuclie volume
+	260	moles_nuc = ( -nuclie * vol ) / Mv 				# moles of nuclie formed
+	270 GoTo 290
+	280 moles_nuc = 0
+	#### kinetic data for growth ####
+	290 IF ( m = 0 ) THEN GoTo 330
+	300 knu = 0.000000000000215 * exp((-66400 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	310 kpre = (-1) * knu
+	320 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 0.06) - 1) ^ 1.68) * Time
+	330 moles = moles_nuc + moles_growth
+	335 IF ( moles = 0 ) THEN GoTo 410
+	#### Do not precipitate more than the elements in solution ####
+	340 maxMol = TOT("Al")/2.35
+	350 IF (maxMol > TOT("Si")/3.4) THEN maxMol = TOT("Si")/3.4
+	360 IF (maxMol > TOT("Mg")/0.25) THEN maxMol = TOT("Mg")/0.25
+	380 IF (maxMol > TOT("K")/0.85) THEN maxMol = TOT("K")/0.85
+	400 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	410 Save moles
+	-end
+	
+	Illite-Al
+	# dissolution kinetic data extracted from 06has/vil 03tou/nea 03koh/duf 05koh/bos
+	# precipitation kinetic data extracted from Kaolinite precipitation rate: 08yan/ste 93nag/las 97dev/sch
+	# surface area data extracted from 15mar/cla
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Illite-Al")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 410		# mineral saturation ratio	
+	25 If (SRmin = 1) Then GoTo 400						# if system in equilibrium then end
+	30 S = 30 											# ESA (06has/vil 03tou/nea); suggested value in m2/g 	
+	40 Mm = 401.836										# molar mass in g/mol
+	50 Mv = 141.34E-06									# molar volume in m3/mol
+	60 If (SRmin > 1) Then GoTo 150
+	########## start dissolution bloc ##########
+	70 knu = 1.78E-14 * exp((-34600 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	80 k1 = 0.00000000000901 * exp((-37800 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.523)
+	90 k2 = 0.00000000000269 * exp((-49900 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.378)
+	100 k = knu + k1 + k2
+	110 rate = S * m * Mm * k * ((1 - SRmin ^ 0.06) ^ 1.68)
+	120 moles = rate * Time
+	#### Do not dissolve more than there is solid present ####
+	130 IF (moles > M) THEN moles = M
+	140 GoTo 410
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	150 surf_energy = 0.1 								# interfacial energy for lateral surface in J m-2 (from kaolinite after Fritz et al 2009; lateral s chosen to be 2 times basal)
+	160 sheet_thick = 10e-10							# thickness of one mineral layer in m (Warr and Nieto 1998)
+	170 molvol = 2.347E-28								# molecular volume in m3 (calculated from molar volume)
+	180	u = ( 2 * sqrt(3) * sheet_thick * surf_energy^2 * molvol ) / ( (1.38E-23 * TK)^2 ) # (after Fritz et al 2009)
+	190 J0 = 1E20  										# nucleation rate in nuclei m-2 sec-1 (after Fritz et al 2009) 
+	200 SRcrit = exp( u / LOG( J0 ) ) 					# critical saturation threshold
+	210 IF ( SRmin < SRcrit ) Then GoTo 280 			# if saturation index below threshold no nucleation occurs
+	220 nuclie = J0 * exp( -u / LOG(SRmin) ) * Time  	# nucleation rate in nuclie sec-1 multiplied by time to give nuclie per timestep
+	230 IF ( nuclie < 1 ) THEN GoTo 280 				# condition that rate needs to be bigger than 1 nucl per time step (Arbitrary)
+	240 nj = u / (LOG(SRmin)^2) 						# number of growth units in critical nucleus
+	250	vol = nj * molvol 								# critical nuclie volume
+	260	moles_nuc = ( -nuclie * vol ) / Mv 				# moles of nuclie formed
+	270 GoTo 290
+	280 moles_nuc = 0
+	#### kinetic data for growth ####
+	290 IF ( m = 0 ) THEN GoTo 330
+	300 knu = 0.000000000000215 * exp((-66400 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	310 kpre = (-1) * knu
+	320 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 0.06) - 1) ^ 1.68) * Time
+	330 moles = moles_nuc + moles_growth
+	335 IF ( moles = 0 ) THEN GoTo 410
+	#### Do not precipitate more than the elements in solution ####
+	340 maxMol = TOT("Al")/2.85
+	350 IF (maxMol > TOT("Si")/3.15) THEN maxMol = TOT("Si")/3.15
+	380 IF (maxMol > TOT("K")/0.85) THEN maxMol = TOT("K")/0.85
+	400 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	410 Save moles
+	-end
+
+	Illite-FeII
+	# dissolution kinetic data extracted from 06has/vil 03tou/nea 03koh/duf 05koh/bos
+	# precipitation kinetic data extracted from Kaolinite precipitation rate: 08yan/ste 93nag/las 97dev/sch
+	# surface area data extracted from 15mar/cla
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Illite-FeII")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 410		# mineral saturation ratio	
+	25 If (SRmin = 1) Then GoTo 400						# if system in equilibrium then end
+	30 S = 30 											# ESA (06has/vil 03tou/nea); suggested value in m2/g 	
+	40 Mm = 401.836										# molar mass in g/mol
+	50 Mv = 141.34E-06									# molar volume in m3/mol
+	60 If (SRmin > 1) Then GoTo 150
+	########## start dissolution bloc ##########
+	70 knu = 1.78E-14 * exp((-34600 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	80 k1 = 0.00000000000901 * exp((-37800 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.523)
+	90 k2 = 0.00000000000269 * exp((-49900 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.378)
+	100 k = knu + k1 + k2
+	110 rate = S * m * Mm * k * ((1 - SRmin ^ 0.06) ^ 1.68)
+	120 moles = rate * Time
+	#### Do not dissolve more than there is solid present ####
+	130 IF (moles > M) THEN moles = M
+	140 GoTo 410
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	150 surf_energy = 0.1 								# interfacial energy for lateral surface in J m-2 (from kaolinite after Fritz et al 2009; lateral s chosen to be 2 times basal)
+	160 sheet_thick = 10e-10							# thickness of one mineral layer in m (Warr and Nieto 1998)
+	170 molvol = 2.347E-28								# molecular volume in m3 (calculated from molar volume)
+	180	u = ( 2 * sqrt(3) * sheet_thick * surf_energy^2 * molvol ) / ( (1.38E-23 * TK)^2 ) # (after Fritz et al 2009)
+	190 J0 = 1E20  										# nucleation rate in nuclei m-2 sec-1 (after Fritz et al 2009) 
+	200 SRcrit = exp( u / LOG( J0 ) ) 					# critical saturation threshold
+	210 IF ( SRmin < SRcrit ) Then GoTo 280 			# if saturation index below threshold no nucleation occurs
+	220 nuclie = J0 * exp( -u / LOG(SRmin) ) * Time  	# nucleation rate in nuclie sec-1 multiplied by time to give nuclie per timestep
+	230 IF ( nuclie < 1 ) THEN GoTo 280 				# condition that rate needs to be bigger than 1 nucl per time step (Arbitrary)
+	240 nj = u / (LOG(SRmin)^2) 						# number of growth units in critical nucleus
+	250	vol = nj * molvol 								# critical nuclie volume
+	260	moles_nuc = ( -nuclie * vol ) / Mv 				# moles of nuclie formed
+	270 GoTo 290
+	280 moles_nuc = 0
+	#### kinetic data for growth ####
+	290 IF ( m = 0 ) THEN GoTo 330
+	300 knu = 0.000000000000215 * exp((-66400 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	310 kpre = (-1) * knu
+	320 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 0.06) - 1) ^ 1.68) * Time
+	330 moles = moles_nuc + moles_growth
+	335 IF ( moles = 0 ) THEN GoTo 410
+	#### Do not precipitate more than the elements in solution ####
+	340 maxMol = TOT("Al")/2.35
+	350 IF (maxMol > TOT("Si")/3.4) THEN maxMol = TOT("Si")/3.4
+	360 IF (maxMol > TOT("Fe")/0.25) THEN maxMol = TOT("Fe")/0.25
+	380 IF (maxMol > TOT("K")/0.85) THEN maxMol = TOT("K")/0.85
 	400 IF (maxMol < -moles) THEN moles = -maxMol
 	########## end precipitation bloc ##########
 	410 Save moles
@@ -634,7 +965,7 @@
 	170 sheet_thick = 7e-10																	# thickness of one mineral layer in m
 	180 molvol = 1.64E-28																	# molecular volume in m3
 	190 u = ( 2 * sqrt(3) * sheet_thick * surf_energy^2 * molvol ) / ( (1.38E-23 * TK)^2 ) 	# (after Fritz et al 2009) 
-	200 J0 = 1E20  																			# nucleation rate in nuclei m-2 sec-1 (after Fritz et al 2009) 
+	200 J0 = 1E20  																			# nucleation rate in nuclei kg-1 sec-1 (after Fritz et al 2009) 
 	210 SRcrit = exp( u / LOG( J0 ) ) 														# critical saturation threshold
 	220 IF ( SRmin < SRcrit ) Then GoTo 290 												# if saturation index below threshold no nucleation occurs
 	230 nuclie = J0 * exp( -u / LOG(SRmin) ) * Time											# nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
@@ -683,31 +1014,6 @@
 	250 Save moles
 	-end
 	
-	Microcline
-	# kinetic data extracted from 04pal/kha
-	# surface area data extracted from 15mar/cla
-	# warning dissolution only
-	# Confidence level: 4
-	-start
-	1 SRmin = SR("Microcline")
-	10 moles = 0
-	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
-	30 S = 0.08 # suggested value in m2/g
-	40 Mm = 278.33 # molar mass in g/mol
-	50 If (SRmin > 1) Then GoTo 250
-	########## start dissolution bloc ##########
-	60 knu = 10^-12.41 * exp((-38000 / 8.314) * ((1 / TK) - (1 / 298.15)))
-	70 k1 = 10^-10.06 * exp((-51700 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.5)
-	80 k2 = 10^-21.2 * exp((-94100 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ -0.823)
-	90 k = knu + k1 + k2
-	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
-	110 moles = rate * Time
-	120 REM Do not dissolve more than what is available
-	130 IF (moles > M) THEN moles = M
-	########## end dissolution bloc ##########
-	250 Save moles
-	-end
-
 	Mackinawite
 	# kinetic data extracted from 79pan/mor 14wan/zha
 	# Confidence level: 3
@@ -770,6 +1076,258 @@
 	250 Save moles
 	-end
 
+	Microcline
+	# kinetic data extracted from 04pal/kha
+	# surface area data extracted from 15mar/cla
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Microcline")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 0.08 # suggested value in m2/g
+	40 Mm = 278.33 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 10^-12.41 * exp((-38000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 10^-10.06 * exp((-51700 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.5)
+	80 k2 = 10^-21.2 * exp((-94100 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ -0.823)
+	90 k = knu + k1 + k2
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+	
+	Montmorillonite-K_HC
+	# kinetic data extracted from 06has/vil 03tou/nea 05yok/kur 01hue/cab 04nak/sak 98bau/ber 00cam/gan 96zys/sch 06gol/bau 05met/amr 05amr/gan 00bos/cha 08roz/hue 09roz/hue
+	# kinetic data extracted from Kaolinite precipitation rate: 08yan/ste 93nag/las 97dev/sch
+	# surface area data extracted from 06has/vil 03tou/nea 05yok/kur
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Montmorillonite-K_HC")
+	10 mole = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 370
+	25 If (SRmin = 1) Then GoTo 370						# if system in equilibrium then end
+	30 S = 8.5 											# ESA (06has/vil 03tou/nea 05yok/kur); suggested value in m2/g
+	40 Mm = 376.697 									# e.g. molar mass of Smectite_MX80 in g/mol
+	50 Mv = 134.19E-06									# molar volume in m3/mol
+	60 If (SRmin > 1) Then GoTo 130
+	########## start dissolution bloc ##########
+	70 knu = 9.3E-15 * exp((-63000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	80 k1 = 5.3E-11 * exp((-54000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.69)
+	90 k2 = 2.9E-12 * exp((-61000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.34)
+	100 k = knu + k1 + k2
+	# warning: kinetic constants normalised with ESA!
+	# theta = 0.17 and eta = 10.34 at 80°C and pH 8.8 (extracted from 00cam/gan)
+	110 rate = S * m * Mm * k * ((1 - SRmin ^ 0.17) ^ 10.34)
+	120 GoTo 370
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	135 If (m >= 1e-5) then GoTo 280
+	130 surf_energy = 0.05 								# interfacial energy for lateral surface in J m-2 (from Fritz et al 2009; lateral s chosen to be 2 times basal))
+	140 sheet_thick = 15e-10							# thickness of one mineral layer in m
+	150 molvol = 2.228E-28								# molecular volume in m3
+	160	u = ( 2 * sqrt(3) * sheet_thick * surf_energy^2 * molvol ) / ( (1.38E-23 * TK)^2 ) # (after Fritz et al 2009)
+	170 J0 = 1E20  										# nucleation rate in nuclei m-2 sec-1 (after Fritz et al 2009) 
+	180 SRcrit = exp( u / LOG( J0 ) ) 					# critical saturation threshold
+	190 IF ( SRmin < SRcrit ) Then GoTo 260 			# if saturation index below threshold no nucleation occurs
+	200 nuclie = J0 * exp( -u / LOG(SRmin) ) * Time		# nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
+	210 IF ( nuclie < 1 ) THEN GoTo 260 				# condition that rate needs to be bigger than 1 nucl per sec (Arbitrary)
+	220 nj = u / (LOG(SRmin)^2) 						# number of growth units in critical nuclie radius
+	230	vol = nj * molvol 								# critical nuclie volume
+	240	moles_nuc = ( -nuclie * vol ) / Mv 	# moles of nuclie formed
+	250 GoTo 270
+	260 moles_nuc = 0
+	#### kinetic data for growth #### 
+	270 IF ( m = 0 ) THEN GoTo 310
+	280 knu = 2.2E-13 * exp((-66000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	290 kpre = (-1) * knu
+	300 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 0.06) - 1) ^ 1.68) * Time
+	310 moles = moles_nuc + moles_growth
+    315 IF ( moles = 0 ) THEN GoTo 370	
+	#### Do not precipitate more than the elements in solution ####
+	320 maxMol = TOT("Al")/1.4
+	330 IF (maxMol > TOT("Si")/4) THEN maxMol = TOT("Si")/4
+	340 IF (maxMol > TOT("Mg")/0.6) THEN maxMol = TOT("Mg")/0.6
+	350 IF (maxMol > TOT("K")/0.6) THEN maxMol = TOT("K")/0.6
+	360 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	370 Save mole
+	-end
+
+	Montmorillonite-Na_HC
+	# kinetic data extracted from 06has/vil 03tou/nea 05yok/kur 01hue/cab 04nak/sak 98bau/ber 00cam/gan 96zys/sch 06gol/bau 05met/amr 05amr/gan 00bos/cha 08roz/hue 09roz/hue
+	# kinetic data extracted from Kaolinite precipitation rate: 08yan/ste 93nag/las 97dev/sch
+	# surface area data extracted from 06has/vil 03tou/nea 05yok/kur
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Montmorillonite-Na_HC")
+	10 mole = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 370
+	25 If (SRmin = 1) Then GoTo 370						# if system in equilibrium then end
+	30 S = 8.5 											# ESA (06has/vil 03tou/nea 05yok/kur); suggested value in m2/g
+	40 Mm = 376.697 									# e.g. molar mass of Smectite_MX80 in g/mol
+	50 Mv = 134.19E-06									# molar volume in m3/mol
+	60 If (SRmin > 1) Then GoTo 130
+	########## start dissolution bloc ##########
+	70 knu = 9.3E-15 * exp((-63000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	80 k1 = 5.3E-11 * exp((-54000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.69)
+	90 k2 = 2.9E-12 * exp((-61000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.34)
+	100 k = knu + k1 + k2
+	# warning: kinetic constants normalised with ESA!
+	# theta = 0.17 and eta = 10.34 at 80°C and pH 8.8 (extracted from 00cam/gan)
+	110 rate = S * m * Mm * k * ((1 - SRmin ^ 0.17) ^ 10.34)
+	120 GoTo 370
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	135 If (m >= 1e-5) then GoTo 280
+	130 surf_energy = 0.05 								# interfacial energy for lateral surface in J m-2 (from Fritz et al 2009; lateral s chosen to be 2 times basal))
+	140 sheet_thick = 15e-10							# thickness of one mineral layer in m
+	150 molvol = 2.228E-28								# molecular volume in m3
+	160	u = ( 2 * sqrt(3) * sheet_thick * surf_energy^2 * molvol ) / ( (1.38E-23 * TK)^2 ) # (after Fritz et al 2009)
+	170 J0 = 1E20  										# nucleation rate in nuclei m-2 sec-1 (after Fritz et al 2009) 
+	180 SRcrit = exp( u / LOG( J0 ) ) 					# critical saturation threshold
+	190 IF ( SRmin < SRcrit ) Then GoTo 260 			# if saturation index below threshold no nucleation occurs
+	200 nuclie = J0 * exp( -u / LOG(SRmin) ) * Time		# nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
+	210 IF ( nuclie < 1 ) THEN GoTo 260 				# condition that rate needs to be bigger than 1 nucl per sec (Arbitrary)
+	220 nj = u / (LOG(SRmin)^2) 						# number of growth units in critical nuclie radius
+	230	vol = nj * molvol 								# critical nuclie volume
+	240	moles_nuc = ( -nuclie * vol ) / Mv 	# moles of nuclie formed
+	250 GoTo 270
+	260 moles_nuc = 0
+	#### kinetic data for growth #### 
+	270 IF ( m = 0 ) THEN GoTo 310
+	280 knu = 2.2E-13 * exp((-66000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	290 kpre = (-1) * knu
+	300 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 0.06) - 1) ^ 1.68) * Time
+	310 moles = moles_nuc + moles_growth
+    315 IF ( moles = 0 ) THEN GoTo 370	
+	#### Do not precipitate more than the elements in solution ####
+	320 maxMol = TOT("Al")/1.4
+	330 IF (maxMol > TOT("Si")/4) THEN maxMol = TOT("Si")/4
+	340 IF (maxMol > TOT("Mg")/0.6) THEN maxMol = TOT("Mg")/0.6
+	350 IF (maxMol > TOT("Na")/0.6) THEN maxMol = TOT("Na")/0.6
+	360 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	370 Save mole
+	-end
+	
+	Montmorillonite-Mg_HC
+	# kinetic data extracted from 06has/vil 03tou/nea 05yok/kur 01hue/cab 04nak/sak 98bau/ber 00cam/gan 96zys/sch 06gol/bau 05met/amr 05amr/gan 00bos/cha 08roz/hue 09roz/hue
+	# kinetic data extracted from Kaolinite precipitation rate: 08yan/ste 93nag/las 97dev/sch
+	# surface area data extracted from 06has/vil 03tou/nea 05yok/kur
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Montmorillonite-Mg_HC")
+	10 mole = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 370
+	25 If (SRmin = 1) Then GoTo 370						# if system in equilibrium then end
+	30 S = 8.5 											# ESA (06has/vil 03tou/nea 05yok/kur); suggested value in m2/g
+	40 Mm = 376.697 									# e.g. molar mass of Smectite_MX80 in g/mol
+	50 Mv = 134.19E-06									# molar volume in m3/mol
+	60 If (SRmin > 1) Then GoTo 130
+	########## start dissolution bloc ##########
+	70 knu = 9.3E-15 * exp((-63000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	80 k1 = 5.3E-11 * exp((-54000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.69)
+	90 k2 = 2.9E-12 * exp((-61000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.34)
+	100 k = knu + k1 + k2
+	# warning: kinetic constants normalised with ESA!
+	# theta = 0.17 and eta = 10.34 at 80°C and pH 8.8 (extracted from 00cam/gan)
+	110 rate = S * m * Mm * k * ((1 - SRmin ^ 0.17) ^ 10.34)
+	120 GoTo 370
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	135 If (m >= 1e-5) then GoTo 280
+	130 surf_energy = 0.05 								# interfacial energy for lateral surface in J m-2 (from Fritz et al 2009; lateral s chosen to be 2 times basal))
+	140 sheet_thick = 15e-10							# thickness of one mineral layer in m
+	150 molvol = 2.228E-28								# molecular volume in m3
+	160	u = ( 2 * sqrt(3) * sheet_thick * surf_energy^2 * molvol ) / ( (1.38E-23 * TK)^2 ) # (after Fritz et al 2009)
+	170 J0 = 1E20  										# nucleation rate in nuclei m-2 sec-1 (after Fritz et al 2009) 
+	180 SRcrit = exp( u / LOG( J0 ) ) 					# critical saturation threshold
+	190 IF ( SRmin < SRcrit ) Then GoTo 260 			# if saturation index below threshold no nucleation occurs
+	200 nuclie = J0 * exp( -u / LOG(SRmin) ) * Time		# nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
+	210 IF ( nuclie < 1 ) THEN GoTo 260 				# condition that rate needs to be bigger than 1 nucl per sec (Arbitrary)
+	220 nj = u / (LOG(SRmin)^2) 						# number of growth units in critical nuclie radius
+	230	vol = nj * molvol 								# critical nuclie volume
+	240	moles_nuc = ( -nuclie * vol ) / Mv 	# moles of nuclie formed
+	250 GoTo 270
+	260 moles_nuc = 0
+	#### kinetic data for growth #### 
+	270 IF ( m = 0 ) THEN GoTo 310
+	280 knu = 2.2E-13 * exp((-66000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	290 kpre = (-1) * knu
+	300 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 0.06) - 1) ^ 1.68) * Time
+	310 moles = moles_nuc + moles_growth
+    315 IF ( moles = 0 ) THEN GoTo 370	
+	#### Do not precipitate more than the elements in solution ####
+	320 maxMol = TOT("Al")/1.4
+	330 IF (maxMol > TOT("Si")/4) THEN maxMol = TOT("Si")/4
+	340 IF (maxMol > TOT("Mg")/0.9) THEN maxMol = TOT("Mg")/0.9
+	360 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	370 Save mole
+	-end
+	
+	Montmorillonite-Ca_HC
+	# kinetic data extracted from 06has/vil 03tou/nea 05yok/kur 01hue/cab 04nak/sak 98bau/ber 00cam/gan 96zys/sch 06gol/bau 05met/amr 05amr/gan 00bos/cha 08roz/hue 09roz/hue
+	# kinetic data extracted from Kaolinite precipitation rate: 08yan/ste 93nag/las 97dev/sch
+	# surface area data extracted from 06has/vil 03tou/nea 05yok/kur
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Montmorillonite-Ca_HC")
+	10 mole = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 370
+	25 If (SRmin = 1) Then GoTo 370						# if system in equilibrium then end
+	30 S = 8.5 											# ESA (06has/vil 03tou/nea 05yok/kur); suggested value in m2/g
+	40 Mm = 376.697 									# e.g. molar mass of Smectite_MX80 in g/mol
+	50 Mv = 134.19E-06									# molar volume in m3/mol
+	60 If (SRmin > 1) Then GoTo 130
+	########## start dissolution bloc ##########
+	70 knu = 9.3E-15 * exp((-63000 / 8.314) * ((1 / TK) - (1 / 298.15))) 
+	80 k1 = 5.3E-11 * exp((-54000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H3O+") ^ 0.69)
+	90 k2 = 2.9E-12 * exp((-61000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.34)
+	100 k = knu + k1 + k2
+	# warning: kinetic constants normalised with ESA!
+	# theta = 0.17 and eta = 10.34 at 80°C and pH 8.8 (extracted from 00cam/gan)
+	110 rate = S * m * Mm * k * ((1 - SRmin ^ 0.17) ^ 10.34)
+	120 GoTo 370
+	########## end dissolution bloc ##########
+	########## start precipitation bloc ##########
+	135 If (m >= 1e-5) then GoTo 280
+	130 surf_energy = 0.05 								# interfacial energy for lateral surface in J m-2 (from Fritz et al 2009; lateral s chosen to be 2 times basal))
+	140 sheet_thick = 15e-10							# thickness of one mineral layer in m
+	150 molvol = 2.228E-28								# molecular volume in m3
+	160	u = ( 2 * sqrt(3) * sheet_thick * surf_energy^2 * molvol ) / ( (1.38E-23 * TK)^2 ) # (after Fritz et al 2009)
+	170 J0 = 1E20  										# nucleation rate in nuclei m-2 sec-1 (after Fritz et al 2009) 
+	180 SRcrit = exp( u / LOG( J0 ) ) 					# critical saturation threshold
+	190 IF ( SRmin < SRcrit ) Then GoTo 260 			# if saturation index below threshold no nucleation occurs
+	200 nuclie = J0 * exp( -u / LOG(SRmin) ) * Time		# nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
+	210 IF ( nuclie < 1 ) THEN GoTo 260 				# condition that rate needs to be bigger than 1 nucl per sec (Arbitrary)
+	220 nj = u / (LOG(SRmin)^2) 						# number of growth units in critical nuclie radius
+	230	vol = nj * molvol 								# critical nuclie volume
+	240	moles_nuc = ( -nuclie * vol ) / Mv 	# moles of nuclie formed
+	250 GoTo 270
+	260 moles_nuc = 0
+	#### kinetic data for growth #### 
+	270 IF ( m = 0 ) THEN GoTo 310
+	280 knu = 2.2E-13 * exp((-66000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	290 kpre = (-1) * knu
+	300 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 0.06) - 1) ^ 1.68) * Time
+	310 moles = moles_nuc + moles_growth
+    315 IF ( moles = 0 ) THEN GoTo 370	
+	#### Do not precipitate more than the elements in solution ####
+	320 maxMol = TOT("Al")/1.4
+	330 IF (maxMol > TOT("Si")/4) THEN maxMol = TOT("Si")/4
+	340 IF (maxMol > TOT("Mg")/0.6) THEN maxMol = TOT("Mg")/0.6
+	350 IF (maxMol > TOT("Ca")/0.3) THEN maxMol = TOT("Ca")/0.3
+	360 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	370 Save mole
+	-end
+	
 	Muscovite
 	# kinetic data extracted from 17Lam/Smi 
 	# surface area data from 17Lam/Smi 
@@ -826,10 +1384,11 @@
 	-start
 	1 SRmin = SR("Siderite")
 	10 moles = 0
-	20 If (m <= 0) and (SRmin < 1) Then GoTo 240
-	25 If (SRmin = 1) Then GoTo 240				
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 350
+	25 If (SRmin = 1) Then GoTo 350				
 	30 S = 0.13 # average BET; suggested value in m2/g
 	40 Mm = 115.86	# molar mass in g/mol
+	45 Mv = 2.049E-05									# molar volume in m3/mol
 	50 If (SRmin > 1) Then GoTo 130
 	########## start dissolution bloc ##########
 	60 knu = 2.1E-09 * exp((-56000 / 8.314) * ((1 / TK) - (1 / 298.15)))
@@ -838,32 +1397,44 @@
 	90 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin)
 	100 moles = rate * Time
 	110 IF (moles > M) THEN moles = M
-	120 GoTo 240
+	120 GoTo 350
 	########## end dissolution bloc ##########
 	########## start precipitation bloc ##########
-	130 If (m <= 1e-5) then GoTo 170
-	140 knu = 1.6E-11 * exp((-108000 / 8.314) * ((1 / TK) - (1 / 298.15)))
-	150 kpre = (-1) * knu
-	160 rate = S * m * Mm * kpre * (SRmin  - 1)
-	170 GoTo 190
-	#start nucleation
-	180 rate = -1e-12
-	190 moles = rate * Time
-	200 REM Do not precipitate more than the elements in solution
-	210 maxMol = TOT("Fe(2)")
-	220 IF (maxMol > TOT("C(4)")) THEN maxMol = TOT("C(4)")
-	230 IF (maxMol < -moles) THEN moles = -maxMol
+	130 surf_energy = 0.06 									# interfacial energy in J m-2
+	140 molvol = 3.4e-29									# molecular volume in m3
+	150 u = ( 16 * 3.14159 * surf_energy^3 * molvol ^ 2 ) / ( 3 * (1.38E-23 * TK)^3 ) 	# (after Fritz et al 2009) 
+	160 J0 = 1E20  											# nucleation rate in nuclei kg-1 sec-1 (after Fritz et al 2009) 
+	170 SRcrit = exp( sqrt( u / LOG( J0 ) ) ) 				# critical saturation threshold
+	180 IF ( SRmin < SRcrit ) Then GoTo 250 				# if saturation index below threshold no nucleation occurs
+	190 nuclie = J0 * exp( -u / LOG(SRmin)^2 ) * time		# --- nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
+	200 IF ( nuclie < 1 ) THEN GoTo 250 					# condition that rate needs to be bigger than 1 nucl per sec (Arbitrary)
+	210 nj = ( 2 * u ) / (LOG(SRmin)^3) 					# number of growth units in critical nuclie radius
+	220 vol = nj * molvol 									# critical nuclie volume
+	230 moles_nuc = ( -nuclie * vol ) / Mv 	# moles of nuclie formed
+	240 GoTo 260
+	250 moles_nuc = 0
+	#### kinetic data for growth ####
+	260 IF ( m = 0 ) THEN GoTo 300
+	270 knu = 1.6E-11 * exp((-108000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	280 kpre = (-1) * knu
+	290 moles_growth = S * m * Mm * kpre * ABS(SRmin - 1) * Time
+	300 moles = moles_nuc + moles_growth 	
+	310 IF ( moles = 0 ) THEN GoTo 350
 	########## end precipitation bloc ##########
-	240 Save moles
+	320 maxMol = TOT("Fe(2)")
+	330 IF (maxMol > TOT("C")) THEN maxMol = TOT("C")
+	340 IF (maxMol < -moles) THEN moles = -maxMol
+	########## end precipitation bloc ##########
+	350 Save moles
 	-end
-		
-	Smectite(MX80)
+	
+	Smectite
 	# kinetic data extracted from 06has/vil 03tou/nea 05yok/kur 01hue/cab 04nak/sak 98bau/ber 00cam/gan 96zys/sch 06gol/bau 05met/amr 05amr/gan 00bos/cha 08roz/hue 09roz/hue
 	# kinetic data extracted from Kaolinite precipitation rate: 08yan/ste 93nag/las 97dev/sch
 	# surface area data extracted from 06has/vil 03tou/nea 05yok/kur
 	# Confidence level: 4
 	-start
-	1 SRmin = SR("Smectite(MX80)")
+	1 SRmin = SR("Smectite")
 	10 mole = 0
 	20 If (m <= 0) and (SRmin < 1) Then GoTo 400
 	25 If (SRmin = 1) Then GoTo 400						# if system in equilibrium then end
@@ -886,7 +1457,7 @@
 	140 sheet_thick = 15e-10							# thickness of one mineral layer in m
 	150 molvol = 2.228E-28								# molecular volume in m3
 	160	u = ( 2 * sqrt(3) * sheet_thick * surf_energy^2 * molvol ) / ( (1.38E-23 * TK)^2 ) # (?????????????)
-	170 J0 = 1E20  										# nucleation rate in nuclei m-2 sec-1 (Based on Fritz et al 2009) 
+	170 J0 = 1E20  										# nucleation rate in nuclei kg-1 sec-1 (Based on Fritz et al 2009) 
 	180 SRcrit = exp( u / LOG( J0 ) ) 					# critical saturation threshold
 	190 IF ( SRmin < SRcrit ) Then GoTo 260 			# if saturation index below threshold no nucleation occurs
 	200 nuclie = J0 * exp( -u / LOG(SRmin) ) * Time		# nucleation rate in nuclie sec-1 multiplied by time to account for nucleation over time
@@ -902,6 +1473,7 @@
 	290 kpre = (-1) * knu
 	300 moles_growth = S * m * Mm * kpre * (ABS((SRmin ^ 0.06) - 1) ^ 1.68) * Time
 	310 moles = moles_nuc + moles_growth 
+	315 IF ( moles = 0 ) THEN GoTo 400	
 	#### Do not precipitate more than the elements in solution ####
 	320 maxMol = TOT("Al")/1.86
 	330 IF (maxMol > TOT("Si")/3.738) THEN maxMol = TOT("Si")/3.738
