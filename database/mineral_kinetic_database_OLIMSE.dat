@@ -1568,6 +1568,32 @@
 	250 Save moles
 	-end
 
+	Chamosite(Daphnite)
+	# original compilation from 15mar/cla
+	# kinetic data extracted from 09gol/ben
+	# surface area data extracted from (03bra/bos)
+	# warning dissolution only
+	# Confidence level: 4
+	-start
+	1 SRmin = SR("Chamosite(Daphnite)")
+	10 moles = 0
+	20 If (m <= 0) and (SRmin < 1) Then GoTo 250
+	30 S = 0.0027 # 0.2% BET (03bra/bos); suggested value in m2/g
+	40 Mm = 713.5 # molar mass in g/mol
+	50 If (SRmin > 1) Then GoTo 250
+	########## start dissolution bloc ##########
+	60 knu = 6.4E-17 * exp((-16000 / 8.314) * ((1 / TK) - (1 / 298.15)))
+	70 k1 = 8.2E-09 * exp((-17000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("H+") ^ 0.28)
+	80 k2 = 6.9E-09 * exp((-16000 / 8.314) * ((1 / TK) - (1 / 298.15))) * (ACT("OH-") ^ 0.34)
+	90 k = knu + k1 + k2
+	100 rate = S * m * Mm * ((m/m0)^(2/3)) * k * (1 - SRmin) # by default
+	110 moles = rate * Time
+	120 REM Do not dissolve more than what is available
+	130 IF (moles > M) THEN moles = M
+	########## end dissolution bloc ##########
+	250 Save moles
+	-end
+
 	
 # Additional References
 # 63wyc               Wyckoff, R.W.G., 1963, Crystal Structures, Second edition, tome 4, Interscience Publishers, New York, p. 320-322.
