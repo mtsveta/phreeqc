@@ -248,7 +248,7 @@ SOLUTION 0
 
 EQUILIBRIUM_PHASES 1
     Pyrrhotite 0 0
-    Calcite 0 0
+    Calcite 0 0.1
 
 KINETICS 1
 #Calcite
@@ -263,7 +263,7 @@ Siderite
     -tol      1e-008
 Quartz(alpha)
     -formula  Quartz(alpha)  1
-    -m        1
+    -m        0.1
     -m0       1
     -tol      1e-008
 Kaolinite
@@ -278,6 +278,7 @@ Chamosite(Daphnite)
     -tol      1e-008
 -steps        5040000 in 1400 steps # seconds
 #-steps        5184000 in 1440 steps # seconds
+#-steps        36000 in 10 steps # seconds
 #-steps        360000 in 100 steps # seconds
 #-steps        3600000 in 1000 steps # seconds
 -step_divide 1
@@ -286,7 +287,7 @@ Chamosite(Daphnite)
 
 
 SELECTED_OUTPUT 1
-    -file                 H2S_scavenging_with_equilibrium_calcite_1400.txt
+    -file                 ../out/H2S_scavenging_with_equilibrium_calcite_init_amount_1400.txt
     -simulation           true
     -state                false
     -solution             false
@@ -304,6 +305,4 @@ SELECTED_OUTPUT 1
     -totals               Ca  Mg  Na  Cl  Fe  S(6)  S(-2) C
     -equilibrium_phases   Pyrrhotite Calcite
     -kinetic_reactants    Quartz(alpha)  Kaolinite  Chamosite(Daphnite) Siderite
-USER_PUNCH
-  10 PUNCH SIM_TIME
 END
