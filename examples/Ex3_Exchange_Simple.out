@@ -1,0 +1,113 @@
+   Input file: ../examples/Ex3_Exchange_Simple
+  Output file: ../examples/Ex3_Exchange_Simple.out
+Database file: ../database/phreeqc.dat
+
+------------------
+Reading data base.
+------------------
+
+	SOLUTION_MASTER_SPECIES
+	SOLUTION_SPECIES
+	PHASES
+	EXCHANGE_MASTER_SPECIES
+	EXCHANGE_SPECIES
+	SURFACE_MASTER_SPECIES
+	SURFACE_SPECIES
+	RATES
+	END
+------------------------------------
+Reading input data for simulation 1.
+------------------------------------
+
+	DATABASE ../database/phreeqc.dat
+	TITLE Exchange in Dune sand
+	SOLUTION 1
+	Na 1.0 #in mmol/kg H2O
+	K 1.0  #in mmol/kg H2O
+	Ca 1.0 #in mmol/kg H2O
+	Mg 1.0 #in mmol/kg H2O
+	EXCHANGE 1
+	X 1e-6	#moles
+	equilibrate 1
+	PRINT 
+	reset false
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Ca                1.000e-03   1.000e-03
+	K                 1.000e-03   1.000e-03
+	Mg                1.000e-03   1.000e-03
+	Na                1.000e-03   1.000e-03
+
+    ----------------------------Description of solution----------------------------
+
+                                           pH  =   7.000
+                                           pe  =   4.000
+          Specific Conductance (�S/cm,  25�C)  = 311
+                              Density (g/cm�)  =   0.99720
+                                   Volume (L)  =   1.00293
+                            Activity of water  =   1.000
+                     Ionic strength (mol/kgw)  =   5.000e-03
+                           Mass of water (kg)  =   1.000e+00
+                     Total alkalinity (eq/kg)  =   3.264e-08
+                             Temperature (�C)  =  25.00
+                      Electrical balance (eq)  =   6.000e-03
+     Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
+                                   Iterations  =   4
+                                      Total H  = 1.110124e+02
+                                      Total O  = 5.550622e+01
+
+X                1.000e-06 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              2.889e-07   5.779e-07   5.779e-01    -0.128
+	MgX2              1.823e-07   3.646e-07   3.646e-01    -0.127
+	KX                4.796e-08   4.796e-08   4.796e-02    -0.033
+	NaX               9.570e-09   9.570e-09   9.570e-03    -0.033
+
+-----------------------------Exchange composition------------------------------
+
+X                1.000e-06 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              2.889e-07   5.779e-07   5.779e-01    -0.128
+	MgX2              1.823e-07   3.646e-07   3.646e-01    -0.127
+	KX                4.796e-08   4.796e-08   4.796e-02    -0.033
+	NaX               9.570e-09   9.570e-09   9.570e-03    -0.033
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Ca                1.000e-03   1.000e-03
+	K                 1.000e-03   1.000e-03
+	Mg                1.000e-03   1.000e-03
+	Na                1.000e-03   1.000e-03
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.000      Charge balance
+                                       pe  =   4.000      Adjusted to redox equilibrium
+      Specific Conductance (�S/cm,  25�C)  = 311
+                          Density (g/cm�)  =   0.99720
+                               Volume (L)  =   1.00293
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   5.000e-03
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   3.264e-08
+                         Temperature (�C)  =  25.00
+                  Electrical balance (eq)  =   6.000e-03
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
+                               Iterations  =   0
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550622e+01
+
+----------------------------------
+End of Run after 0.044303 Seconds.
+----------------------------------
+

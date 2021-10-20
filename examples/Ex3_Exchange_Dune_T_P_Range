@@ -1,0 +1,79 @@
+DATABASE ../database/phreeqc.dat
+TITLE Exchange in Dune sand, P = 1 atm
+#defining dune sand with 10 meq/kg CEC at equilibrium with dune water
+
+SOLUTION 1
+pressure 1.0
+Na 1.1006
+Mg 0.48
+Ca 1.9
+
+EXCHANGE 1
+X 0.06	#moles
+-equilibrate 1
+
+PRINT 
+-reset false
+-totals true
+-exchange true
+
+REACTION_TEMPERATURE 1
+        25.0 90.0 in 14 steps
+SELECTED_OUTPUT
+        -file   ../out/ion-exchange-dune-p-1.txt
+        -temperature
+        -m NaX CaX2 MgX2
+END
+
+
+TITLE Exchange in Dune sand, P = 10 atm
+#defining dune sand with 10 meq/kg CEC at equilibrium with dune water
+
+SOLUTION 1
+pressure 10.0
+Na 1.1006
+Mg 0.48
+Ca 1.9
+
+EXCHANGE 1
+X 0.06	#moles
+-equilibrate 1
+
+PRINT
+-reset false
+-totals true
+-exchange true
+
+REACTION_TEMPERATURE 1
+        25.0 90.0 in 14 steps
+SELECTED_OUTPUT
+        -file   ../out/ion-exchange-dune-p-10.txt
+        -temperature
+        -m NaX CaX2 MgX2
+END
+
+TITLE Exchange in Dune sand, P = 100 atm
+#defining dune sand with 10 meq/kg CEC at equilibrium with dune water
+
+SOLUTION 1
+pressure 100.0
+Na 1.1006
+Mg 0.48
+Ca 1.9
+
+EXCHANGE 1
+X 0.06	#moles
+-equilibrate 1
+
+PRINT
+-reset false
+-totals true
+-exchange true
+
+REACTION_TEMPERATURE 1
+        25.0 90.0 in 14 steps
+SELECTED_OUTPUT
+        -file   ../out/ion-exchange-dune-p-100.txt
+        -temperature
+        -m NaX CaX2 MgX2
+END

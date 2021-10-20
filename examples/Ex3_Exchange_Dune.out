@@ -1,0 +1,108 @@
+   Input file: ../examples/Ex3_Exchange_Dune
+  Output file: ../examples/Ex3_Exchange_Dune.out
+Database file: ../database/phreeqc.dat
+
+------------------
+Reading data base.
+------------------
+
+	SOLUTION_MASTER_SPECIES
+	SOLUTION_SPECIES
+	PHASES
+	EXCHANGE_MASTER_SPECIES
+	EXCHANGE_SPECIES
+	SURFACE_MASTER_SPECIES
+	SURFACE_SPECIES
+	RATES
+	END
+------------------------------------
+Reading input data for simulation 1.
+------------------------------------
+
+	DATABASE ../database/phreeqc.dat
+	TITLE Exchange in Dune sand
+	SOLUTION 1
+	Na 1.1006
+	Mg 0.48
+	Ca 1.9
+	EXCHANGE 1
+	X 0.06	#moles
+	equilibrate 1
+	PRINT 
+	reset false
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Ca                1.900e-03   1.900e-03
+	Mg                4.800e-04   4.800e-04
+	Na                1.101e-03   1.101e-03
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.000    
+                                       pe  =   4.000    
+      Specific Conductance (µS/cm,  25°C)  = 289
+                          Density (g/cm³)  =   0.99720
+                               Volume (L)  =   1.00292
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   5.310e-03
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.865e-08
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =   5.861e-03
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
+                               Iterations  =   4
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550622e+01
+
+X                6.000e-02 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              2.564e-02   5.127e-02   8.545e-01    -0.132
+	MgX2              4.086e-03   8.172e-03   1.362e-01    -0.130
+	NaX               5.575e-04   5.575e-04   9.292e-03    -0.033
+
+-----------------------------Exchange composition------------------------------
+
+X                6.000e-02 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              2.564e-02   5.127e-02   8.545e-01    -0.132
+	MgX2              4.086e-03   8.172e-03   1.362e-01    -0.130
+	NaX               5.575e-04   5.575e-04   9.292e-03    -0.033
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Ca                1.900e-03   1.900e-03
+	Mg                4.800e-04   4.800e-04
+	Na                1.101e-03   1.101e-03
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.000      Charge balance
+                                       pe  =   4.000      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 289
+                          Density (g/cm³)  =   0.99720
+                               Volume (L)  =   1.00292
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   5.310e-03
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.865e-08
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =   5.861e-03
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
+                               Iterations  =   0
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550622e+01
+
+----------------------------------
+End of Run after 0.032721 Seconds.
+----------------------------------
+

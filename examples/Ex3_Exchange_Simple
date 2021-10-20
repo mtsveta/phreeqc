@@ -1,0 +1,22 @@
+DATABASE ../database/phreeqc.dat
+TITLE Exchange in Dune sand
+#defining dune sand with 10 meq/kg CEC at equilibrium with dune water
+
+SOLUTION 1
+Na 1.0 #in mmol/kg H2O
+K 1.0  #in mmol/kg H2O
+#Cl 6.0 #in mmol/kg H2O
+Ca 1.0 #in mmol/kg H2O
+Mg 1.0 #in mmol/kg H2O
+
+
+EXCHANGE 1
+#X 0.06	#moles
+X 1e-6	#moles
+-equilibrate 1
+
+PRINT 
+-reset false
+-totals true
+-exchange true
+END
