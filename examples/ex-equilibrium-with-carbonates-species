@@ -4,7 +4,7 @@ SOLUTION 1  Pure water
         temp    25.0
         pressure 1.0
 EQUILIBRIUM_PHASES
-        CO2(g)  0.0 10.0
+        CO2(g)  0.0 10.0 # log10(P) = 0.0 => P = 1
         Calcite 0.0 10.0
         Dolomite 0.0 10.0
 REACTION_TEMPERATURE 1
@@ -20,7 +20,7 @@ SOLUTION 2  Pure water
         temp    25.0
         pressure 100.0
 EQUILIBRIUM_PHASES
-        CO2(g)  2.0 10.0 # log(P) = 2.0 => P = 100
+        CO2(g)  2.0 10.0 # log10(P) = 2.0 => P = 100
         Calcite 0.0 10.0
         Dolomite 0.0 10.0
 REACTION_TEMPERATURE 1

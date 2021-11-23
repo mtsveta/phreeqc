@@ -1,4 +1,4 @@
-#must use DATABASE pitzer.dat
+DATABASE ../pitzer.dat
 TITLE Comparison of PHREEQC and Reaktoro speciation calculations
 KNOBS
         convergence_tolerance 1e-15
