@@ -1,0 +1,255 @@
+DATABASE E:\My Documents\Database - Minteq v9 - Kinetics\minteq v9_21092016.dat
+Title Ex07_Isoth
+KNOBS
+    -iterations            10000
+    -convergence_tolerance 1e-008
+    -tolerance             1e-015
+    -step_size             100
+    -pe_step_size          5
+
+
+SELECTED_OUTPUT           
+    -file                 Ex07_Isoth.out
+    -selected_out         true
+    -high_precision       true
+    -simulation           true
+    -state                true
+    -solution             true
+    -distance             false
+    -time                 false
+    -step                 false
+    -ph                   true
+    -pe                   true
+    -alkalinity           true
+    -ionic_strength       true
+    -water                true
+    -charge_balance       true
+    -totals               C(4) Ag Al As B Ba Ca Cd Co Cr Cu F Fe Hg K Mg Mn Mo Na Ni Pb Sb Se Tl V Zn S(6) Cl
+END
+
+RATES
+    Hg_sorption
+-start
+10 km = 1#/3600; 1 = 1 h
+20 kd = 4.09e-4
+30 solids = 1e-10
+40 rate = -km *(MOL("Hg") - (solids/kd))
+
+50 moles = rate * TIME
+70 SAVE moles
+-end
+
+END
+
+TITLE Average rainwater chemistry - Saval Ranch Meteorological Station, Elko County, Nevada (1984 - 1997). Data from National Atmospheric Deposition Program.
+
+SOLUTION 1 Average precipitation chemistry 
+    temp	25
+    pH 	5.03
+    pe 	4
+    redox	pe
+    units	mg/l
+    	
+    Ca 	0.245
+    Mg	0.032
+    Na	0.26
+    K		0.032
+    Cl	0.191
+    S(6)	0.58 as SO4
+    N(5)    0.648 as NO3	
+END
+
+TITLE Average Percolation leachate data
+
+SOLUTION 2 Leachate data
+    temp      25
+    pH        8.0267
+    pe        4
+    redox     pe
+    units     mg/l
+    Alkalinity 30.2 as HCO3
+    Al	0.0031
+    As	0.2900
+    B		0.0408
+    Ba	0.0186
+    Ca	11.0667
+    Cl	7.4667
+    F		0.4767
+    Fe	0.0018
+    Hg	0.01705
+    K		3.4833   
+    Mg	2.7100
+    Mo	0.0005
+    Na	6.4917
+    P		0.0138
+    S(6)	19.0750 as SO4
+    Sb	0.0011		
+
+END  
+ 
+Title Average Groundwater chemistry
+SOLUTION 3 Groundwater chemistry 
+    temp      25
+    pH        7.7115
+    pe        4
+    redox     pe
+    units     mg/l
+        
+    Alkalinity 156.0915 as HCO3
+    Ag	0.0050
+    Al	0.0800
+    As	0.0037
+    Ba	0.2884
+    Ca	43.5125
+    Cd	0.0020
+    Cl	3.5800
+    Cr	0.0060
+    Cu	0.0100
+    F		0.1258
+    Fe	0.0745
+    Hg	0.0002
+    K		2.7104  
+    Mg	16.5792
+    Mn	0.0647
+    Na	9.1842
+    Ni	0.0100
+    Pb	0.0030
+    S(6)	16.1667 as SO4
+    Sb	0.0030
+    Se	0.0040
+    Tl	0.0010
+    Zn	0.0100
+
+    -water    1 # kg
+END  
+
+
+TITLE Allow precipitation of oversaturated phases in seepage solution
+PHASES 
+Fix_pe
+    e-=e-
+    log_k     0
+
+KINETICS 1
+Hg_sorption
+    -formula  Hg  1
+    -m0       0
+
+-steps       1 in 1 steps # seconds
+
+
+INCREMENTAL_REACTIONS true
+
+EQUILIBRIUM_PHASES 1
+    Ag2Se 0 0 
+    Anglesite 0 0 
+    Anhydrite 0 0 
+    Alunite   0 0
+    Barite    0 0 
+    Birnessite 0 0 
+    Bixbyite 0 0 
+    Calcite   0 0
+    Cerrussite 0 0 
+    Chalcedony 0 0 
+    CO2(g)    -3.5 10
+    CuSe 0 0 
+    Cu2Se(alpha) 0 0 
+    Diaspore  0 0
+    FCO3Apatite 0 0 
+    Ferrihydrite 0 0
+    Fluorite 0 0 
+    Gibbsite  0 0
+    Gypsum    0 0
+    Hausmannite 0 0 
+    Hydroxylpyromorphite 0 0 
+    Manganite 0 0 
+    MnHPO4 0 0 
+    MnSeO3 0 0 
+    MnSeO3:2H2O 0 0 
+    O2(g)     -32 10
+    Pb(OH)2 0 0 
+    Pyrolusite 0 0 
+    Pyromorphite 0 0 
+    Quartz 0 0  
+    Rhodochrosite 0 0 
+
+
+SURFACE 1
+    Hfo_sOH Ferrihydrite         equilibrium_phase 0.005 64200
+    Hfo_wOH Ferrihydrite	   equilibrium_phase 0.2
+    -donnan 1e-008
+
+USE Solution 2
+save solution 10
+end
+
+TITLE Blend seepage solution and groundwater 
+MIX 1   
+10	0.002596
+3	0.997404
+   
+SAVE SOLUTION   11
+END
+
+Title Allow precipitation of oversaturated phases in groundwater 
+PHASES 
+Fix_pe
+    e-=e-
+    log_k     0
+
+EQUILIBRIUM_PHASES 2
+    Ag2Se 0 0 
+    Anglesite 0 0 
+    Anhydrite 0 0 
+    Alunite   0 0
+    Barite    0 0 
+    Birnessite 0 0 
+    Bixbyite 0 0 
+    Calcite   0 0
+    Cerrussite 0 0 
+    Chalcedony 0 0 
+    CO2(g)    -3.5 10
+    CuSe 0 0 
+    Cu2Se(alpha) 0 0 
+    Diaspore  0 0
+    FCO3Apatite 0 0 
+    Ferrihydrite 0 0
+    Fluorite 0 0 
+    Gibbsite  0 0
+    Gypsum    0 0
+    Hausmannite 0 0 
+    Hydroxylpyromorphite 0 0 
+    Manganite 0 0 
+    MnHPO4 0 0 
+    MnSeO3 0 0 
+    MnSeO3:2H2O 0 0 
+    O2(g)     -32 10
+    Pb(OH)2 0 0 
+    Pyrolusite 0 0 
+    Pyromorphite 0 0 
+    Quartz 0 0  
+    Rhodochrosite 0 0 
+       
+USE solution 11
+SAVE EQUILIBRIUM_PHASES 2
+SAVE Solution 14 ## Groundwater chemistry after Mineral Precipitation
+END  
+
+Title  Determine loss of metals due to HFO sorption and sedimentation
+SURFACE 2
+    Hfo_sOH Ferrihydrite         equilibrium_phase 0.005 64200
+    Hfo_wOH Ferrihydrite	   equilibrium_phase 0.2
+    -donnan 1e-008
+USE EQUILIBRIUM_PHASES 1 ## uses ferrihydrite precipited as reactive surface
+USE Surface 2
+USE Solution 14
+SAVE Solution 15  # Groundwater chemistry after Mineral Precipitation and Sorption Loss
+END
+
+Title Use solution 15 to allow output
+REACTION 1   
+    H2O        -1
+    0 moles 
+
+USE solution 15  
+End

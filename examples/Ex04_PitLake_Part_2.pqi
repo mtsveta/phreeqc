@@ -1,0 +1,122 @@
+DATABASE C:\Program Files (x86)\USGS\Phreeqc Interactive 3.4.0-12927\database\minteq.v4.dat
+
+Title "Abandoned Pit Lake"
+
+SELECTED_OUTPUT
+    -file                 Ex04_PitLake.xls
+    -ph                   true
+    -pe                   true
+    -temperature          true
+    -ionic_strength       true
+    -water                true
+    -percent_error        true
+    -totals               Alkalinity  Cl  S(6)  Ca  Na  Mg K As Cd Fe
+    -Saturation_indices   Calcite  Gypsum  Ferrihydrite CO2(g) O2(g)
+    -equilibrium_phases   Calcite  Gypsum  Ferrihydrite CO2(g) O2(g)
+
+USER_PUNCH
+Headings 	Cl(mg/L) SO4(mg/L) Ca(mg/L) Na(mg/L) Mg(mg/L) K(mg/L) As(mg/L) Cd(mg/L) Fe(mg/L)
+Start
+10	Punch tot("Cl")*35.5*1000
+20	Punch tot("S(6)")*96*1000
+30	Punch tot("Ca")*40.1*1000
+40	Punch tot("Na")*23*1000
+50	Punch tot("Mg")*24.3*1000
+60	Punch tot("K")*39.1*1000
+70	Punch tot("As")*74.9*1000
+80	Punch tot("Cd")*112.4*1000
+90	Punch tot("Fe")*55.8*1000
+End
+
+SOLUTION	1  PitWater		
+	redox		pe		
+	units		mg/L		
+	density 	1		
+	temp     	18
+	pH		3.3		
+	pe		4
+	Cl		20		
+	S(6)		2250		
+	Ca 		610
+	Na		185		
+	Mg 		38
+	K		37		
+	As		1		
+	Cd		0.2		
+	Fe		15		
+-water    		1 # kg			
+End				
+				
+EQUILIBRIUM_PHASES		1		
+	Calcite 		0	0.05	#Treatment Plant 5g calcite per 1 L of water
+	Ferrihydrite	0	0	
+	Gypsum		0	0	
+	CO2(g)		-3.5		
+	O2(g)			-0.68		
+USE Solution 1
+SAVE Solution 2
+SAVE Equilibrium_Phases 2
+End				
+
+Surface	1
+	    Hfo_sOH Ferrihydrite         equilibrium_phase 0.005 600		
+	    Hfo_wOH Ferrihydrite	   equilibrium_phase 0.2
+	    -donnan 	1.00E-08	
+USE EQUILIBRIUM_PHASES		1	
+USE Surface		1	
+USE Solution	2	
+SAVE Solution 	3	
+END			
+
+Solution 		4
+	pe    	4
+	redox		pe
+	units		mg/L
+	density 	1
+	temp     	18
+	pH		7	
+	Na		100
+	Alkalinity	50
+	Cl		400
+	Fe		300
+	-water 	1 # kg	
+End		
+		
+MIX	1	
+	3	0.9
+	4	0.1
+Save SOLUTION	5	
+END		
+		
+EQUILIBRIUM_PHASES		2
+	Calcite 		0	0
+	Ferrihydrite	0	0
+	Gypsum		0	0
+	CO2(g)		-3.5
+	O2(g)			-0.68
+USE Solution 5
+SAVE Equilibrium_Phases 2
+SAVE solution 6
+End		
+		
+SURFACE		2
+	    Hfo_sOH Ferrihydrite         equilibrium_phase 0.005 600	
+	    Hfo_wOH Ferrihydrite	   equilibrium_phase 0.2
+	    -donnan 	1.00E-08
+
+USE EQUILIBRIUM_PHASES 2	
+USE Surface		2
+USE Solution	6
+SAVE Solution 	7
+END		
+
+
+
+
+
+
+
+
+
+
+

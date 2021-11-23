@@ -1,0 +1,26 @@
+DATABASE C:\Program Files (x86)\USGS\Phreeqc Interactive 3.3.12-12704\database\phreeqc.dat
+title Ex06_Sorption Kd
+
+PRINT
+	-reset false
+	-user_print true
+
+SOLUTION 1
+	pH 6
+	pe 14 O2(g) -0.68
+	Ca	1
+	Cl	2
+	Cd	1e-6
+	
+SURFACE 1
+	Hfo_w  1e-3  60   4.45
+	Hfo_s  2.5e-5
+	-equil 1
+	
+USER_PRINT
+	-start
+		10 print "K_d (L/kg) = ", (mol("Hfo_wOCd+") + \
+            mol("Hfo_sOCd+"))/tot("Cd")
+	-end
+
+END

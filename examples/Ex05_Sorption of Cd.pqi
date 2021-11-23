@@ -1,0 +1,27 @@
+DATABASE C:\Program Files (x86)\USGS\Phreeqc Interactive 3.3.12-12704\database\phreeqc.dat
+Title Ex05_sorption of Cd to iron oxydes
+
+SOLUTION 	1
+    temp     25
+    pH        6
+    pe        14 	O2(g) -0.68
+    redox     pe
+    units     mmol/kgw
+    density   1
+    Ca     1	;   Cd   1e-006
+    Cl      2
+    -water    1 # kg
+
+SURFACE 		1
+#2790 ppm Fe /55.85 = 50 mmol/kg*89 =4.45g "Ferrihyd"/kg
+
+Hfo_w 1e-3 60 4.45 # 1e-3mol weak site, 60m2/g s.spec, 4.45g ferrihyd
+Hfo_s 0.025e-3 # 0.025e-3mol strong site
+    -equil  1
+
+
+USER_PRINT
+
+-start
+ 10 print "K_d (L/Kg) = ", (mol("Hfo_wOCd+") +mol("Hfo_sOCd+"))/tot("Cd")
+-end
