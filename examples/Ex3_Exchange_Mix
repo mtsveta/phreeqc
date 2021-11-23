@@ -1,0 +1,18 @@
+DATABASE ../database/phreeqc.dat
+TITLE Exchange with mix
+
+EXCHANGE 1
+CaX2 0.4065 # exchangeable Ca and K in mol
+KX 0.1870
+
+SOLUTION 1
+Na 1.2; Cl 1.2 charge # Na in solution, exchanges for K and Ca
+
+MIX 1; 1 1e-9 # ...Take 1e-9 of solution 1 = 1 μg water
+END
+
+PRINT
+-reset false
+-totals true
+-exchange true
+END

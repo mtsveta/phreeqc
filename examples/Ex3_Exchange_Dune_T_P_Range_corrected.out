@@ -23,7 +23,7 @@ Reading input data for simulation 1.
 	TITLE Exchange in Dune sand, P = 1 atm
 	SOLUTION 1
 	pressure 1.0
-	Na 1.1006
+	Na 1.10006
 	Mg 0.48
 	Ca 1.9
 	EXCHANGE 1
@@ -37,7 +37,7 @@ Reading input data for simulation 1.
 
 	Ca                1.900e-03   1.900e-03
 	Mg                4.800e-04   4.800e-04
-	Na                1.101e-03   1.101e-03
+	Na                1.100e-03   1.100e-03
 
 ----------------------------Description of solution----------------------------
 
@@ -51,7 +51,7 @@ Reading input data for simulation 1.
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  25.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
                                Iterations  =   4
                                   Total H  = 1.110124e+02
@@ -64,7 +64,7 @@ X                6.000e-02 mol
 
 	CaX2              2.564e-02   5.127e-02   8.545e-01    -0.132
 	MgX2              4.086e-03   8.172e-03   1.362e-01    -0.130
-	NaX               5.575e-04   5.575e-04   9.292e-03    -0.033
+	NaX               5.572e-04   5.572e-04   9.287e-03    -0.033
 
 -----------------------------Exchange composition------------------------------
 
@@ -75,7 +75,7 @@ X                6.000e-02 mol
 
 	CaX2              2.564e-02   5.127e-02   8.545e-01    -0.132
 	MgX2              4.086e-03   8.172e-03   1.362e-01    -0.130
-	NaX               5.575e-04   5.575e-04   9.292e-03    -0.033
+	NaX               5.572e-04   5.572e-04   9.287e-03    -0.033
 
 -----------------------------Solution composition------------------------------
 
@@ -83,7 +83,7 @@ X                6.000e-02 mol
 
 	Ca                1.900e-03   1.900e-03
 	Mg                4.800e-04   4.800e-04
-	Na                1.101e-03   1.101e-03
+	Na                1.100e-03   1.100e-03
 
 ----------------------------Description of solution----------------------------
 
@@ -97,7 +97,7 @@ X                6.000e-02 mol
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  25.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
                                Iterations  =   0
                                   Total H  = 1.110124e+02
@@ -112,7 +112,7 @@ X                6.000e-02 mol
 
 	CaX2              2.564e-02   5.128e-02   8.546e-01    -0.133
 	MgX2              4.087e-03   8.175e-03   1.362e-01    -0.131
-	NaX               5.490e-04   5.490e-04   9.150e-03    -0.034
+	NaX               5.487e-04   5.487e-04   9.146e-03    -0.034
 
 -----------------------------Solution composition------------------------------
 
@@ -125,7 +125,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.913      Charge balance
-                                       pe  =  -1.461      Adjusted to redox equilibrium
+                                       pe  =  -1.590      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  30°C)  = 321
                           Density (g/cm³)  =   0.99580
                                Volume (L)  =   1.00433
@@ -134,9 +134,9 @@ X                6.000e-02 mol
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  30.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
-                               Iterations  =   9
+                               Iterations  =   8
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -149,7 +149,7 @@ X                6.000e-02 mol
 
 	CaX2              2.564e-02   5.128e-02   8.547e-01    -0.134
 	MgX2              4.089e-03   8.177e-03   1.363e-01    -0.133
-	NaX               5.408e-04   5.408e-04   9.014e-03    -0.034
+	NaX               5.406e-04   5.406e-04   9.009e-03    -0.034
 
 -----------------------------Solution composition------------------------------
 
@@ -162,7 +162,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.830      Charge balance
-                                       pe  =  -1.403      Adjusted to redox equilibrium
+                                       pe  =  -1.399      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  35°C)  = 353
                           Density (g/cm³)  =   0.99419
                                Volume (L)  =   1.00596
@@ -171,7 +171,7 @@ X                6.000e-02 mol
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  35.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
                                Iterations  =   9
                                   Total H  = 1.110124e+02
@@ -186,7 +186,7 @@ X                6.000e-02 mol
 
 	CaX2              2.564e-02   5.129e-02   8.548e-01    -0.135
 	MgX2              4.090e-03   8.180e-03   1.363e-01    -0.134
-	NaX               5.330e-04   5.330e-04   8.883e-03    -0.034
+	NaX               5.327e-04   5.327e-04   8.878e-03    -0.034
 
 -----------------------------Solution composition------------------------------
 
@@ -199,7 +199,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.752      Charge balance
-                                       pe  =  -1.346      Adjusted to redox equilibrium
+                                       pe  =  -1.359      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  40°C)  = 386
                           Density (g/cm³)  =   0.99237
                                Volume (L)  =   1.00780
@@ -208,7 +208,7 @@ X                6.000e-02 mol
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  40.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
                                Iterations  =   9
                                   Total H  = 1.110124e+02
@@ -223,7 +223,7 @@ X                6.000e-02 mol
 
 	CaX2              2.565e-02   5.129e-02   8.549e-01    -0.137
 	MgX2              4.091e-03   8.182e-03   1.364e-01    -0.135
-	NaX               5.254e-04   5.254e-04   8.757e-03    -0.035
+	NaX               5.251e-04   5.251e-04   8.752e-03    -0.035
 
 -----------------------------Solution composition------------------------------
 
@@ -231,12 +231,12 @@ X                6.000e-02 mol
 
 	Ca                1.889e-03   1.889e-03
 	Mg                4.751e-04   4.751e-04
-	Na                1.133e-03   1.133e-03
+	Na                1.132e-03   1.132e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.677      Charge balance
-                                       pe  =  -1.288      Adjusted to redox equilibrium
+                                       pe  =  -1.315      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  45°C)  = 421
                           Density (g/cm³)  =   0.99036
                                Volume (L)  =   1.00984
@@ -245,7 +245,7 @@ X                6.000e-02 mol
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  45.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
                                Iterations  =   9
                                   Total H  = 1.110124e+02
@@ -260,7 +260,7 @@ X                6.000e-02 mol
 
 	CaX2              2.565e-02   5.130e-02   8.550e-01    -0.138
 	MgX2              4.092e-03   8.184e-03   1.364e-01    -0.136
-	NaX               5.181e-04   5.181e-04   8.635e-03    -0.035
+	NaX               5.179e-04   5.179e-04   8.631e-03    -0.035
 
 -----------------------------Solution composition------------------------------
 
@@ -268,12 +268,12 @@ X                6.000e-02 mol
 
 	Ca                1.886e-03   1.886e-03
 	Mg                4.740e-04   4.740e-04
-	Na                1.140e-03   1.140e-03
+	Na                1.139e-03   1.139e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.606      Charge balance
-                                       pe  =  -1.229      Adjusted to redox equilibrium
+                                       pe  =  -1.265      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  50°C)  = 456
                           Density (g/cm³)  =   0.98819
                                Volume (L)  =   1.01207
@@ -282,7 +282,7 @@ X                6.000e-02 mol
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  50.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
                                Iterations  =   9
                                   Total H  = 1.110124e+02
@@ -297,7 +297,7 @@ X                6.000e-02 mol
 
 	CaX2              2.565e-02   5.130e-02   8.550e-01    -0.139
 	MgX2              4.093e-03   8.186e-03   1.364e-01    -0.138
-	NaX               5.111e-04   5.111e-04   8.519e-03    -0.035
+	NaX               5.109e-04   5.109e-04   8.515e-03    -0.035
 
 -----------------------------Solution composition------------------------------
 
@@ -305,12 +305,12 @@ X                6.000e-02 mol
 
 	Ca                1.884e-03   1.884e-03
 	Mg                4.730e-04   4.730e-04
-	Na                1.147e-03   1.147e-03
+	Na                1.146e-03   1.146e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.538      Charge balance
-                                       pe  =  -1.170      Adjusted to redox equilibrium
+                                       pe  =  -1.210      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  55°C)  = 492
                           Density (g/cm³)  =   0.98584
                                Volume (L)  =   1.01448
@@ -319,7 +319,7 @@ X                6.000e-02 mol
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  55.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
                                Iterations  =   9
                                   Total H  = 1.110124e+02
@@ -334,7 +334,7 @@ X                6.000e-02 mol
 
 	CaX2              2.565e-02   5.131e-02   8.551e-01    -0.141
 	MgX2              4.094e-03   8.188e-03   1.365e-01    -0.139
-	NaX               5.044e-04   5.044e-04   8.406e-03    -0.036
+	NaX               5.041e-04   5.041e-04   8.402e-03    -0.036
 
 -----------------------------Solution composition------------------------------
 
@@ -342,12 +342,12 @@ X                6.000e-02 mol
 
 	Ca                1.881e-03   1.881e-03
 	Mg                4.720e-04   4.720e-04
-	Na                1.154e-03   1.154e-03
+	Na                1.153e-03   1.153e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.474      Charge balance
-                                       pe  =  -1.035      Adjusted to redox equilibrium
+                                       pe  =  -1.152      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  60°C)  = 528
                           Density (g/cm³)  =   0.98334
                                Volume (L)  =   1.01705
@@ -356,9 +356,9 @@ X                6.000e-02 mol
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  60.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =  10
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -371,7 +371,7 @@ X                6.000e-02 mol
 
 	CaX2              2.566e-02   5.131e-02   8.552e-01    -0.142
 	MgX2              4.095e-03   8.190e-03   1.365e-01    -0.140
-	NaX               4.979e-04   4.979e-04   8.298e-03    -0.036
+	NaX               4.976e-04   4.976e-04   8.294e-03    -0.036
 
 -----------------------------Solution composition------------------------------
 
@@ -384,18 +384,18 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.411      Charge balance
-                                       pe  =  -0.980      Adjusted to redox equilibrium
+                                       pe  =  -1.091      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  65°C)  = 565
                           Density (g/cm³)  =   0.98070
                                Volume (L)  =   1.01980
                         Activity of water  =   1.000
-                 Ionic strength (mol/kgw)  =   5.281e-03
+                 Ionic strength (mol/kgw)  =   5.280e-03
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  65.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =  10
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -408,7 +408,7 @@ X                6.000e-02 mol
 
 	CaX2              2.566e-02   5.132e-02   8.553e-01    -0.144
 	MgX2              4.096e-03   8.192e-03   1.365e-01    -0.142
-	NaX               4.916e-04   4.916e-04   8.194e-03    -0.036
+	NaX               4.914e-04   4.914e-04   8.190e-03    -0.036
 
 -----------------------------Solution composition------------------------------
 
@@ -421,16 +421,16 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.352      Charge balance
-                                       pe  =  -0.997      Adjusted to redox equilibrium
+                                       pe  =  -1.031      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  70°C)  = 603
                           Density (g/cm³)  =   0.97791
                                Volume (L)  =   1.02270
                         Activity of water  =   1.000
-                 Ionic strength (mol/kgw)  =   5.278e-03
+                 Ionic strength (mol/kgw)  =   5.277e-03
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  70.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
                                Iterations  =   9
                                   Total H  = 1.110124e+02
@@ -445,7 +445,7 @@ X                6.000e-02 mol
 
 	CaX2              2.566e-02   5.132e-02   8.553e-01    -0.145
 	MgX2              4.097e-03   8.194e-03   1.366e-01    -0.143
-	NaX               4.856e-04   4.856e-04   8.093e-03    -0.037
+	NaX               4.854e-04   4.854e-04   8.089e-03    -0.037
 
 -----------------------------Solution composition------------------------------
 
@@ -453,23 +453,23 @@ X                6.000e-02 mol
 
 	Ca                1.875e-03   1.875e-03
 	Mg                4.691e-04   4.691e-04
-	Na                1.173e-03   1.173e-03
+	Na                1.172e-03   1.172e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.295      Charge balance
-                                       pe  =  -0.880      Adjusted to redox equilibrium
+                                       pe  =  -0.997      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  75°C)  = 641
                           Density (g/cm³)  =   0.97499
                                Volume (L)  =   1.02577
                         Activity of water  =   1.000
-                 Ionic strength (mol/kgw)  =   5.275e-03
+                 Ionic strength (mol/kgw)  =   5.274e-03
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  75.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.98
-                               Iterations  =  10
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -482,7 +482,7 @@ X                6.000e-02 mol
 
 	CaX2              2.566e-02   5.132e-02   8.554e-01    -0.147
 	MgX2              4.098e-03   8.196e-03   1.366e-01    -0.145
-	NaX               4.798e-04   4.798e-04   7.996e-03    -0.037
+	NaX               4.795e-04   4.795e-04   7.992e-03    -0.037
 
 -----------------------------Solution composition------------------------------
 
@@ -495,7 +495,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.240      Charge balance
-                                       pe  =  -0.831      Adjusted to redox equilibrium
+                                       pe  =  -0.942      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  80°C)  = 679
                           Density (g/cm³)  =   0.97194
                                Volume (L)  =   1.02899
@@ -504,9 +504,9 @@ X                6.000e-02 mol
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  80.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.98
-                               Iterations  =  10
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -519,7 +519,7 @@ X                6.000e-02 mol
 
 	CaX2              2.566e-02   5.133e-02   8.555e-01    -0.149
 	MgX2              4.099e-03   8.197e-03   1.366e-01    -0.147
-	NaX               4.741e-04   4.741e-04   7.902e-03    -0.038
+	NaX               4.739e-04   4.739e-04   7.899e-03    -0.038
 
 -----------------------------Solution composition------------------------------
 
@@ -527,12 +527,12 @@ X                6.000e-02 mol
 
 	Ca                1.871e-03   1.871e-03
 	Mg                4.674e-04   4.674e-04
-	Na                1.184e-03   1.184e-03
+	Na                1.183e-03   1.183e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.187      Charge balance
-                                       pe  =  -0.784      Adjusted to redox equilibrium
+                                       pe  =  -0.762      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  85°C)  = 718
                           Density (g/cm³)  =   0.96876
                                Volume (L)  =   1.03236
@@ -541,7 +541,7 @@ X                6.000e-02 mol
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  85.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.98
                                Iterations  =  10
                                   Total H  = 1.110124e+02
@@ -556,7 +556,7 @@ X                6.000e-02 mol
 
 	CaX2              2.567e-02   5.133e-02   8.555e-01    -0.150
 	MgX2              4.100e-03   8.199e-03   1.367e-01    -0.148
-	NaX               4.687e-04   4.687e-04   7.812e-03    -0.038
+	NaX               4.685e-04   4.685e-04   7.808e-03    -0.038
 
 -----------------------------Solution composition------------------------------
 
@@ -569,8 +569,8 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.136      Charge balance
-                                       pe  =  -0.739      Adjusted to redox equilibrium
-      Specific Conductance (µS/cm,  90°C)  = 757
+                                       pe  =  -0.714      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  90°C)  = 756
                           Density (g/cm³)  =   0.96546
                                Volume (L)  =   1.03589
                         Activity of water  =   1.000
@@ -578,7 +578,7 @@ X                6.000e-02 mol
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  90.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.98
                                Iterations  =  10
                                   Total H  = 1.110124e+02
@@ -590,7 +590,7 @@ X                6.000e-02 mol
 
 	Ca                1.900e-03   1.900e-03
 	Mg                4.800e-04   4.800e-04
-	Na                1.101e-03   1.101e-03
+	Na                1.100e-03   1.100e-03
 
 ----------------------------Description of solution----------------------------
 
@@ -605,7 +605,7 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  25.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
                                Iterations  =   4
                                   Total H  = 1.110124e+02
@@ -617,8 +617,8 @@ X                6.000e-02 mol
 	Species             Moles      alents      Fraction     Gamma
 
 	CaX2              2.564e-02   5.128e-02   8.546e-01    -0.132
-	MgX2              4.081e-03   8.162e-03   1.360e-01    -0.130
-	NaX               5.591e-04   5.591e-04   9.319e-03    -0.033
+	MgX2              4.081e-03   8.163e-03   1.360e-01    -0.130
+	NaX               5.588e-04   5.588e-04   9.314e-03    -0.033
 
 -----------------------------Exchange composition------------------------------
 
@@ -628,8 +628,8 @@ X                6.000e-02 mol
 	Species             Moles      alents      Fraction     Gamma
 
 	CaX2              2.564e-02   5.128e-02   8.546e-01    -0.132
-	MgX2              4.081e-03   8.162e-03   1.360e-01    -0.130
-	NaX               5.591e-04   5.591e-04   9.319e-03    -0.033
+	MgX2              4.081e-03   8.163e-03   1.360e-01    -0.130
+	NaX               5.588e-04   5.588e-04   9.314e-03    -0.033
 
 -----------------------------Solution composition------------------------------
 
@@ -637,7 +637,7 @@ X                6.000e-02 mol
 
 	Ca                1.900e-03   1.900e-03
 	Mg                4.800e-04   4.800e-04
-	Na                1.101e-03   1.101e-03
+	Na                1.100e-03   1.100e-03
 
 ----------------------------Description of solution----------------------------
 
@@ -652,7 +652,7 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  25.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
                                Iterations  =   0
                                   Total H  = 1.110124e+02
@@ -667,7 +667,7 @@ X                6.000e-02 mol
 
 	CaX2              2.564e-02   5.128e-02   8.547e-01    -0.133
 	MgX2              4.083e-03   8.165e-03   1.361e-01    -0.131
-	NaX               5.506e-04   5.506e-04   9.177e-03    -0.034
+	NaX               5.503e-04   5.503e-04   9.172e-03    -0.034
 
 -----------------------------Solution composition------------------------------
 
@@ -680,7 +680,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.913      Charge balance
-                                       pe  =  10.518      Adjusted to redox equilibrium
+                                       pe  =  -0.931      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  30°C)  = 321
                           Density (g/cm³)  =   0.99620
                                Volume (L)  =   1.00393
@@ -690,7 +690,7 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  30.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
                                Iterations  =   8
                                   Total H  = 1.110124e+02
@@ -704,8 +704,8 @@ X                6.000e-02 mol
 	Species             Moles      alents      Fraction     Gamma
 
 	CaX2              2.565e-02   5.129e-02   8.548e-01    -0.134
-	MgX2              4.084e-03   8.167e-03   1.361e-01    -0.132
-	NaX               5.424e-04   5.424e-04   9.040e-03    -0.034
+	MgX2              4.084e-03   8.168e-03   1.361e-01    -0.132
+	NaX               5.421e-04   5.421e-04   9.036e-03    -0.034
 
 -----------------------------Solution composition------------------------------
 
@@ -718,7 +718,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.830      Charge balance
-                                       pe  =  10.360      Adjusted to redox equilibrium
+                                       pe  =  -0.859      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  35°C)  = 353
                           Density (g/cm³)  =   0.99458
                                Volume (L)  =   1.00556
@@ -728,7 +728,7 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  35.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
                                Iterations  =   8
                                   Total H  = 1.110124e+02
@@ -743,7 +743,7 @@ X                6.000e-02 mol
 
 	CaX2              2.565e-02   5.130e-02   8.549e-01    -0.135
 	MgX2              4.085e-03   8.170e-03   1.362e-01    -0.134
-	NaX               5.345e-04   5.345e-04   8.909e-03    -0.034
+	NaX               5.343e-04   5.343e-04   8.905e-03    -0.034
 
 -----------------------------Solution composition------------------------------
 
@@ -756,7 +756,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.752      Charge balance
-                                       pe  =  10.384      Adjusted to redox equilibrium
+                                       pe  =  -0.790      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  40°C)  = 386
                           Density (g/cm³)  =   0.99276
                                Volume (L)  =   1.00741
@@ -766,7 +766,7 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  40.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
                                Iterations  =   8
                                   Total H  = 1.110124e+02
@@ -781,7 +781,7 @@ X                6.000e-02 mol
 
 	CaX2              2.565e-02   5.130e-02   8.550e-01    -0.137
 	MgX2              4.086e-03   8.172e-03   1.362e-01    -0.135
-	NaX               5.270e-04   5.270e-04   8.783e-03    -0.035
+	NaX               5.267e-04   5.267e-04   8.779e-03    -0.035
 
 -----------------------------Solution composition------------------------------
 
@@ -789,12 +789,12 @@ X                6.000e-02 mol
 
 	Ca                1.889e-03   1.889e-03
 	Mg                4.752e-04   4.752e-04
-	Na                1.133e-03   1.133e-03
+	Na                1.132e-03   1.132e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.677      Charge balance
-                                       pe  =   9.609      Adjusted to redox equilibrium
+                                       pe  =  -0.726      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  45°C)  = 421
                           Density (g/cm³)  =   0.99076
                                Volume (L)  =   1.00945
@@ -804,9 +804,9 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  45.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =   8
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -819,7 +819,7 @@ X                6.000e-02 mol
 
 	CaX2              2.565e-02   5.131e-02   8.551e-01    -0.138
 	MgX2              4.087e-03   8.174e-03   1.362e-01    -0.136
-	NaX               5.197e-04   5.197e-04   8.662e-03    -0.035
+	NaX               5.194e-04   5.194e-04   8.657e-03    -0.035
 
 -----------------------------Solution composition------------------------------
 
@@ -827,12 +827,12 @@ X                6.000e-02 mol
 
 	Ca                1.886e-03   1.886e-03
 	Mg                4.741e-04   4.741e-04
-	Na                1.140e-03   1.140e-03
+	Na                1.139e-03   1.139e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.606      Charge balance
-                                       pe  =   9.325      Adjusted to redox equilibrium
+                                       pe  =  -0.664      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  50°C)  = 456
                           Density (g/cm³)  =   0.98858
                                Volume (L)  =   1.01167
@@ -842,9 +842,9 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  50.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =   8
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -857,7 +857,7 @@ X                6.000e-02 mol
 
 	CaX2              2.566e-02   5.131e-02   8.552e-01    -0.139
 	MgX2              4.088e-03   8.176e-03   1.363e-01    -0.137
-	NaX               5.127e-04   5.127e-04   8.545e-03    -0.035
+	NaX               5.124e-04   5.124e-04   8.541e-03    -0.035
 
 -----------------------------Solution composition------------------------------
 
@@ -865,12 +865,12 @@ X                6.000e-02 mol
 
 	Ca                1.884e-03   1.884e-03
 	Mg                4.730e-04   4.730e-04
-	Na                1.147e-03   1.147e-03
+	Na                1.146e-03   1.146e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.538      Charge balance
-                                       pe  =   9.232      Adjusted to redox equilibrium
+                                       pe  =  -0.605      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  55°C)  = 491
                           Density (g/cm³)  =   0.98624
                                Volume (L)  =   1.01407
@@ -880,9 +880,9 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  55.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =   8
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -895,7 +895,7 @@ X                6.000e-02 mol
 
 	CaX2              2.566e-02   5.132e-02   8.553e-01    -0.141
 	MgX2              4.089e-03   8.178e-03   1.363e-01    -0.139
-	NaX               5.059e-04   5.059e-04   8.432e-03    -0.036
+	NaX               5.057e-04   5.057e-04   8.428e-03    -0.036
 
 -----------------------------Solution composition------------------------------
 
@@ -903,12 +903,12 @@ X                6.000e-02 mol
 
 	Ca                1.881e-03   1.881e-03
 	Mg                4.720e-04   4.720e-04
-	Na                1.154e-03   1.154e-03
+	Na                1.153e-03   1.153e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.473      Charge balance
-                                       pe  =   9.130      Adjusted to redox equilibrium
+                                       pe  =  -0.548      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  60°C)  = 528
                           Density (g/cm³)  =   0.98374
                                Volume (L)  =   1.01664
@@ -918,9 +918,9 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  60.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =   8
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -933,7 +933,7 @@ X                6.000e-02 mol
 
 	CaX2              2.566e-02   5.132e-02   8.553e-01    -0.142
 	MgX2              4.090e-03   8.180e-03   1.363e-01    -0.140
-	NaX               4.994e-04   4.994e-04   8.324e-03    -0.036
+	NaX               4.992e-04   4.992e-04   8.320e-03    -0.036
 
 -----------------------------Solution composition------------------------------
 
@@ -946,19 +946,19 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.411      Charge balance
-                                       pe  =   8.506      Adjusted to redox equilibrium
+                                       pe  =  -0.495      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  65°C)  = 565
                           Density (g/cm³)  =   0.98110
                                Volume (L)  =   1.01938
                         Activity of water  =   1.000
-                 Ionic strength (mol/kgw)  =   5.281e-03
+                 Ionic strength (mol/kgw)  =   5.280e-03
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  65.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =   7
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -971,7 +971,7 @@ X                6.000e-02 mol
 
 	CaX2              2.566e-02   5.132e-02   8.554e-01    -0.144
 	MgX2              4.091e-03   8.182e-03   1.364e-01    -0.142
-	NaX               4.932e-04   4.932e-04   8.219e-03    -0.036
+	NaX               4.929e-04   4.929e-04   8.215e-03    -0.036
 
 -----------------------------Solution composition------------------------------
 
@@ -979,24 +979,24 @@ X                6.000e-02 mol
 
 	Ca                1.877e-03   1.877e-03
 	Mg                4.701e-04   4.701e-04
-	Na                1.167e-03   1.167e-03
+	Na                1.166e-03   1.166e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.351      Charge balance
-                                       pe  =   8.255      Adjusted to redox equilibrium
+                                       pe  =  -0.443      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  70°C)  = 602
                           Density (g/cm³)  =   0.97831
                                Volume (L)  =   1.02228
                         Activity of water  =   1.000
-                 Ionic strength (mol/kgw)  =   5.278e-03
+                 Ionic strength (mol/kgw)  =   5.277e-03
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  70.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =   7
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1009,7 +1009,7 @@ X                6.000e-02 mol
 
 	CaX2              2.566e-02   5.133e-02   8.555e-01    -0.145
 	MgX2              4.092e-03   8.184e-03   1.364e-01    -0.143
-	NaX               4.871e-04   4.871e-04   8.119e-03    -0.037
+	NaX               4.869e-04   4.869e-04   8.115e-03    -0.037
 
 -----------------------------Solution composition------------------------------
 
@@ -1017,24 +1017,24 @@ X                6.000e-02 mol
 
 	Ca                1.875e-03   1.875e-03
 	Mg                4.692e-04   4.692e-04
-	Na                1.173e-03   1.173e-03
+	Na                1.172e-03   1.172e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.294      Charge balance
-                                       pe  =   8.088      Adjusted to redox equilibrium
+                                       pe  =  -0.394      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  75°C)  = 640
                           Density (g/cm³)  =   0.97540
                                Volume (L)  =   1.02534
                         Activity of water  =   1.000
-                 Ionic strength (mol/kgw)  =   5.275e-03
+                 Ionic strength (mol/kgw)  =   5.274e-03
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  75.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.98
-                               Iterations  =   8
+                               Iterations  =  10
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1045,9 +1045,9 @@ X                6.000e-02 mol
 	                               Equiv-    Equivalent      Log 
 	Species             Moles      alents      Fraction     Gamma
 
-	CaX2              2.567e-02   5.133e-02   8.555e-01    -0.147
+	CaX2              2.567e-02   5.133e-02   8.556e-01    -0.147
 	MgX2              4.093e-03   8.186e-03   1.364e-01    -0.145
-	NaX               4.813e-04   4.813e-04   8.021e-03    -0.037
+	NaX               4.810e-04   4.810e-04   8.017e-03    -0.037
 
 -----------------------------Solution composition------------------------------
 
@@ -1060,19 +1060,19 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.239      Charge balance
-                                       pe  =   8.095      Adjusted to redox equilibrium
-      Specific Conductance (µS/cm,  80°C)  = 679
+                                       pe  =  -0.347      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  80°C)  = 678
                           Density (g/cm³)  =   0.97235
                                Volume (L)  =   1.02855
                         Activity of water  =   1.000
-                 Ionic strength (mol/kgw)  =   5.272e-03
+                 Ionic strength (mol/kgw)  =   5.271e-03
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  80.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.98
-                               Iterations  =   7
+                               Iterations  =  10
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1085,7 +1085,7 @@ X                6.000e-02 mol
 
 	CaX2              2.567e-02   5.134e-02   8.556e-01    -0.148
 	MgX2              4.094e-03   8.188e-03   1.365e-01    -0.147
-	NaX               4.756e-04   4.756e-04   7.927e-03    -0.038
+	NaX               4.754e-04   4.754e-04   7.924e-03    -0.038
 
 -----------------------------Solution composition------------------------------
 
@@ -1093,12 +1093,12 @@ X                6.000e-02 mol
 
 	Ca                1.871e-03   1.871e-03
 	Mg                4.675e-04   4.675e-04
-	Na                1.184e-03   1.184e-03
+	Na                1.183e-03   1.183e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.186      Charge balance
-                                       pe  =   7.514      Adjusted to redox equilibrium
+                                       pe  =  -0.301      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  85°C)  = 717
                           Density (g/cm³)  =   0.96918
                                Volume (L)  =   1.03192
@@ -1108,9 +1108,9 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  85.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.98
-                               Iterations  =   8
+                               Iterations  =  11
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1123,7 +1123,7 @@ X                6.000e-02 mol
 
 	CaX2              2.567e-02   5.134e-02   8.557e-01    -0.150
 	MgX2              4.095e-03   8.189e-03   1.365e-01    -0.148
-	NaX               4.702e-04   4.702e-04   7.837e-03    -0.038
+	NaX               4.700e-04   4.700e-04   7.833e-03    -0.038
 
 -----------------------------Solution composition------------------------------
 
@@ -1131,12 +1131,12 @@ X                6.000e-02 mol
 
 	Ca                1.869e-03   1.869e-03
 	Mg                4.667e-04   4.667e-04
-	Na                1.190e-03   1.190e-03
+	Na                1.189e-03   1.189e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.135      Charge balance
-                                       pe  =   7.282      Adjusted to redox equilibrium
+                                       pe  =  -0.258      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  90°C)  = 756
                           Density (g/cm³)  =   0.96588
                                Volume (L)  =   1.03544
@@ -1146,9 +1146,9 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   1.952e-08
                          Temperature (°C)  =  90.00
                            Pressure (atm)  = 10.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.98
-                               Iterations  =   8
+                               Iterations  =  11
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1158,7 +1158,7 @@ X                6.000e-02 mol
 
 	Ca                1.900e-03   1.900e-03
 	Mg                4.800e-04   4.800e-04
-	Na                1.101e-03   1.101e-03
+	Na                1.100e-03   1.100e-03
 
 ----------------------------Description of solution----------------------------
 
@@ -1173,7 +1173,7 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  25.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
                                Iterations  =   4
                                   Total H  = 1.110124e+02
@@ -1186,7 +1186,7 @@ X                6.000e-02 mol
 
 	CaX2              2.568e-02   5.136e-02   8.560e-01    -0.131
 	MgX2              4.034e-03   8.068e-03   1.345e-01    -0.130
-	NaX               5.753e-04   5.753e-04   9.588e-03    -0.033
+	NaX               5.750e-04   5.750e-04   9.584e-03    -0.033
 
 -----------------------------Exchange composition------------------------------
 
@@ -1197,7 +1197,7 @@ X                6.000e-02 mol
 
 	CaX2              2.568e-02   5.136e-02   8.560e-01    -0.131
 	MgX2              4.034e-03   8.068e-03   1.345e-01    -0.130
-	NaX               5.753e-04   5.753e-04   9.588e-03    -0.033
+	NaX               5.750e-04   5.750e-04   9.584e-03    -0.033
 
 -----------------------------Solution composition------------------------------
 
@@ -1205,7 +1205,7 @@ X                6.000e-02 mol
 
 	Ca                1.900e-03   1.900e-03
 	Mg                4.800e-04   4.800e-04
-	Na                1.101e-03   1.101e-03
+	Na                1.100e-03   1.100e-03
 
 ----------------------------Description of solution----------------------------
 
@@ -1220,7 +1220,7 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  25.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
                                Iterations  =   0
                                   Total H  = 1.110124e+02
@@ -1235,7 +1235,7 @@ X                6.000e-02 mol
 
 	CaX2              2.568e-02   5.136e-02   8.561e-01    -0.132
 	MgX2              4.035e-03   8.070e-03   1.345e-01    -0.131
-	NaX               5.668e-04   5.668e-04   9.446e-03    -0.034
+	NaX               5.665e-04   5.665e-04   9.441e-03    -0.034
 
 -----------------------------Solution composition------------------------------
 
@@ -1248,7 +1248,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.911      Charge balance
-                                       pe  =  10.586      Adjusted to redox equilibrium
+                                       pe  =  -1.467      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  30°C)  = 321
                           Density (g/cm³)  =   1.00018
                                Volume (L)  =   0.99994
@@ -1258,7 +1258,7 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  30.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
                                Iterations  =   8
                                   Total H  = 1.110124e+02
@@ -1273,7 +1273,7 @@ X                6.000e-02 mol
 
 	CaX2              2.568e-02   5.137e-02   8.562e-01    -0.133
 	MgX2              4.036e-03   8.072e-03   1.345e-01    -0.132
-	NaX               5.585e-04   5.585e-04   9.309e-03    -0.034
+	NaX               5.583e-04   5.583e-04   9.304e-03    -0.034
 
 -----------------------------Solution composition------------------------------
 
@@ -1286,7 +1286,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.826      Charge balance
-                                       pe  =  10.377      Adjusted to redox equilibrium
+                                       pe  =  -1.424      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  35°C)  = 353
                           Density (g/cm³)  =   0.99851
                                Volume (L)  =   1.00160
@@ -1296,7 +1296,7 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  35.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
                                Iterations  =   8
                                   Total H  = 1.110124e+02
@@ -1311,7 +1311,7 @@ X                6.000e-02 mol
 
 	CaX2              2.569e-02   5.138e-02   8.563e-01    -0.135
 	MgX2              4.037e-03   8.074e-03   1.346e-01    -0.133
-	NaX               5.506e-04   5.506e-04   9.177e-03    -0.034
+	NaX               5.503e-04   5.503e-04   9.172e-03    -0.034
 
 -----------------------------Solution composition------------------------------
 
@@ -1324,7 +1324,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.746      Charge balance
-                                       pe  =  10.407      Adjusted to redox equilibrium
+                                       pe  =  -1.389      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  40°C)  = 386
                           Density (g/cm³)  =   0.99667
                                Volume (L)  =   1.00346
@@ -1334,7 +1334,7 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  40.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
                                Iterations  =   8
                                   Total H  = 1.110124e+02
@@ -1349,7 +1349,7 @@ X                6.000e-02 mol
 
 	CaX2              2.569e-02   5.138e-02   8.564e-01    -0.136
 	MgX2              4.038e-03   8.076e-03   1.346e-01    -0.134
-	NaX               5.430e-04   5.430e-04   9.049e-03    -0.034
+	NaX               5.427e-04   5.427e-04   9.045e-03    -0.034
 
 -----------------------------Solution composition------------------------------
 
@@ -1357,12 +1357,12 @@ X                6.000e-02 mol
 
 	Ca                1.888e-03   1.888e-03
 	Mg                4.758e-04   4.758e-04
-	Na                1.133e-03   1.133e-03
+	Na                1.132e-03   1.132e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.671      Charge balance
-                                       pe  =   9.685      Adjusted to redox equilibrium
+                                       pe  =  -1.197      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  45°C)  = 420
                           Density (g/cm³)  =   0.99465
                                Volume (L)  =   1.00550
@@ -1372,9 +1372,9 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  45.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =   8
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1387,7 +1387,7 @@ X                6.000e-02 mol
 
 	CaX2              2.569e-02   5.139e-02   8.564e-01    -0.137
 	MgX2              4.039e-03   8.078e-03   1.346e-01    -0.135
-	NaX               5.356e-04   5.356e-04   8.927e-03    -0.035
+	NaX               5.353e-04   5.353e-04   8.922e-03    -0.035
 
 -----------------------------Solution composition------------------------------
 
@@ -1400,19 +1400,19 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.599      Charge balance
-                                       pe  =   9.395      Adjusted to redox equilibrium
+                                       pe  =  -1.165      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  50°C)  = 454
                           Density (g/cm³)  =   0.99246
                                Volume (L)  =   1.00771
                         Activity of water  =   1.000
-                 Ionic strength (mol/kgw)  =   5.291e-03
+                 Ionic strength (mol/kgw)  =   5.290e-03
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  50.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =   8
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1425,7 +1425,7 @@ X                6.000e-02 mol
 
 	CaX2              2.570e-02   5.139e-02   8.565e-01    -0.138
 	MgX2              4.040e-03   8.080e-03   1.347e-01    -0.137
-	NaX               5.285e-04   5.285e-04   8.808e-03    -0.035
+	NaX               5.282e-04   5.282e-04   8.804e-03    -0.035
 
 -----------------------------Solution composition------------------------------
 
@@ -1438,7 +1438,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.530      Charge balance
-                                       pe  =   9.252      Adjusted to redox equilibrium
+                                       pe  =  -1.141      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  55°C)  = 490
                           Density (g/cm³)  =   0.99013
                                Volume (L)  =   1.01008
@@ -1448,9 +1448,9 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  55.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =   8
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1463,7 +1463,7 @@ X                6.000e-02 mol
 
 	CaX2              2.570e-02   5.140e-02   8.566e-01    -0.140
 	MgX2              4.041e-03   8.082e-03   1.347e-01    -0.138
-	NaX               5.216e-04   5.216e-04   8.694e-03    -0.035
+	NaX               5.214e-04   5.214e-04   8.690e-03    -0.035
 
 -----------------------------Solution composition------------------------------
 
@@ -1476,19 +1476,19 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.465      Charge balance
-                                       pe  =   9.209      Adjusted to redox equilibrium
+                                       pe  =  -1.118      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  60°C)  = 526
                           Density (g/cm³)  =   0.98765
                                Volume (L)  =   1.01262
                         Activity of water  =   1.000
-                 Ionic strength (mol/kgw)  =   5.284e-03
+                 Ionic strength (mol/kgw)  =   5.283e-03
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  60.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =   8
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1501,7 +1501,7 @@ X                6.000e-02 mol
 
 	CaX2              2.570e-02   5.140e-02   8.567e-01    -0.141
 	MgX2              4.042e-03   8.084e-03   1.347e-01    -0.140
-	NaX               5.150e-04   5.150e-04   8.584e-03    -0.036
+	NaX               5.148e-04   5.148e-04   8.579e-03    -0.036
 
 -----------------------------Solution composition------------------------------
 
@@ -1509,12 +1509,12 @@ X                6.000e-02 mol
 
 	Ca                1.878e-03   1.878e-03
 	Mg                4.718e-04   4.718e-04
-	Na                1.161e-03   1.161e-03
+	Na                1.160e-03   1.160e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.402      Charge balance
-                                       pe  =   8.581      Adjusted to redox equilibrium
+                                       pe  =  -1.104      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  65°C)  = 562
                           Density (g/cm³)  =   0.98503
                                Volume (L)  =   1.01531
@@ -1524,9 +1524,9 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  65.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =   7
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1539,7 +1539,7 @@ X                6.000e-02 mol
 
 	CaX2              2.570e-02   5.141e-02   8.568e-01    -0.143
 	MgX2              4.043e-03   8.086e-03   1.348e-01    -0.141
-	NaX               5.086e-04   5.086e-04   8.477e-03    -0.036
+	NaX               5.084e-04   5.084e-04   8.473e-03    -0.036
 
 -----------------------------Solution composition------------------------------
 
@@ -1552,7 +1552,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.342      Charge balance
-                                       pe  =   8.324      Adjusted to redox equilibrium
+                                       pe  =  -1.093      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  70°C)  = 599
                           Density (g/cm³)  =   0.98228
                                Volume (L)  =   1.01816
@@ -1562,9 +1562,9 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  70.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.99
-                               Iterations  =   7
+                               Iterations  =   9
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1575,9 +1575,9 @@ X                6.000e-02 mol
 	                               Equiv-    Equivalent      Log 
 	Species             Moles      alents      Fraction     Gamma
 
-	CaX2              2.570e-02   5.141e-02   8.568e-01    -0.144
+	CaX2              2.571e-02   5.141e-02   8.568e-01    -0.144
 	MgX2              4.044e-03   8.088e-03   1.348e-01    -0.143
-	NaX               5.025e-04   5.025e-04   8.375e-03    -0.037
+	NaX               5.022e-04   5.022e-04   8.371e-03    -0.037
 
 -----------------------------Solution composition------------------------------
 
@@ -1590,7 +1590,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.285      Charge balance
-                                       pe  =   8.124      Adjusted to redox equilibrium
+                                       pe  =  -0.910      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  75°C)  = 637
                           Density (g/cm³)  =   0.97940
                                Volume (L)  =   1.02115
@@ -1600,9 +1600,9 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  75.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.98
-                               Iterations  =   8
+                               Iterations  =  10
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1615,20 +1615,20 @@ X                6.000e-02 mol
 
 	CaX2              2.571e-02   5.141e-02   8.569e-01    -0.146
 	MgX2              4.045e-03   8.089e-03   1.348e-01    -0.144
-	NaX               4.965e-04   4.965e-04   8.276e-03    -0.037
+	NaX               4.963e-04   4.963e-04   8.272e-03    -0.037
 
 -----------------------------Solution composition------------------------------
 
 	Elements           Molality       Moles
 
-	Ca                1.871e-03   1.871e-03
+	Ca                1.872e-03   1.872e-03
 	Mg                4.691e-04   4.691e-04
 	Na                1.179e-03   1.179e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.230      Charge balance
-                                       pe  =   8.059      Adjusted to redox equilibrium
+                                       pe  =  -0.862      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  80°C)  = 674
                           Density (g/cm³)  =   0.97640
                                Volume (L)  =   1.02429
@@ -1638,9 +1638,9 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  80.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.98
-                               Iterations  =   8
+                               Iterations  =  10
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1653,7 +1653,7 @@ X                6.000e-02 mol
 
 	CaX2              2.571e-02   5.142e-02   8.570e-01    -0.148
 	MgX2              4.045e-03   8.091e-03   1.348e-01    -0.146
-	NaX               4.908e-04   4.908e-04   8.180e-03    -0.037
+	NaX               4.906e-04   4.906e-04   8.176e-03    -0.037
 
 -----------------------------Solution composition------------------------------
 
@@ -1666,7 +1666,7 @@ X                6.000e-02 mol
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.177      Charge balance
-                                       pe  =   7.590      Adjusted to redox equilibrium
+                                       pe  =  -0.688      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  85°C)  = 712
                           Density (g/cm³)  =   0.97327
                                Volume (L)  =   1.02758
@@ -1676,9 +1676,9 @@ X                6.000e-02 mol
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  85.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.98
-                               Iterations  =   8
+                               Iterations  =  11
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
@@ -1691,7 +1691,7 @@ X                6.000e-02 mol
 
 	CaX2              2.571e-02   5.142e-02   8.570e-01    -0.149
 	MgX2              4.046e-03   8.093e-03   1.349e-01    -0.148
-	NaX               4.853e-04   4.853e-04   8.088e-03    -0.038
+	NaX               4.850e-04   4.850e-04   8.084e-03    -0.038
 
 -----------------------------Solution composition------------------------------
 
@@ -1699,28 +1699,28 @@ X                6.000e-02 mol
 
 	Ca                1.868e-03   1.868e-03
 	Mg                4.675e-04   4.675e-04
-	Na                1.191e-03   1.191e-03
+	Na                1.190e-03   1.190e-03
 
 ----------------------------Description of solution----------------------------
 
                                        pH  =   6.126      Charge balance
-                                       pe  =   7.358      Adjusted to redox equilibrium
+                                       pe  =  -0.639      Adjusted to redox equilibrium
       Specific Conductance (µS/cm,  90°C)  = 751
                           Density (g/cm³)  =   0.97003
                                Volume (L)  =   1.03101
                         Activity of water  =   1.000
-                 Ionic strength (mol/kgw)  =   5.266e-03
+                 Ionic strength (mol/kgw)  =   5.265e-03
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   2.855e-08
                          Temperature (°C)  =  90.00
                            Pressure (atm)  = 100.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  99.98
-                               Iterations  =   8
+                               Iterations  =  11
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
 ----------------------------------
-End of Run after 0.062424 Seconds.
+End of Run after 0.088062 Seconds.
 ----------------------------------
 

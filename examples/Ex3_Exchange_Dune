@@ -3,7 +3,9 @@ TITLE Exchange in Dune sand
 #defining dune sand with 10 meq/kg CEC at equilibrium with dune water
 
 SOLUTION 1
-Na 1.1006
+pressure 1.0
+temperature 25.0
+Na 1.10006
 Mg 0.48
 Ca 1.9
 

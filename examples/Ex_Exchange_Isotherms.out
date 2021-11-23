@@ -1,0 +1,326 @@
+   Input file: ../examples/Ex_Exchange_Isotherms
+  Output file: ../examples/Ex_Exchange_Isotherms.out
+Database file: ../database/phreeqc.dat
+
+------------------
+Reading data base.
+------------------
+
+	SOLUTION_MASTER_SPECIES
+	SOLUTION_SPECIES
+	PHASES
+	EXCHANGE_MASTER_SPECIES
+	EXCHANGE_SPECIES
+	SURFACE_MASTER_SPECIES
+	SURFACE_SPECIES
+	RATES
+	END
+------------------------------------
+Reading input data for simulation 1.
+------------------------------------
+
+	DATABASE ../database/phreeqc.dat
+	TITLE Ion Exchange with Reactions and Isotherm plots
+	SOLUTION 1
+	K 0.0
+	Ca 1000.0
+	EXCHANGE 1
+	KX 0.4 # 400 mmol KX
+	PRINT 
+	reset true
+	totals true
+	exchange true
+	SELECTED_OUTPUT
+	file   ../out/ion-exchange-isotherms-kx.txt
+	ionic_strength
+	totals K Ca
+	molalities K+ Ca+2 KX CaX2
+	END
+-----
+TITLE
+-----
+
+ Ion Exchange with Reactions and Isotherm plots
+
+-------------------------------------------
+Beginning of initial solution calculations.
+-------------------------------------------
+
+Initial solution 1.	
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Ca                1.000e+00   1.000e+00
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.000    
+                                       pe  =   4.000    
+      Specific Conductance (µS/cm,  25°C)  = 46901
+                          Density (g/cm³)  =   1.05375
+                               Volume (L)  =   0.98703
+                        Activity of water  =   0.983
+                 Ionic strength (mol/kgw)  =   2.000e+00
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   5.140e-07
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =   2.000e+00
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
+                               Iterations  =   3
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550622e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma   cm³/mol
+
+   OH-             1.873e-07   9.950e-08    -6.728    -7.002    -0.275     -0.62
+   H+              1.378e-07   1.000e-07    -6.861    -7.000    -0.139      0.00
+   H2O             5.551e+01   9.830e-01     1.744    -0.007     0.000     18.07
+Ca            1.000e+00
+   Ca+2            1.000e+00   2.895e-01    -0.000    -0.538    -0.538    -15.94
+   CaOH+           4.645e-07   4.723e-07    -6.333    -6.326     0.007     (0)  
+H(0)          8.934e-26
+   H2              4.467e-26   7.079e-26   -25.350   -25.150     0.200     28.61
+O(0)          0.000e+00
+   O2              0.000e+00   0.000e+00   -42.295   -42.095     0.200     30.40
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  H2(g)           -22.05    -25.15   -3.10  H2
+  H2O(g)           -1.51     -0.01    1.50  H2O
+  O2(g)           -39.20    -42.09   -2.89  O2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+-----------------------------------------
+Beginning of batch-reaction calculations.
+-----------------------------------------
+
+Reaction step 1.
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                1.669e-02   1.669e-02   4.173e-02    -0.220
+	CaX2              2.866e-03   5.732e-03   1.433e-02    -0.608
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                1.669e-02   1.669e-02   4.173e-02    -0.220
+	CaX2              2.866e-03   5.732e-03   1.433e-02    -0.608
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                1.669e-02   1.669e-02   4.173e-02    -0.220
+	CaX2              2.866e-03   5.732e-03   1.433e-02    -0.608
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                1.669e-02   1.669e-02   4.173e-02    -0.220
+	CaX2              2.866e-03   5.732e-03   1.433e-02    -0.608
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                1.669e-02   1.669e-02   4.173e-02    -0.220
+	CaX2              2.866e-03   5.733e-03   1.433e-02    -0.608
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                1.042e+00   1.042e+00   2.606e+00    -0.231
+	CaX2              1.193e+01   2.386e+01   5.966e+01    -0.598
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                5.063e-01   5.063e-01   1.266e+00    -0.244
+	CaX2              3.911e+00   7.823e+00   1.956e+01    -0.545
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                3.118e-01   3.118e-01   7.794e-01    -0.244
+	CaX2              1.465e+00   2.931e+00   7.327e+00    -0.545
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                2.412e-01   2.412e-01   6.029e-01    -0.244
+	CaX2              5.678e-01   1.136e+00   2.839e+00    -0.547
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                1.978e-01   1.978e-01   4.946e-01    -0.243
+	CaX2              2.489e-01   4.978e-01   1.245e+00    -0.548
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                1.695e-01   1.695e-01   4.238e-01    -0.243
+	CaX2              1.456e-01   2.912e-01   7.281e-01    -0.550
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                1.599e-01   1.599e-01   3.998e-01    -0.243
+	CaX2              1.222e-01   2.444e-01   6.110e-01    -0.550
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                1.591e-01   1.591e-01   3.978e-01    -0.243
+	CaX2              1.205e-01   2.409e-01   6.023e-01    -0.550
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                1.591e-01   1.591e-01   3.977e-01    -0.243
+	CaX2              1.205e-01   2.409e-01   6.023e-01    -0.550
+
+Using solution 1.	
+Using exchange 1.	
+
+-----------------------------Exchange composition------------------------------
+
+X                4.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                1.591e-01   1.591e-01   3.977e-01    -0.243
+	CaX2              1.205e-01   2.409e-01   6.023e-01    -0.550
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Ca                8.795e-01   8.795e-01
+	K                 2.409e-01   2.409e-01
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.032      Charge balance
+                                       pe  =  10.955      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 54537
+                          Density (g/cm³)  =   1.05376
+                               Volume (L)  =   0.99137
+                        Activity of water  =   0.981
+                 Ionic strength (mol/kgw)  =   1.880e+00
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   5.140e-07
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =   2.000e+00
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
+                               Iterations  =  14
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550622e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma   cm³/mol
+
+   H2O             5.551e+01   9.810e-01     1.744    -0.008     0.000     18.07
+   OH-             1.997e-07   1.069e-07    -6.700    -6.971    -0.271     -0.80
+   H+              1.277e-07   9.286e-08    -6.894    -7.032    -0.138      0.00
+Ca            8.795e-01
+   Ca+2            8.795e-01   2.479e-01    -0.056    -0.606    -0.550    -15.99
+   CaOH+           4.420e-07   4.346e-07    -6.355    -6.362    -0.007     (0)  
+H(0)          9.755e-40
+   H2              4.877e-40   7.519e-40   -39.312   -39.124     0.188     28.61
+K             2.409e-01
+   K+              2.409e-01   1.376e-01    -0.618    -0.861    -0.243     10.28
+O(0)          9.207e-15
+   O2              4.603e-15   7.096e-15   -14.337   -14.149     0.188     30.40
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  H2(g)           -36.02    -39.12   -3.10  H2
+  H2O(g)           -1.51     -0.01    1.50  H2O
+  O2(g)           -11.26    -14.15   -2.89  O2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+------------------
+End of simulation.
+------------------
+
+------------------------------------
+Reading input data for simulation 2.
+------------------------------------
+
+----------------------------------
+End of Run after 0.042819 Seconds.
+----------------------------------
+

@@ -1,0 +1,30 @@
+DATABASE ../database/phreeqc.dat
+TITLE Solid solutions and Vanselov convention
+
+SOLUTION_MASTER_SPECIES
+Xv Xv- 0 1 1 # define new anion
+
+SOLUTION_SPECIES
+Xv- = Xv-; log_k 0.0
+
+PHASES # Endmembers for solid solutions
+KXv; KXv = K+ + Xv; log_k -20.7
+    # Xv- is small when log_k is small
+    # Vanselow exchange K_V = (K_GT)_Ca\K * (1 + {KX])^.5 / 2 = 0.273
+CaXv2; CaXv2 = Ca+2 + 2Xv; log_k -40.2724 # = 2*( -20.7 - log10(K_V) )
+# Fix the K/Ca concentrations...
+Fix_K; K+ = K+; log_k 0.0
+Fix_Ca; Ca+2 = Ca+2; log_k 0.0
+
+EQUILIBRIUM_PHASES
+Fix_K -3.0175 KCl # [K+] = 10^-3.0175. K_tot = 1 mM
+Fix_Ca -4.069 CaCl2
+
+SOLID_SOLUTION 1
+KCaXv_Vans
+-comp KXv 0.5
+-comp CaXv2 0.25 # Total Xv = 1 mol
+
+SOLUTION 1
+K 1; Ca 0.1; Cl 1.2 charge
+END

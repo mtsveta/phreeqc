@@ -1,0 +1,33 @@
+DATABASE ../database/phreeqc.dat
+Title EXAMPLE 6.7. Simulate the analytical measurement of exchangeable cations
+# Place 5 g (dry) soil in a centrifuge tube and extract twice with 20 mL 1 M NaCl. We neglect the contribution from
+# the original pore water, but do consider that 2.5 mL of the extractant remains in the centrifuge tube after decanting.
+# As a result, in the 2nd extraction a fraction 2.5 / 20   0.125 of the first extraction is added to the second one.
+
+SOLUTION 1
+pressure 1.0
+temperature 25.0
+Na 1.10006
+Mg 0.48
+Ca 1.9
+
+# ------------------------------
+# Define exchanger and solutions
+# ------------------------------
+
+SOLUTION 1 # Pore water
+pressure 1.0
+temperature 25.0
+Na 1.10005
+Mg 0.48
+Ca 1.9
+
+EXCHANGE 1 # 5 g soil with CEC = 10 meq/kg, or 0.05 mmol X-
+-equilibrate 1
+X 0.05e-3 # moles
+
+PRINT 
+-reset false
+-totals true
+-exchange true
+END

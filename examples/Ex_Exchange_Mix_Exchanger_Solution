@@ -1,0 +1,23 @@
+DATABASE ../database/phreeqc.dat
+TITLE Mix exchanger and solution
+
+EXCHANGE_SPECIES
+K+ + X- = KX; -log_k	0.7; -gamma	3.5	0.015; -delta_h  -4.3	# Jardine & Sparks, 1984
+Ca+2 + 2X- = CaX2; -log_k	0.8; -gamma	5.0	0.165; -delta_h  7.2    # Van Bladel & Gheyl, 1980
+
+EXCHANGE 1
+CaX2 0.4065 # exchangeable Ca and K in mol
+KX 0.1871
+
+SOLUTION 1
+Na 1.2 # Na in solution, exchanges for K and Ca
+Cl 1.2 charge
+
+MIX 1
+1 1e-9 # Take 1e-9 (=1 μg water) of solution 1
+
+PRINT
+-reset false
+-totals true
+-exchange true
+END

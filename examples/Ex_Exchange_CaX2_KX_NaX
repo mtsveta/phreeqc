@@ -1,0 +1,21 @@
+DATABASE ../database/phreeqc.dat
+TITLE Ion Exchange CaX2, KX, andNaX
+
+SOLUTION 1
+K 100.0
+Ca 0.0
+
+EXCHANGE 1
+NaX 0.417
+
+PRINT
+-reset false
+-totals true
+-exchange true
+
+SELECTED_OUTPUT
+-file   ../out/ion-exchange-isotherms-cax2-kx-nax-reaction.txt
+-tot K Ca
+-m K+ Ca+2 KX CaX2 NaX
+
+END

@@ -1,0 +1,24 @@
+DATABASE ../database/phreeqc.dat
+TITLE Ion Exchange with Reactions and Isotherm plots
+
+SOLUTION 1
+K  25.0
+Ca 237.5
+
+#K = [100.  75.  50.  25.   0.]
+#Ca = [200.  212.5 225.  237.5 250. ]
+
+EXCHANGE 1
+NaX 0.5 # 500 mmol NaX
+
+PRINT 
+-reset true
+-totals true
+-exchange true
+
+SELECTED_OUTPUT
+-file   ../out/ion-exchange-isotherms-nax.txt
+-tot K Ca
+-m K+ Ca+2 KX CaX2 NaX
+
+END

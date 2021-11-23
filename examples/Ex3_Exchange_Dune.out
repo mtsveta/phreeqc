@@ -22,7 +22,9 @@ Reading input data for simulation 1.
 	DATABASE ../database/phreeqc.dat
 	TITLE Exchange in Dune sand
 	SOLUTION 1
-	Na 1.1006
+	pressure 1.0
+	temperature 25.0
+	Na 1.10006
 	Mg 0.48
 	Ca 1.9
 	EXCHANGE 1
@@ -36,7 +38,7 @@ Reading input data for simulation 1.
 
 	Ca                1.900e-03   1.900e-03
 	Mg                4.800e-04   4.800e-04
-	Na                1.101e-03   1.101e-03
+	Na                1.100e-03   1.100e-03
 
 ----------------------------Description of solution----------------------------
 
@@ -50,7 +52,7 @@ Reading input data for simulation 1.
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  25.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
                                Iterations  =   4
                                   Total H  = 1.110124e+02
@@ -63,7 +65,7 @@ X                6.000e-02 mol
 
 	CaX2              2.564e-02   5.127e-02   8.545e-01    -0.132
 	MgX2              4.086e-03   8.172e-03   1.362e-01    -0.130
-	NaX               5.575e-04   5.575e-04   9.292e-03    -0.033
+	NaX               5.572e-04   5.572e-04   9.287e-03    -0.033
 
 -----------------------------Exchange composition------------------------------
 
@@ -74,7 +76,7 @@ X                6.000e-02 mol
 
 	CaX2              2.564e-02   5.127e-02   8.545e-01    -0.132
 	MgX2              4.086e-03   8.172e-03   1.362e-01    -0.130
-	NaX               5.575e-04   5.575e-04   9.292e-03    -0.033
+	NaX               5.572e-04   5.572e-04   9.287e-03    -0.033
 
 -----------------------------Solution composition------------------------------
 
@@ -82,7 +84,7 @@ X                6.000e-02 mol
 
 	Ca                1.900e-03   1.900e-03
 	Mg                4.800e-04   4.800e-04
-	Na                1.101e-03   1.101e-03
+	Na                1.100e-03   1.100e-03
 
 ----------------------------Description of solution----------------------------
 
@@ -96,13 +98,13 @@ X                6.000e-02 mol
                        Mass of water (kg)  =   1.000e+00
                  Total alkalinity (eq/kg)  =   1.865e-08
                          Temperature (°C)  =  25.00
-                  Electrical balance (eq)  =   5.861e-03
+                  Electrical balance (eq)  =   5.860e-03
  Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
                                Iterations  =   0
                                   Total H  = 1.110124e+02
                                   Total O  = 5.550622e+01
 
 ----------------------------------
-End of Run after 0.032721 Seconds.
+End of Run after 0.022239 Seconds.
 ----------------------------------
 

@@ -1,0 +1,43 @@
+DATABASE ../database/phreeqc.dat
+TITLE Ion Exchange Isotherm plots with KR convention
+
+EXCHANGE_MASTER_SPECIES
+	X	X-
+EXCHANGE_SPECIES
+	X- = X-
+	-log_k	0.0
+
+	Na+ + X- = NaX
+	-log_k 0
+    -gamma 4.0 0.075
+
+    K+ + X- = KX
+    -log_k 0.705
+    -gamma 3.5 0.015
+
+    0.618Ca+2 + 2KX = CaX2 + 1.236K+
+    -log_k -0.281
+    -no_check; mole_balance CaX2
+    -gamma 5.0 0.165
+
+SOLUTION 1
+K  0.0
+Ca 250.0
+
+#K = [200. 175. 150. 125. 100.  75.  50.  25.   0.]
+#Ca = [150.  162.5 175.  187.5 200.  212.5 225.  237.5 250. ]
+
+EXCHANGE 1
+NaX 0.5 # 500 mmol NaX
+
+PRINT 
+-reset true
+-totals true
+-exchange true
+
+SELECTED_OUTPUT
+-file   ../out/ion-exchange-isotherms-nax-rk-.txt
+-tot K Ca
+-m K+ Ca+2 KX CaX2 NaX
+
+END

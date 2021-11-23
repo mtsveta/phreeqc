@@ -1,0 +1,179 @@
+   Input file: ../examples/Ex3_Exchangeable_Cations
+  Output file: ../examples/Ex3_Exchangeable_Cations.out
+Database file: ../database/phreeqc.dat
+
+------------------
+Reading data base.
+------------------
+
+	SOLUTION_MASTER_SPECIES
+	SOLUTION_SPECIES
+	PHASES
+	EXCHANGE_MASTER_SPECIES
+	EXCHANGE_SPECIES
+	SURFACE_MASTER_SPECIES
+	SURFACE_SPECIES
+	RATES
+	END
+------------------------------------
+Reading input data for simulation 1.
+------------------------------------
+
+	DATABASE ../database/phreeqc.dat
+	Title EXAMPLE 6.7. Simulate the analytical measurement of exchangeable cations
+	SOLUTION 1
+	pressure 1.0
+	temperature 25.0
+	Na 1.10006
+	Mg 0.48
+	Ca 1.9
+	SOLUTION 1 # Pore water
+	pressure 1.0
+	temperature 25.0
+	Na 1.10005
+	Mg 0.48
+	Ca 1.9
+	EXCHANGE 1 # 5 g soil with CEC = 10 meq/kg, or 0.05 mmol X-
+	equilibrate 1
+	X 0.05e-3 # moles
+	PRINT 
+	reset false
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Ca                1.900e-03   1.900e-03
+	Mg                4.800e-04   4.800e-04
+	Na                1.100e-03   1.100e-03
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.000    
+                                       pe  =   4.000    
+      Specific Conductance (µS/cm,  25°C)  = 289
+                          Density (g/cm³)  =   0.99720
+                               Volume (L)  =   1.00292
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   5.310e-03
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.865e-08
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =   5.860e-03
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
+                               Iterations  =   4
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550622e+01
+
+X                5.000e-05 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              2.315e-04   4.630e-04   7.056e+03    -3.031
+	NaX               1.405e-06   1.405e-06   2.142e+01    -2.920
+	MgX2              3.673e-05   7.345e-05   1.119e+03    -3.029
+
+X                5.000e-05 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              8.968e-05   1.794e-04   2.733e+03    -3.014
+	NaX               9.316e-07   9.316e-07   1.420e+01    -2.915
+	MgX2              1.428e-05   2.855e-05   4.352e+02    -3.012
+
+X                5.000e-05 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              4.183e-05   8.367e-05   1.275e+03    -3.014
+	NaX               6.495e-07   6.495e-07   9.898e+00    -2.915
+	MgX2              6.668e-06   1.334e-05   2.032e+02    -3.012
+
+X                5.000e-05 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              2.564e-05   5.128e-05   7.815e+02    -3.014
+	NaX               5.087e-07   5.087e-07   7.753e+00    -2.915
+	MgX2              4.087e-06   8.173e-06   1.246e+02    -3.012
+
+X                5.000e-05 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              2.170e-05   4.340e-05   6.614e+02    -3.014
+	NaX               4.680e-07   4.680e-07   7.133e+00    -2.915
+	MgX2              3.459e-06   6.918e-06   1.054e+02    -3.012
+
+X                5.000e-05 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              2.137e-05   4.273e-05   6.512e+02    -3.014
+	NaX               4.644e-07   4.644e-07   7.078e+00    -2.915
+	MgX2              3.406e-06   6.811e-06   1.038e+02    -3.012
+
+X                5.000e-05 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              2.136e-05   4.273e-05   6.512e+02    -3.014
+	NaX               4.644e-07   4.644e-07   7.077e+00    -2.915
+	MgX2              3.405e-06   6.810e-06   1.038e+02    -3.012
+
+X                5.000e-05 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              2.136e-05   4.273e-05   8.545e-01    -0.132
+	MgX2              3.405e-06   6.810e-06   1.362e-01    -0.130
+	NaX               4.644e-07   4.644e-07   9.287e-03    -0.033
+
+-----------------------------Exchange composition------------------------------
+
+X                5.000e-05 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              2.136e-05   4.273e-05   8.545e-01    -0.132
+	MgX2              3.405e-06   6.810e-06   1.362e-01    -0.130
+	NaX               4.644e-07   4.644e-07   9.287e-03    -0.033
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Ca                1.900e-03   1.900e-03
+	Mg                4.800e-04   4.800e-04
+	Na                1.100e-03   1.100e-03
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.000      Charge balance
+                                       pe  =   4.000      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 289
+                          Density (g/cm³)  =   0.99720
+                               Volume (L)  =   1.00292
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   5.310e-03
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.865e-08
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =   5.860e-03
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
+                               Iterations  =   0
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550622e+01
+
+----------------------------------
+End of Run after 0.055013 Seconds.
+----------------------------------
+

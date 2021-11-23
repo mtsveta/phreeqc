@@ -4,7 +4,7 @@ TITLE Exchange in Dune sand, P = 1 atm
 
 SOLUTION 1
 pressure 1.0
-Na 1.1006
+Na 1.10006
 Mg 0.48
 Ca 1.9
 
@@ -23,6 +23,7 @@ SELECTED_OUTPUT
         -file   ../out/ion-exchange-dune-p-1.txt
         -temperature
         -m NaX CaX2 MgX2
+        -activities NaX CaX2 MgX2
 END
 
 
@@ -31,7 +32,7 @@ TITLE Exchange in Dune sand, P = 10 atm
 
 SOLUTION 1
 pressure 10.0
-Na 1.1006
+Na 1.10006
 Mg 0.48
 Ca 1.9
 
@@ -50,6 +51,7 @@ SELECTED_OUTPUT
         -file   ../out/ion-exchange-dune-p-10.txt
         -temperature
         -m NaX CaX2 MgX2
+        -activities NaX CaX2 MgX2
 END
 
 TITLE Exchange in Dune sand, P = 100 atm
@@ -57,7 +59,7 @@ TITLE Exchange in Dune sand, P = 100 atm
 
 SOLUTION 1
 pressure 100.0
-Na 1.1006
+Na 1.10006
 Mg 0.48
 Ca 1.9
 
@@ -76,4 +78,5 @@ SELECTED_OUTPUT
         -file   ../out/ion-exchange-dune-p-100.txt
         -temperature
         -m NaX CaX2 MgX2
+        -activities NaX CaX2 MgX2
 END

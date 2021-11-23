@@ -1,0 +1,23 @@
+DATABASE ../database/phreeqc.dat
+TITLE Ion Exchange with Reactions and Isotherm plots
+
+SOLUTION 1
+K 100 # 100 mmol K+ / kg H2O
+
+EXCHANGE 1
+KX 0.4 # 400 mmol KX, total K =500 mmol
+
+REACTION; K -1 Ca 0.5; 0.5 in 20 steps
+
+PRINT 
+-reset true
+-totals true
+-exchange true
+
+SELECTED_OUTPUT
+-file   ../out/ion-exchange-isotherms-cax2-kx-reaction.txt
+-tot K Ca
+-ionic_strength
+-m K+ Ca+2 KX CaX2
+
+END

@@ -1,0 +1,24 @@
+DATABASE ../database/phreeqc.dat
+TITLE Ion Exchange with Reactions and Isotherm plots
+
+SOLUTION 1
+K 0.0
+Ca 1000.0
+
+#K =  [20.  15.  10.   5.   0.]
+#Ca = [800.  850.  900.  950. 1000.]
+
+EXCHANGE 1
+KX 0.4 # 400 mmol KX
+-equilibrate 1
+
+PRINT 
+-reset true
+-totals true
+-exchange true
+
+SELECTED_OUTPUT
+-file   ../out/ion-exchange-isotherms-kx.txt
+-tot K Ca
+-m K+ Ca+2 KX CaX2
+END

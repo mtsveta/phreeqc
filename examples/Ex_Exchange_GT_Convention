@@ -1,0 +1,29 @@
+DATABASE ../database/phreeqc.dat
+TITLE Cation exchange following the Gaines Thomas equations
+
+EXCHANGE_MASTER_SPECIES # text after a # is not read...
+X X- # ...define exchange site X
+EXCHANGE_SPECIES
+X- = X-; log_k 0 # semicolon is logical end of line
+#X- + K+ = KX; log_k 0.7 # define the half-reactions of ion exchange
+#2X- + Ca+2 = CaX2; log_k 0.8 # log K's relative to NaX
+K+ + X- = KX; -log_k	0.7; -gamma	3.5	0.015; -delta_h  -4.3	# Jardine & Sparks, 1984
+Ca+2 + 2X- = CaX2; -log_k	0.8; -gamma	5.0	0.165; -delta_h  7.2    # Van Bladel & Gheyl, 1980
+
+SOLUTION 1
+pressure 1.0
+temperature 25.0
+K 1 # concentrations in mmol/kg H2O
+Ca 0.1
+Cl 1.2 charge
+Na 1e-6
+
+EXCHANGE 1
+X 1 # 1 mol
+-equilibrate 1
+
+PRINT 
+-reset false
+-totals true
+-exchange true
+END

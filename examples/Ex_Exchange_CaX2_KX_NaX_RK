@@ -1,0 +1,27 @@
+DATABASE ../database/phreeqc.dat
+TITLE Ion Exchange CaX2, KX, andNaX
+
+EXCHANGE_SPECIES
+Na+ + X- = NaX; log_k 0
+-gamma 4.0 0.075
+0.789K+ + NaX = KX + 0.789Na+; -log_k 0.705; -no_check; mole_balance KX
+-gamma 3.5 0.015
+0.618Ca+2 + 2KX = CaX2 + 1.236K+; -log_k -0.281; -no_check; mole_balance CaX2
+-gamma 5.0 0.165
+# should give the same result...
+0.931Ca+2 + 2NaX = CaX2 + 1.862Na+; -log_k 1.135; -no_check; mole_balance CaX2
+-gamma 5.0 0.165
+
+SOLUTION 1
+K 100
+Ca 50
+
+EXCHANGE 1
+NaX 0.417
+
+PRINT
+-reset false
+-totals true
+-exchange true
+
+END

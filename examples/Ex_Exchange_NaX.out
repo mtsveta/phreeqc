@@ -1,0 +1,105 @@
+   Input file: ../examples/Ex_Exchange_NaX
+  Output file: ../examples/Ex_Exchange_NaX.out
+Database file: ../database/phreeqc.dat
+
+------------------
+Reading data base.
+------------------
+
+	SOLUTION_MASTER_SPECIES
+	SOLUTION_SPECIES
+	PHASES
+	EXCHANGE_MASTER_SPECIES
+	EXCHANGE_SPECIES
+	SURFACE_MASTER_SPECIES
+	SURFACE_SPECIES
+	RATES
+	END
+------------------------------------
+Reading input data for simulation 1.
+------------------------------------
+
+	DATABASE ../database/phreeqc.dat
+	TITLE Ion Exchange with Reactions and Isotherm plots
+	SOLUTION 1
+	K 450
+	Ca 25.0
+	EXCHANGE 1
+	NaX 0.5 # 500 mmol NaX
+	USER_GRAPH
+	-head alpha_K beta_K
+	-axis_titles "Solute K /(K + 2Ca)" "Exchangeable K /(K + 2Ca)"
+	-axis_scale x_axis 0 1 0.2 0.1
+	-axis_scale y_axis 0 1 0.2 0.1
+	-start
+	10 graph_x tot("K")
+	20 graph_y mol("KX")
+	-end
+	PRINT 
+	reset false
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Ca                2.500e-02   2.500e-02
+	K                 4.500e-01   4.500e-01
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.000    
+                                       pe  =   4.000    
+      Specific Conductance (µS/cm,  25°C)  = 29448
+                          Density (g/cm³)  =   1.01175
+                               Volume (L)  =   1.00677
+                        Activity of water  =   0.992
+                 Ionic strength (mol/kgw)  =   2.750e-01
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   3.665e-08
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =   5.000e-01
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
+                               Iterations  =   4
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550622e+01
+
+-----------------------------Exchange composition------------------------------
+
+X                5.000e-01 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	KX                3.139e-01   3.139e-01   6.277e-01    -0.160
+	NaX               1.575e-01   1.575e-01   3.151e-01    -0.133
+	CaX2              1.429e-02   2.859e-02   5.718e-02    -0.524
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Ca                1.071e-02   1.071e-02
+	K                 1.361e-01   1.361e-01
+	Na                3.425e-01   3.425e-01
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.015      Charge balance
+                                       pe  =  11.246      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 22208
+                          Density (g/cm³)  =   1.00982
+                               Volume (L)  =   1.00377
+                        Activity of water  =   0.992
+                 Ionic strength (mol/kgw)  =   2.607e-01
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   3.665e-08
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =   5.000e-01
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  = 100.00
+                               Iterations  =  11
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550622e+01
+
+----------------------------------
+End of Run after 0.032598 Seconds.
+----------------------------------
+

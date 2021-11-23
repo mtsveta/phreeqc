@@ -1,0 +1,31 @@
+DATABASE ../database/phreeqc.dat
+TITLE Ion Exchange with Reactions and Isotherm plots
+
+SOLUTION 1
+K 450
+Ca 25.0
+
+EXCHANGE 1
+NaX 0.5 # 500 mmol NaX
+
+USER_GRAPH
+-head alpha_K beta_K
+-axis_titles "Solute K /(K + 2Ca)" "Exchangeable K /(K + 2Ca)"
+-axis_scale x_axis 0 1 0.2 0.1
+-axis_scale y_axis 0 1 0.2 0.1
+-start
+10 graph_x tot("K")
+20 graph_y mol("KX")
+-end
+
+PRINT 
+-reset false
+-totals true
+-exchange true
+
+SELECTED_OUTPUT
+        -file   ../out/ion-exchange-isotherms-nax.txt
+        -m K+ Ca+2
+        -tot K Ca
+        -m KX CaX2
+END

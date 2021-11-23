@@ -1,0 +1,126 @@
+   Input file: ../examples/Ex_Exchange_GT_Convention
+  Output file: ../examples/Ex_Exchange_GT_Convention.out
+Database file: ../database/phreeqc.dat
+
+------------------
+Reading data base.
+------------------
+
+	SOLUTION_MASTER_SPECIES
+	SOLUTION_SPECIES
+	PHASES
+	EXCHANGE_MASTER_SPECIES
+	EXCHANGE_SPECIES
+	SURFACE_MASTER_SPECIES
+	SURFACE_SPECIES
+	RATES
+	END
+------------------------------------
+Reading input data for simulation 1.
+------------------------------------
+
+	DATABASE ../database/phreeqc.dat
+	TITLE Cation exchange following the Gaines Thomas equations
+	EXCHANGE_MASTER_SPECIES # text after a # is not read...
+	X X- # ...define exchange site X
+	EXCHANGE_SPECIES
+	X- = X-
+	 log_k 0 # semicolon is logical end of line
+	K+ + X- = KX
+	 log_k	0.7
+	 gamma	3.5	0.015
+	 delta_h  -4.3	# Jardine & Sparks, 1984
+	Ca+2 + 2X- = CaX2
+	 log_k	0.8
+	 gamma	5.0	0.165
+	 delta_h  7.2    # Van Bladel & Gheyl, 1980
+	SOLUTION 1
+	pressure 1.0
+	temperature 25.0
+	K 1 # concentrations in mmol/kg H2O
+	Ca 0.1
+	Cl 1.2 charge
+	Na 1e-6
+	EXCHANGE 1
+	X 1 # 1 mol
+	equilibrate 1
+	PRINT 
+	reset false
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Ca                1.000e-04   1.000e-04
+	Cl                1.200e-03   1.200e-03  Charge balance
+	K                 1.000e-03   1.000e-03
+	Na                1.000e-09   1.000e-09
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.000    
+                                       pe  =   4.000    
+      Specific Conductance (µS/cm,  25°C)  = 170
+                          Density (g/cm³)  =   0.99710
+                               Volume (L)  =   1.00299
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.300e-03
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.658e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -9.948e-12
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.00
+                               Iterations  =   8
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550622e+01
+
+X                1.000e+00 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              4.097e-01   8.194e-01   8.194e-01    -0.069
+	KX                1.806e-01   1.806e-01   1.806e-01    -0.018
+	NaX               3.604e-08   3.604e-08   3.604e-08    -0.017
+
+-----------------------------Exchange composition------------------------------
+
+X                1.000e+00 mol
+
+	                               Equiv-    Equivalent      Log 
+	Species             Moles      alents      Fraction     Gamma
+
+	CaX2              4.097e-01   8.194e-01   8.194e-01    -0.069
+	KX                1.806e-01   1.806e-01   1.806e-01    -0.018
+	NaX               3.604e-08   3.604e-08   3.604e-08    -0.017
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Ca                1.000e-04   1.000e-04
+	Cl                1.200e-03   1.200e-03
+	K                 1.000e-03   1.000e-03
+	Na                1.000e-09   1.000e-09
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.000      Charge balance
+                                       pe  =   4.000      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 170
+                          Density (g/cm³)  =   0.99710
+                               Volume (L)  =   1.00299
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.300e-03
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.658e-09
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -9.948e-12
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.00
+                               Iterations  =   0
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550622e+01
+
+----------------------------------
+End of Run after 0.039924 Seconds.
+----------------------------------
+

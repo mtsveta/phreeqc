@@ -1,0 +1,28 @@
+DATABASE ../database/phreeqc.dat
+TITLE Calcite and CaX2 relation
+#SOLUTION 1; Na 1.1; Mg 0.48; Ca 1.9; N(-3) 0.0 # changing [ 0.  2.  4.  6.  8. 10. 12. 14. 16. 18. 20. 22. 24. 26. 28. 30. 32. 34. 36. 38. 40. 42. 44. 46. 48. 50. 52. 54. 56. 58. 60.]
+#SOLUTION 1; Na 1.1; Mg 0.48; Ca 1.9; N(-3) 2.0
+SOLUTION 1; Na 1.1; Mg 0.48; Ca 1.9; N(-3) 4.0
+#SOLUTION 1; Na 1.1; Mg 0.48; Ca 1.9; N(-3) 6.0
+#SOLUTION 1; Na 1.1; Mg 0.48; Ca 1.9; N(-3) 8.0
+#SOLUTION 1; Na 1.1; Mg 0.48; Ca 1.9; N(-3) 10.0
+#SOLUTION 1; Na 1.1; Mg 0.48; Ca 1.9; N(-3) 12.0
+#SOLUTION 1; Na 1.1; Mg 0.48; Ca 1.9; N(-3) 14.0
+#SOLUTION 1; Na 1.1; Mg 0.48; Ca 1.9; N(-3) 16.0
+#SOLUTION 1; Na 1.1; Mg 0.48; Ca 1.9; N(-3) 18.0
+#SOLUTION 1; Na 1.1; Mg 0.48; Ca 1.9; N(-3) 20.0
+
+EQUILIBRIUM_PHASES
+    Calcite 0.0 10.0
+
+EXCHANGE 1
+    X 2.5E-3	# changing [0, 2.5E-3, 12.5E-3, 25E-3]
+
+SELECTED_OUTPUT
+        -file   ../out/phreeqc-calcite-cax2-p-1.txt
+        -temperature
+        -pH
+        -ionic_strength
+        -equilibrium_phases Calcite
+        -m Ca+2 CaX2
+END
