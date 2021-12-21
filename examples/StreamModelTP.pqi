@@ -1,0 +1,29 @@
+DATABASE ../database/phreeqc.dat
+SOLUTION 1
+    temp      25
+    pH        7
+    pe        4
+    redox     pe
+    units     mmol/kgw
+    density   1
+    -water    1 # kg
+
+PHASES
+Fluorapatite
+    Ca5(F)(PO4)3 = 5Ca+2 + F- + 3PO4-3
+    log_k     -59.6
+    -analytical_expression -1917.945184 0 87834.57783 631.9611081 0 0
+Hydroxylapatite
+    Ca5(OH)(PO4)3 = 5Ca+2 + OH- + 3PO4-3
+    log_k     -58.517
+    -analytical_expression -1.6657 -0.098215 -8219.41 0 0 0
+
+SELECTED_OUTPUT 1
+    -file                 ../examples/StreamModelTP.sel
+    -reset                false
+    -temperature          true
+    -pH          true
+    -totals               P
+    -saturation_indices   CO2(g)
+
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -4 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 50; END

@@ -194,6 +194,8 @@ model(void)
 				mb_gases();
 				mb_ss();
 			}
+
+            //print_exchange();
 /* debug
 						species_list_sort();
 						sum_species();
@@ -731,8 +733,7 @@ gammas(LDBLE mu)
 				else if (s_x[i]->exch_gflag == 2 && s_x[i]->alk > 0)
 				{
 					/* Extended D-H, WATEQ D-H */
-					s_x[i]->lg = coef * (-a * muhalf * z * z /
-						(1.0 + s_x[i]->dha * b * muhalf) + s_x[i]->dhb * mu) +
+					s_x[i]->lg = coef * (-a * muhalf * z * z / (1.0 + s_x[i]->dha * b * muhalf) + s_x[i]->dhb * mu) +
 						log10(fabs(s_x[i]->equiv) / s_x[i]->alk);
 					s_x[i]->dg = coef * (c2 * z * z /
 						((1.0 + s_x[i]->dha * b * muhalf) * (1.0 + s_x[i]->dha * b * muhalf)) +
@@ -743,9 +744,7 @@ gammas(LDBLE mu)
 					if (llnl_count_temp > 0)
 					{
 						s_x[i]->lg =
-							coef * (-a_llnl * muhalf * z * z /
-							(1.0 + s_x[i]->dha * b_llnl * muhalf) +
-								bdot_llnl * mu) +
+							coef * (-a_llnl * muhalf * z * z / (1.0 + s_x[i]->dha * b_llnl * muhalf) + bdot_llnl * mu) +
 							log10(fabs(s_x[i]->equiv) / s_x[i]->alk);
 						s_x[i]->dg =
 							coef * (c2_llnl * z * z /

@@ -1,0 +1,119 @@
+DATABASE ../database/phreeqc-extended.dat
+SOLUTION 1
+    temp      25
+    pH        7
+    pe        4
+    redox     pe
+    units     mmol/kgw
+    density   1
+    -water    1 # kg
+
+SELECTED_OUTPUT 1
+    -file                 ../examples/StreamModel_T25.sel
+    -reset                false
+    -temperature          true
+    -pH          true
+    -totals               P
+    -saturation_indices   CO2(g)
+
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -4.00 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.96 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.92 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.88 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.84 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.80 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.76 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.72 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.68 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.64 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.60 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.56 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.52 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.48 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.44 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.40 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.36 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.32 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.28 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.24 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.20 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.16 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.12 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.08 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.04 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -3.00 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.96 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.92 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.88 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.84 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.80 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.76 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.72 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.68 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.64 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.60 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.56 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.52 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.48 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.44 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.40 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.36 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.32 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.28 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.24 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.20 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.16 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.12 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.08 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.04 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -2.00 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.96 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.92 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.88 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.84 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.80 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.76 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.72 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.68 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.64 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.60 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.56 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.52 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.48 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.44 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.40 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.36 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.32 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.28 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.24 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.20 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.16 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.12 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.08 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.04 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -1.00 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.96 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.92 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.88 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.84 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.80 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.76 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.72 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.68 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.64 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.60 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.56 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.52 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.48 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.44 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.40 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.36 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.32 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.28 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.24 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.20 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.16 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.12 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.08 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)    -0.04 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END
+USE SOLUTION 1; EQUILIBRIUM_PHASES 1; CO2(g)     0.00 100; Hydroxyapatite 0 10 dissolve_only; Fluorapatite 0 10 dissolve_only; Calcite 0 10 dissolve_only; REACTION_TEMPERATURE 1; 25; END

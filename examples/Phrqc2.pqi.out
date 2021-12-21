@@ -25,7 +25,7 @@ Reading input data for simulation 1.
 	    density   1
 	    water    1 # kg
 	SELECTED_OUTPUT 1
-	    file                 phrqc2_selected_output_1.sel
+	    file                 ../examples/Phrqc2.sel
 	    reset                false
 	    ph                   true
 	    molalities           CO3-2  HCO3-
@@ -6680,7 +6680,7 @@ End of simulation.
 Reading input data for simulation 72.
 -------------------------------------
 
----------------------------------
-End of Run after 0.15697 Seconds.
----------------------------------
+----------------------------------
+End of Run after 0.182763 Seconds.
+----------------------------------
 

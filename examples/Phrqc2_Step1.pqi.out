@@ -1,0 +1,176 @@
+   Input file: ../examples/Phrqc2_Step1.pqi
+  Output file: ../examples/Phrqc2_Step1.pqi.out
+Database file: ../database/phreeqc-toner-catling.dat
+
+------------------
+Reading data base.
+------------------
+
+	PITZER
+	SOLUTION_MASTER_SPECIES
+	SOLUTION_SPECIES
+	PHASES
+	PITZER
+------------------------------------
+Reading input data for simulation 1.
+------------------------------------
+
+	DATABASE ../database/phreeqc-toner-catling.dat
+	SOLUTION 1
+	    temp      25
+	    pH        7
+	    pe        4
+	    redox     pe
+	    units     mmol/kgw
+	    density   1
+	    water    1 # kg
+	SELECTED_OUTPUT 1
+	    file                 ../examples/Phrqc2_Step1.sel
+	    reset                false
+	    ph                   true
+	    molalities           CO3-2  HCO3-
+	    saturation_indices   CO2(g)
+	USE SOLUTION 1
+	 EQUILIBRIUM_PHASES 1
+	 CO2(g)   2 100
+	 Natron    0 0
+	 Nahcolite 0 10
+	 Trona     0 0
+	 Na2CO3:H2O 0 0
+	 Na2CO3:7H2O 0 0
+	 END
+-------------------------------------------
+Beginning of initial solution calculations.
+-------------------------------------------
+
+Initial solution 1.	
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Pure water     
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   7.000    
+                                       pe  =   4.000    
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.004e-07
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   6.294e-10
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -6.294e-10
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.31
+                               Iterations  =   3
+                         Gamma iterations  =   2
+                      Osmotic coefficient  =   0.99988
+                                  Total H  = 1.110186e+02
+                                  Total O  = 5.550930e+01
+
+----------------------------Distribution of species----------------------------
+
+                                                    Unscaled  Unscaled
+                                Unscaled       Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma   cm³/mol
+
+   OH-             1.007e-07   1.006e-07    -6.997    -6.997    -0.000     (0)  
+   H+              1.000e-07   1.000e-07    -7.000    -7.000    -0.000      0.00
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+-----------------------------------------
+Beginning of batch-reaction calculations.
+-----------------------------------------
+
+Reaction step 1.
+
+Using solution 1.	
+Using pure phase assemblage 1.	
+
+-------------------------------Phase assemblage--------------------------------
+
+                                                      Moles in assemblage
+Phase               SI  log IAP  log K(T, P)   Initial       Final       Delta
+
+CO2(g)            2.00     0.53     -1.47    1.000e+02   9.707e+01  -2.928e+00
+Na2CO3:7H2O      -5.07    -5.52     -0.45    0.000e+00           0   0.000e+00
+Na2CO3:H2O       -5.75    -5.28      0.47    0.000e+00           0   0.000e+00
+Nahcolite        -0.00    -0.39     -0.39    1.000e+01   9.076e+00  -9.240e-01
+Natron           -4.84    -5.63     -0.80    0.000e+00           0   0.000e+00
+Trona            -4.69    -5.71     -1.02    0.000e+00           0   0.000e+00
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	C                 3.852e+00   3.852e+00
+	Na                9.240e-01   9.240e-01
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   5.561      Charge balance
+                                       pe  =   4.000      Adjusted to redox equilibrium
+                        Activity of water  =   0.915
+                 Ionic strength (mol/kgw)  =   9.240e-01
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   9.240e-01
+                       Total CO2 (mol/kg)  =   3.852e+00
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -6.301e-10
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.00
+                               Iterations  =  20
+                         Gamma iterations  =   4
+                      Osmotic coefficient  =   1.03701
+                                  Total H  = 1.119426e+02
+                                  Total O  = 6.413756e+01
+
+----------------------------Distribution of species----------------------------
+
+                                                    Unscaled  Unscaled
+                                Unscaled       Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma   cm³/mol
+
+   H+              5.081e-06   2.746e-06    -5.294    -5.561    -0.267      0.00
+   OH-             6.620e-09   3.352e-09    -8.179    -8.475    -0.296     (0)  
+   H2O             5.551e+01   9.146e-01     1.744    -0.039     0.000     18.07
+C(4)          3.852e+00
+   CO2             2.928e+00   3.404e+00     0.467     0.532     0.065     (0)  
+   HCO3-           9.238e-01   5.045e-01    -0.034    -0.297    -0.263     (0)  
+   CO3-2           7.325e-05   8.617e-06    -4.135    -5.065    -0.929     (0)  
+Na            9.240e-01
+   Na+             9.240e-01   8.132e-01    -0.034    -0.090    -0.055     (0)  
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  CO2(g)            2.00      0.53   -1.47  CO2
+  Na2CO3:7H2O      -5.07     -5.52   -0.45  Na2CO3:7H2O
+  Na2CO3:H2O       -5.75     -5.28    0.47  Na2CO3:H2O
+  Nahcolite        -0.00     -0.39   -0.39  NaHCO3
+  Natron           -4.84     -5.63   -0.80  Na2CO3:10H2O
+  Trona            -4.69     -5.71   -1.02  Na3H(CO3)2:2H2O
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+------------------
+End of simulation.
+------------------
+
+------------------------------------
+Reading input data for simulation 2.
+------------------------------------
+
+----------------------------------
+End of Run after 0.036597 Seconds.
+----------------------------------
+

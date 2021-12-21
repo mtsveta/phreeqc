@@ -19,7 +19,7 @@ Hydroxylapatite
     -analytical_expression -1.6657 -0.098215 -8219.41 0 0 0
 
 SELECTED_OUTPUT 1
-    -file                 stream_model_selected_output_1.sel
+    -file                 ../examples/StreamModel.sel
     -reset                false
     -temperature          true
     -pH          true

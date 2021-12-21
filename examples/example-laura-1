@@ -1,0 +1,32 @@
+DATABASE ../database/phreeqc-extended.dat
+SOLUTION 1
+    temp      50
+    pH        7
+    pe        4
+    redox     pe
+    units     mmol/kgw
+    density   1
+    -water    1 # kg
+
+SELECTED_OUTPUT 1
+    -file                 ../examples/example-laura-1.sel
+    -reset                false
+    -temperature          true
+    -pH                   true
+    -totals               P
+    -saturation_indices   CO2(g)
+
+USE SOLUTION 1
+EQUILIBRIUM_PHASES 1
+CO2(g)    -4 100
+Calcite 0 10 dissolve_only
+REACTION_TEMPERATURE 1; 50; END
+SAVE solution 1
+
+#  Simulation 2: Incorporation of atmospheric CO2 at fixed pressure of 1.1 atm and fixed partial pressure
+USE SOLUTION 1
+GAS_PHASE 1 Fixed-pressure gas phase
+        -fixed_pressure
+        -pressure       1.1
+        CO2(g)          1e-4 # not fixing
+END

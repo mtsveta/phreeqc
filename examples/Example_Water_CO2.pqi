@@ -1,0 +1,25 @@
+DATABASE ../database/phreeqc.dat
+SOLUTION 1
+    temp      25
+    pH        7
+    pe        4
+    redox     pe
+    units     mmol/kgw
+    density   1
+    -water    1 # kg
+
+SELECTED_OUTPUT 1
+    -file                 ../examples/Example_Water_C02.sel
+    -reset                false
+    -pH                   true
+    -saturation_indices   CO2(g)
+
+USE SOLUTION 1
+EQUILIBRIUM_PHASES 1
+CO2(g)    -4 100
+END
+
+USE SOLUTION 1
+EQUILIBRIUM_PHASES 1
+CO2(g)    -3 100
+END
